@@ -1,2 +1,21 @@
-# cia-react
-Frontend for Communities In Atria Platform
+# CIA
+Communities In Atria Platform
+
+
+### setup node and react
+```
+ npm run setup
+```
+### To start server
+```
+ npm start 
+```
+
+### To start react dev server
+```
+ npm run start-react
+```
+### Build react app
+```
+ npm run build 
+```

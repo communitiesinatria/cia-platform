@@ -1,0 +1,22 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "cia platform server",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"smh\" && exit 0",
+    "start": "node server.js",
+    "start-react": "cd client && npm start",
+    "build": "cd client && npm run build",
+    "setup": "npm i && cd client && npm i && cd .. && node log.js setup"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "ascii-art": "^2.5.0",
+    "ascii-art-image": "^1.2.2"
+  }
+}
