@@ -52,6 +52,7 @@ header .landing-content {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  position: relative;
 }
 
 header .landing-content img {
@@ -66,5 +67,20 @@ header .landing-content .landing-message {
 
 header .landing-content .landing-message h1 {
   font-size: 2.6rem;
+}
+
+@media (max-width: 600px) {
+  header .landing-content {
+    display: block;
+  }
+  header .landing-content img {
+    width: 100%;
+  }
+  header .landing-content .landing-message {
+    padding: 20px;
+  }
+  header .landing-content .landing-message h1 {
+    font-size: 2.6rem;
+  }
 }
 /*# sourceMappingURL=App.css.map */

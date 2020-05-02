@@ -37,6 +37,7 @@ header {
         align-items: center;
         position: relative;
         height: fit-content;
+        position: relative;
 
         img {
             width: 60%;
@@ -49,6 +50,23 @@ header {
 
             h1 {
                 font-size: 2.6rem;
+            }
+        }
+    }
+
+    @media (max-width: 600px) {
+        .landing-content {
+            display: block;
+
+            img {
+                width: 100%;
+            }
+
+            .landing-message {
+                padding: 20px;
+                h1 {
+                    font-size: 2.6rem;
+                }
             }
         }
     }
