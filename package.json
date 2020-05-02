@@ -6,9 +6,11 @@
   "scripts": {
     "test": "echo \"smh\" && exit 0",
     "start": "node server.js",
-    "start-react": "cd client && npm start",
-    "build": "cd client && npm run build",
-    "setup": "npm i && cd client && npm i && cd .. && node log.js setup"
+    "start-react": "cd client && npm start && cd ..",
+    "build": "cd client && npm run build && cd ..",
+    "setup": "npm i && cd client && npm i && cd .. && node log.js setup",
+    "deploy": "npm run build && git add . && git commit -m 'cia-deploy' && git push",
+    "server-deploy": "git add . && git commit -m 'cia-deploy' && git push"
   },
   "author": "",
   "license": "ISC",

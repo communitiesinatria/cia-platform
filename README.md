@@ -1,7 +1,6 @@
 # CIA
 Communities In Atria Platform
 
-
 ### setup node and react
 ```
  npm run setup
