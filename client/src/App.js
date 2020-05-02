@@ -1,26 +1,39 @@
 import React from 'react';
-import logo from './logo.jpg';
-import './App.css';
 
+import './css/App.css'
+/* import darklogo from './assets/dark-logo.png';
+import lighlogo from './assets/light-logo.png' */
+
+import communitylogo from './assets/community.png'
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Header />
     </div>
   );
 }
 
+
+function Header() {
+  return (
+    <header>
+      <nav>
+        <h1>CIA</h1>
+        <ul>
+          <li>Home</li>
+          <li>Events</li>
+          <li>Team</li>
+        </ul>
+      </nav>
+      <div className="landing-content">
+        <div className="landing-message">
+          <h1>Communities in Atria</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore iusto similique placeat ratione accusantium soluta!</p>
+        </div>
+        <img src={communitylogo} alt="community" />
+      </div>
+
+    </header>
+  )
+}
 export default App;
