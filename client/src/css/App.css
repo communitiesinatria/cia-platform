@@ -221,6 +221,44 @@ header .landing-content .landing-message p {
   width: 50%;
 }
 
+.philosophy {
+  padding-left: 20px;
+  padding-top: 20px;
+}
+
+.philosophy > h1 {
+  font-size: 3rem;
+}
+
+.philosophy img {
+  width: 50%;
+  margin-bottom: auto;
+}
+
+.philosophy .messages {
+  margin-top: 10px;
+}
+
+.philosophy > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.philosophy .message {
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+
+footer {
+  padding: 20px;
+  background: var(--accent-color);
+}
+
+a {
+  color: black;
+}
+
 @media (max-width: 600px) {
   nav {
     -webkit-box-orient: vertical;
@@ -271,6 +309,12 @@ header .landing-content .landing-message p {
     top: 0;
     left: 0;
     z-index: -10;
+  }
+  .philosophy > div {
+    display: block;
+  }
+  .philosophy > div img {
+    width: 100%;
   }
 }
 /*# sourceMappingURL=App.css.map */

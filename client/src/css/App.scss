@@ -166,8 +166,41 @@ header {
 
 }
 
+.philosophy {
+    padding-left: 20px;
+    padding-top: 20px;
 
+    &>h1 {
+        font-size: 3rem;
+    }
 
+    img {
+        width: 50%;
+        margin-bottom: auto;
+    }
+
+    .messages {
+        margin-top: 10px;
+    }
+
+    &>div {
+        display: flex;
+
+    }
+
+    .message {
+        padding-right: 20px;
+        padding-bottom: 20px;
+    }
+}
+
+footer{
+    padding: 20px;
+    background: var(--accent-color);
+}
+a{
+    color: black;
+}
 @media (max-width: 600px) {
     nav {
         flex-direction: column;
@@ -216,6 +249,15 @@ header {
             left: 0;
             z-index: -10;
 
+        }
+    }
+
+    .philosophy{
+        &>div{
+            display: block;
+            img{
+                width: 100%;
+            }
         }
     }
 }
