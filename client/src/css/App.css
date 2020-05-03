@@ -37,6 +37,11 @@ header .nav-shadow {
           box-shadow: 0 1px 8px 1px rgba(0, 0, 0, 0.295);
 }
 
+header h1 {
+  -webkit-transition: opacity .3s ease;
+  transition: opacity .3s ease;
+}
+
 header nav {
   height: 80px;
   padding: 20px;
@@ -85,10 +90,6 @@ header nav ul li:hover {
 header nav ul li:hover .cursor {
   -webkit-transform: scale(1.5);
           transform: scale(1.5);
-}
-
-header nav #header-logo {
-  width: 50px;
 }
 
 @-webkit-keyframes fade {
@@ -165,6 +166,10 @@ header .landing-content .landing-message {
 
 header .landing-content .landing-message h1 {
   font-size: 3rem;
+}
+
+header .landing-content .landing-message p {
+  line-height: 1.6rem;
 }
 
 @-webkit-keyframes fadein-img {

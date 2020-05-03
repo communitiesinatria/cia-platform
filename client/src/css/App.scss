@@ -36,7 +36,10 @@ header {
 
     .nav-shadow {
         box-shadow: 0 1px 8px 1px rgba(0, 0, 0, 0.295);
+    }
 
+    h1 {
+        transition: opacity .3s ease;
     }
 
     nav {
@@ -72,9 +75,7 @@ header {
             }
         }
 
-        #header-logo {
-            width: 50px;
-        }
+
     }
 
     @keyframes fade {
@@ -121,6 +122,11 @@ header {
 
             h1 {
                 font-size: 3rem;
+
+            }
+
+            p {
+                line-height: 1.6rem;
             }
         }
     }
