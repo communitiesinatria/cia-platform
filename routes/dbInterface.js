@@ -25,10 +25,11 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
     name: String,
     pwd: String,
-    state: String,
     email: String,
-    settings: Object,
+    props: Object,
 });
+
+
 
 const UserModel = mongoose.model('users', UserSchema);
 

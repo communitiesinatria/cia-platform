@@ -5,52 +5,27 @@ import './css/App.css'
 /* import darklogo from './assets/dark-logo.png';
 import lighlogo from './assets/light-logo.png' */
 
-import communitylogo from './assets/community.png'
+import communitylogo from './assets/community.png';
+import aboutimg1 from './assets/recources.png'
+
 function App() {
-
   useEffect(() => {
-    window.cursorDom = document.querySelector('.cursor');
-    window.addEventListener('mousemove', cursor)
-  })
-
-  return (
-    <>
-      <div className="cursor"></div>
-      <div className="app">
-        <Header />
-      </div>
-    </>
-  );
-}
-
-
-function Header() {
-
-  useEffect(() => {
-    const nav = document.querySelector('header nav')
+    const nav = document.querySelector('.app>nav');
     window.onscroll = () => {
-      const h1 = document.querySelector('header nav h1');
+
       if (window.scrollY > 10) {
-        h1.style.opacity = 0;
-        setTimeout(() => {
-          h1.textContent = 'CIA'
-          h1.style.opacity = 1;
-        },300)
         nav.classList.add('nav-shadow');
+
       } else {
-        h1.style.opacity = 0;
-        setTimeout(() => {
-          h1.textContent = 'Communities in Atria'
-          h1.style.opacity = 1;
-        }, 300)
         nav.classList.remove('nav-shadow');
       }
     }
 
-  })
+    return () => window.onscroll = null;
 
+  });
   return (
-    <header>
+    <div className="app">
       <nav>
         <h1>Communities in Atria</h1>
         <ul>
@@ -59,6 +34,18 @@ function Header() {
           <li>Team</li>
         </ul>
       </nav>
+      <Header />
+      <About />
+    </div>
+  );
+}
+
+
+function Header() {
+
+  return (
+    <header>
+
       <div className="landing-content">
         <div className="landing-message">
           <h1>The Future of Engineering starts here</h1>
@@ -70,11 +57,44 @@ function Header() {
   )
 }
 
+function About() {
+
+  const messages = [
+    {
+      title: 'Resources',
+      message: 'CIA is the platform that facilitates resources to help your visions become reality. From components to oppournities, CIA is the best way to find the best resource.'
+    },
+    {
+      title: 'For Everyone, Always!',
+      message: 'CIA is built for inclusivity. Real engineering is the confluence of art, culture, sports and Technology.'
+    },
+    {
+      title: 'Mentorship',
+      message: 'Great ideas need great mentors. From domain experts to product designers, CIA helps realise ideas.'
+    },
+    {
+      title: 'Collaboration',
+      message: "CIA's sole mission is to realise Enginnering through collaboration. Great things are always done by a team, never alone."
+    },
+  ]
+  const Message = ({ title, message }) => (
+    <div className="message">
+      <h1>{title}</h1>
+      <p>{message}</p>
+    </div>
+  )
+
+  return (
+    <div className="about">
+
+      <div className="messages">{messages.map((m, i) => <Message key={i} {...m} />)}</div>
+      <img src={aboutimg1} alt="resources" />
+
+    </div>
+  )
+}
+
 
 
 export default App;
 
-function cursor(e) {
-  window.cursorDom.style.top = e.pageY + 'px'
-  window.cursorDom.style.left = e.pageX + 'px'
-}

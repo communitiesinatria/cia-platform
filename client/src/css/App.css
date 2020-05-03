@@ -32,17 +32,12 @@
   background: #555;
 }
 
-header .nav-shadow {
+.nav-shadow {
   -webkit-box-shadow: 0 1px 8px 1px rgba(0, 0, 0, 0.295);
           box-shadow: 0 1px 8px 1px rgba(0, 0, 0, 0.295);
 }
 
-header h1 {
-  -webkit-transition: opacity .3s ease;
-  transition: opacity .3s ease;
-}
-
-header nav {
+nav {
   height: 80px;
   padding: 20px;
   position: -webkit-sticky;
@@ -63,7 +58,7 @@ header nav {
           animation: fade 200ms forwards ease;
 }
 
-header nav ul {
+nav ul {
   list-style: none;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -76,20 +71,25 @@ header nav ul {
           align-items: center;
 }
 
-header nav ul li {
+nav ul li {
   margin-left: 20px;
   padding: 15px 20px;
   -webkit-transition: background 200ms ease;
   transition: background 200ms ease;
 }
 
-header nav ul li:hover {
+nav ul li:hover {
   background: var(--accent-color);
 }
 
-header nav ul li:hover .cursor {
+nav ul li:hover .cursor {
   -webkit-transform: scale(1.5);
           transform: scale(1.5);
+}
+
+header h1 {
+  -webkit-transition: opacity .3s ease;
+  transition: opacity .3s ease;
 }
 
 @-webkit-keyframes fade {
@@ -198,15 +198,73 @@ header .landing-content .landing-message p {
   }
 }
 
+.about {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-left: 20px;
+}
+
+.about .message {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 20px;
+}
+
+.about img {
+  width: 50%;
+}
+
 @media (max-width: 600px) {
-  header .landing-content {
-    display: block;
+  nav {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    height: 100px;
   }
-  header .landing-content img {
-    width: 100%;
+  nav ul li {
+    margin: 0;
+    margin-right: 10px;
+    padding-left: 0;
   }
-  header .landing-content .landing-message {
+  nav ul li:hover {
+    background: transparent;
+    color: var(--accent-color);
+    -webkit-filter: brightness(0.6);
+            filter: brightness(0.6);
+  }
+  .landing-content {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .landing-content > img {
+    width: 100% !important;
+  }
+  .landing-content .landing-message {
     padding: 20px;
+    padding-bottom: 20px !important;
+  }
+  .about {
+    display: block;
+    position: relative;
+  }
+  .about img {
+    width: 100% !important;
+    top: 0;
+    left: 0;
+    z-index: -10;
   }
 }
 /*# sourceMappingURL=App.css.map */
