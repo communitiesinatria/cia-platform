@@ -7,10 +7,19 @@ import lighlogo from './assets/light-logo.png' */
 
 import communitylogo from './assets/community.png'
 function App() {
+
+  useEffect(() => {
+    window.cursorDom = document.querySelector('.cursor');
+    window.addEventListener('mousemove', cursor)
+  })
+
   return (
-    <div className="app">
-      <Header />
-    </div>
+    <>
+      <div className="cursor"></div>
+      <div className="app">
+        <Header />
+      </div>
+    </>
   );
 }
 
@@ -49,3 +58,8 @@ function Header() {
   )
 }
 export default App;
+
+function cursor(e) {
+  window.cursorDom.style.top = e.pageY + 'px'
+  window.cursorDom.style.left = e.pageX + 'px'
+}

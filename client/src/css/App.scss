@@ -1,3 +1,16 @@
+.cursor {
+    width: 3rem;
+    height: 3rem;
+    border: 2px solid var(--cursor-color);
+    border-radius: 50%;
+    position: absolute;
+
+    transform: translate(-50%, -50%);
+    transform-origin: 100% 100%;
+    pointer-events: none;
+    z-index: 200;
+}
+
 ::-webkit-scrollbar {
     width: 5px;
     position: absolute;
@@ -47,12 +60,14 @@ header {
             li {
                 margin-left: 20px;
                 padding: 15px 20px;
-                cursor: pointer;
                 transition: background 200ms ease;
 
                 &:hover {
                     background: var(--accent-color);
 
+                    .cursor {
+                        transform: scale(1.5);
+                    }
                 }
             }
         }
