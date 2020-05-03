@@ -3,12 +3,6 @@ const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
 
-try {
-    require('dotenv').config({ path: __dirname + '/.env' });
-} catch (error) {
-    console.warn('No environment variables found');
-}
-
 const apiRoute = require('');
 
 const cors = require('cors');
