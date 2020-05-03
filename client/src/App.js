@@ -11,13 +11,22 @@ import aboutimg1 from './assets/recources.png'
 function App() {
   useEffect(() => {
     const nav = document.querySelector('.app>nav');
+    const h1 = document.querySelector('.app>nav>h1');
+    function settext(text) {
+      if (h1.textContent !== text) {
+        h1.style.opacity = 0;
+        setTimeout(() => { h1.textContent = text; h1.style.opacity = 1; }, 200);
+      }
+    }
     window.onscroll = () => {
 
       if (window.scrollY > 10) {
         nav.classList.add('nav-shadow');
+        settext('CIA')
 
       } else {
         nav.classList.remove('nav-shadow');
+        settext('Communities in Atria');
       }
     }
 
@@ -31,11 +40,13 @@ function App() {
         <ul>
           <li>Home</li>
           <li>Events</li>
+          <li>Blogs</li>
           <li>Team</li>
         </ul>
       </nav>
       <Header />
       <About />
+      <Philosophy />
     </div>
   );
 }
@@ -45,7 +56,6 @@ function Header() {
 
   return (
     <header>
-
       <div className="landing-content">
         <div className="landing-message">
           <h1>The Future of Engineering starts here</h1>
@@ -86,14 +96,19 @@ function About() {
 
   return (
     <div className="about">
-
       <div className="messages">{messages.map((m, i) => <Message key={i} {...m} />)}</div>
       <img src={aboutimg1} alt="resources" />
-
     </div>
   )
 }
 
+function Philosophy() {
+  return (
+    <div className="philosophy">
+
+    </div>
+  );
+}
 
 
 export default App;

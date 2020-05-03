@@ -1,19 +1,18 @@
-.cursor {
-  width: 3rem;
-  height: 3rem;
-  border: 2px solid var(--cursor-color);
-  border-radius: 50%;
-  position: absolute;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  -webkit-transform-origin: 100% 100%;
-          transform-origin: 100% 100%;
-  pointer-events: none;
-  z-index: 200;
-}
+/* .cursor {
+    width: 3rem;
+    height: 3rem;
+    border: 2px solid var(--cursor-color);
+    border-radius: 50%;
+    position: absolute;
 
+    transform: translate(-50%, -50%);
+    transform-origin: 100% 100%;
+    pointer-events: none;
+    z-index: 200;
+} */
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 8px;
+  height: 8px;
   position: absolute;
 }
 
@@ -29,7 +28,7 @@
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: rgba(116, 224, 174, 0.719);
 }
 
 .nav-shadow {
@@ -56,6 +55,11 @@ nav {
   background: var(--bg);
   -webkit-animation: fade 200ms forwards ease;
           animation: fade 200ms forwards ease;
+}
+
+nav > h1 {
+  -webkit-transition: opacity .2s ease;
+  transition: opacity .2s ease;
 }
 
 nav ul {
@@ -85,11 +89,6 @@ nav ul li:hover {
 nav ul li:hover .cursor {
   -webkit-transform: scale(1.5);
           transform: scale(1.5);
-}
-
-header h1 {
-  -webkit-transition: opacity .3s ease;
-  transition: opacity .3s ease;
 }
 
 @-webkit-keyframes fade {
@@ -209,6 +208,7 @@ header .landing-content .landing-message p {
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding-left: 20px;
+  padding-top: 10px;
 }
 
 .about .message {
@@ -230,11 +230,17 @@ header .landing-content .landing-message p {
     -webkit-box-align: start;
         -ms-flex-align: start;
             align-items: flex-start;
-    height: 100px;
+    height: auto;
+    padding-bottom: 0;
+  }
+  nav ul {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
   }
   nav ul li {
     margin: 0;
     margin-right: 10px;
+    padding: 20px;
     padding-left: 0;
   }
   nav ul li:hover {

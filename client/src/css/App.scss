@@ -1,4 +1,4 @@
-.cursor {
+/* .cursor {
     width: 3rem;
     height: 3rem;
     border: 2px solid var(--cursor-color);
@@ -9,10 +9,11 @@
     transform-origin: 100% 100%;
     pointer-events: none;
     z-index: 200;
-}
+} */
 
 ::-webkit-scrollbar {
-    width: 5px;
+    width: 8px;
+    height: 8px;
     position: absolute;
 }
 
@@ -29,7 +30,7 @@
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: rgba(116, 224, 174, 0.719);
 }
 
 .nav-shadow {
@@ -48,6 +49,10 @@ nav {
     align-items: center;
     background: var(--bg);
     animation: fade 200ms forwards ease;
+
+    &>h1 {
+        transition: opacity .2s ease;
+    }
 
     ul {
         list-style: none;
@@ -74,15 +79,6 @@ nav {
 }
 
 header {
-
-
-
-    h1 {
-        transition: opacity .3s ease;
-    }
-
-
-
     @keyframes fade {
         0% {
             opacity: 0;
@@ -156,6 +152,7 @@ header {
     align-items: center;
     justify-content: space-between;
     padding-left: 20px;
+    padding-top: 10px;
 
     .message {
         padding-top: 10px;
@@ -175,12 +172,16 @@ header {
     nav {
         flex-direction: column;
         align-items: flex-start;
-        height: 100px;
+        height: auto;
+        padding-bottom: 0;
 
         ul {
+            flex-wrap: wrap;
+
             li {
                 margin: 0;
                 margin-right: 10px;
+                padding: 20px;
                 padding-left: 0;
 
                 &:hover {
@@ -214,7 +215,7 @@ header {
             top: 0;
             left: 0;
             z-index: -10;
-            
+
         }
     }
 }
