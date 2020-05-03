@@ -13,6 +13,7 @@ if (!process.env.NODE_ENV) app.use(cors()); //!DO NOT REMOVE THIS LINE
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use('/api', apiRoute);
 
 app.use(express.static(path.resolve(`${__dirname}/client/build`)));//STATIC FOLDER IS REACTS BUILD FOLDER
 
