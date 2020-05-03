@@ -3,7 +3,7 @@ const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
 
-const apiRoute = require('');
+const apiRoute = require('./routes/api/api');
 
 const cors = require('cors');
 const log = require('./log');
