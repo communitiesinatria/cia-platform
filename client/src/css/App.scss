@@ -195,6 +195,7 @@ header {
 }
 
 footer{
+    margin-top: 10px;
     padding: 20px;
     background: var(--accent-color);
 }
@@ -214,7 +215,6 @@ a{
             li {
                 margin: 0;
                 margin-right: 10px;
-                padding: 20px;
                 padding-left: 0;
 
                 &:hover {

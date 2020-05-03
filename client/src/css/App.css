@@ -251,6 +251,7 @@ header .landing-content .landing-message p {
 }
 
 footer {
+  margin-top: 10px;
   padding: 20px;
   background: var(--accent-color);
 }
@@ -278,7 +279,6 @@ a {
   nav ul li {
     margin: 0;
     margin-right: 10px;
-    padding: 20px;
     padding-left: 0;
   }
   nav ul li:hover {
