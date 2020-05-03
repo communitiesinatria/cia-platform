@@ -6,6 +6,7 @@ Communities In Atria Platform
  npm run setup
 ```
 ### To start deployment server
+at [localhost](http://localhost:8000/)
 ```
  npm start 
 ```
