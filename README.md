@@ -5,7 +5,7 @@ Communities In Atria Platform
 ```
  npm run setup
 ```
-### To start server
+### To start deployment server
 ```
  npm start 
 ```
