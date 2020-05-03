@@ -1,12 +1,19 @@
 header {
+    .nav-shadow {
+        box-shadow: 0 1px 8px 1px rgba(0, 0, 0, 0.295);
+        ;
+    }
 
     nav {
         height: 80px;
         padding: 20px;
-
+        position: sticky;
+        top: 0;
+        z-index: 100;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        background: var(--bg);
 
         ul {
             list-style: none;
@@ -42,6 +49,7 @@ header {
         img {
             width: 60%;
             margin-left: auto;
+            animation: fadein-img 500ms forwards ease;
         }
 
         .landing-message {
@@ -49,8 +57,21 @@ header {
             padding-bottom: 100px;
 
             h1 {
-                font-size: 2.6rem;
+                font-size: 3rem;
             }
+        }
+    }
+
+    @keyframes fadein-img {
+        0% {
+            opacity: 0;
+            transform: translateX(40px);
+
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateX(0px);
         }
     }
 
@@ -64,9 +85,6 @@ header {
 
             .landing-message {
                 padding: 20px;
-                h1 {
-                    font-size: 2.6rem;
-                }
             }
         }
     }

@@ -1,6 +1,15 @@
+header .nav-shadow {
+  -webkit-box-shadow: 0 1px 8px 1px rgba(0, 0, 0, 0.295);
+          box-shadow: 0 1px 8px 1px rgba(0, 0, 0, 0.295);
+}
+
 header nav {
   height: 80px;
   padding: 20px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 100;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -10,6 +19,7 @@ header nav {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background: var(--bg);
 }
 
 header nav ul {
@@ -58,6 +68,8 @@ header .landing-content {
 header .landing-content img {
   width: 60%;
   margin-left: auto;
+  -webkit-animation: fadein-img 500ms forwards ease;
+          animation: fadein-img 500ms forwards ease;
 }
 
 header .landing-content .landing-message {
@@ -66,7 +78,33 @@ header .landing-content .landing-message {
 }
 
 header .landing-content .landing-message h1 {
-  font-size: 2.6rem;
+  font-size: 3rem;
+}
+
+@-webkit-keyframes fadein-img {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(40px);
+            transform: translateX(40px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+}
+
+@keyframes fadein-img {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(40px);
+            transform: translateX(40px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
 }
 
 @media (max-width: 600px) {
@@ -78,9 +116,6 @@ header .landing-content .landing-message h1 {
   }
   header .landing-content .landing-message {
     padding: 20px;
-  }
-  header .landing-content .landing-message h1 {
-    font-size: 2.6rem;
   }
 }
 /*# sourceMappingURL=App.css.map */

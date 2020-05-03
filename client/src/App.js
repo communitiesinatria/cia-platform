@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import './css/App.css'
 /* import darklogo from './assets/dark-logo.png';
@@ -15,6 +15,18 @@ function App() {
 
 
 function Header() {
+
+  useEffect(() => {
+    const nav = document.querySelector('header nav')
+    window.onscroll = () => {
+      if (window.scrollY > 10) {
+        nav.classList.add('nav-shadow');
+      } else {
+        nav.classList.remove('nav-shadow');
+      }
+    }
+  })
+
   return (
     <header>
       <nav>
