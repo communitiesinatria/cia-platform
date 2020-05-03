@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 
+
 import './css/App.css'
 /* import darklogo from './assets/dark-logo.png';
 import lighlogo from './assets/light-logo.png' */
@@ -44,7 +45,6 @@ function Header() {
         </div>
         <img src={communitylogo} alt="community" />
       </div>
-
     </header>
   )
 }

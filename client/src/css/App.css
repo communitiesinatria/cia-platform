@@ -1,3 +1,23 @@
+::-webkit-scrollbar {
+  width: 5px;
+  position: absolute;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #e6e6e6;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(132, 255, 198, 0.719);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 header .nav-shadow {
   -webkit-box-shadow: 0 1px 8px 1px rgba(0, 0, 0, 0.295);
           box-shadow: 0 1px 8px 1px rgba(0, 0, 0, 0.295);
@@ -20,6 +40,8 @@ header nav {
       -ms-flex-align: center;
           align-items: center;
   background: var(--bg);
+  -webkit-animation: fade 200ms forwards ease;
+          animation: fade 200ms forwards ease;
 }
 
 header nav ul {
@@ -51,6 +73,50 @@ header nav #header-logo {
   width: 50px;
 }
 
+@-webkit-keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fade-left {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-20px);
+            transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@keyframes fade-left {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-20px);
+            transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
 header .landing-content {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -68,13 +134,15 @@ header .landing-content {
 header .landing-content img {
   width: 60%;
   margin-left: auto;
-  -webkit-animation: fadein-img 500ms forwards ease;
-          animation: fadein-img 500ms forwards ease;
+  -webkit-animation: fadein-img 300ms forwards ease;
+          animation: fadein-img 300ms forwards ease;
 }
 
 header .landing-content .landing-message {
   padding: 20px;
   padding-bottom: 100px;
+  -webkit-animation: fade-left 200ms forwards ease;
+          animation: fade-left 200ms forwards ease;
 }
 
 header .landing-content .landing-message h1 {

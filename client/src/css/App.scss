@@ -1,7 +1,29 @@
+::-webkit-scrollbar {
+    width: 5px;
+    position: absolute;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: rgb(230, 230, 230);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgba(132, 255, 198, 0.719);
+
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
 header {
+
     .nav-shadow {
         box-shadow: 0 1px 8px 1px rgba(0, 0, 0, 0.295);
-        ;
+
     }
 
     nav {
@@ -14,6 +36,7 @@ header {
         justify-content: space-between;
         align-items: center;
         background: var(--bg);
+        animation: fade 200ms forwards ease;
 
         ul {
             list-style: none;
@@ -39,6 +62,30 @@ header {
         }
     }
 
+    @keyframes fade {
+        0% {
+            opacity: 0;
+
+        }
+
+        100% {
+            opacity: 1;
+
+        }
+    }
+
+    @keyframes fade-left {
+        0% {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
     .landing-content {
         display: flex;
         align-items: center;
@@ -49,12 +96,13 @@ header {
         img {
             width: 60%;
             margin-left: auto;
-            animation: fadein-img 500ms forwards ease;
+            animation: fadein-img 300ms forwards ease;
         }
 
         .landing-message {
             padding: 20px;
             padding-bottom: 100px;
+            animation: fade-left 200ms forwards ease;
 
             h1 {
                 font-size: 3rem;
