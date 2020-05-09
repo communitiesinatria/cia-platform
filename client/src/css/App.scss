@@ -214,20 +214,22 @@ a {
 
         ul {
             flex-wrap: wrap;
-        }
+            justify-content: left;
 
-        li {
-            margin: 0;
-            margin-right: 10px;
-            padding-left: 0;
-            padding-top: 0;
+            li {
+                margin: 0;
+                margin-right: 10px;
+                padding-left: 0;
+                padding-top: 0;
 
-            &:hover {
-                background: transparent;
-                color: var(--accent-color);
-                filter: brightness(.6);
+                &:hover {
+                    background: transparent;
+                    color: var(--accent-color);
+                    filter: brightness(.6);
+                }
             }
         }
+
     }
 
     .landing-content {
