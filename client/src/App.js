@@ -1,7 +1,13 @@
 import React, { useEffect } from 'react';
-
+import {
+  BrowserRouter as Router,
+  useHistory,
+  Route,
+  Switch
+} from 'react-router-dom'
 
 import './css/App.css'
+
 /* import darklogo from './assets/dark-logo.png';
 import lighlogo from './assets/light-logo.png' */
 
@@ -10,6 +16,35 @@ import aboutimg1 from './assets/resources.png'
 import philosophyimg from './assets/philosophy.png'
 
 function App() {
+
+
+
+  return (
+    <div className="app">
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/events">
+            <Home />
+          </Route>
+          <Route path="/blogs">
+            <Home />
+          </Route>
+          <Route path="/team">
+            <Home />
+          </Route>
+        </Switch>
+      </Router>
+    </div>
+
+  );
+}
+
+function Home() {
+
+  const history = useHistory();
   useEffect(() => {
     const nav = document.querySelector('.app>nav');
     const h1 = document.querySelector('.app>nav>h1');
@@ -35,24 +70,23 @@ function App() {
 
   });
   return (
-    <div className="app">
+    <>
       <nav>
         <h1>Communities in Atria</h1>
         <ul>
-          <li>Home</li>
-          <li>Events</li>
-          <li>Blogs</li>
-          <li>Team</li>
+          <li onClick={() => history.push({ pathname: '/' })}>Home</li>
+          <li onClick={() => history.push({ pathname: '/events' })}>Events</li>
+          <li onClick={() => history.push({ pathname: '/blogs' })}>Blogs</li>
+          <li onClick={() => history.push({ pathname: '/team' })}>Team</li>
         </ul>
       </nav>
       <Header />
       <About />
       <Philosophy />
       <Footer />
-    </div>
-  );
+    </>
+  )
 }
-
 
 function Header() {
 
@@ -136,6 +170,7 @@ function Philosophy() {
 }
 
 function Footer() {
+
   return (
     <footer>
       <h1>Contact</h1>
@@ -148,7 +183,7 @@ function Footer() {
         </a>
       </p>
     </footer>
-  )
+  );
 }
 
 export default App;

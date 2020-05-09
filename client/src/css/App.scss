@@ -194,34 +194,38 @@ header {
     }
 }
 
-footer{
+footer {
     margin-top: 10px;
     padding: 20px;
     background: var(--accent-color);
 }
-a{
+
+a {
     color: black;
 }
+
 @media (max-width: 600px) {
     nav {
         flex-direction: column;
         align-items: flex-start;
         height: auto;
         padding-bottom: 0;
+        padding-top: 10px;
 
         ul {
             flex-wrap: wrap;
+        }
 
-            li {
-                margin: 0;
-                margin-right: 10px;
-                padding-left: 0;
+        li {
+            margin: 0;
+            margin-right: 10px;
+            padding-left: 0;
+            padding-top: 0;
 
-                &:hover {
-                    background: transparent;
-                    color: var(--accent-color);
-                    filter: brightness(.6);
-                }
+            &:hover {
+                background: transparent;
+                color: var(--accent-color);
+                filter: brightness(.6);
             }
         }
     }
@@ -252,10 +256,11 @@ a{
         }
     }
 
-    .philosophy{
-        &>div{
+    .philosophy {
+        &>div {
             display: block;
-            img{
+
+            img {
                 width: 100%;
             }
         }

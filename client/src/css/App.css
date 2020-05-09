@@ -271,17 +271,19 @@ a {
             align-items: flex-start;
     height: auto;
     padding-bottom: 0;
+    padding-top: 10px;
   }
   nav ul {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
   }
-  nav ul li {
+  nav li {
     margin: 0;
     margin-right: 10px;
     padding-left: 0;
+    padding-top: 0;
   }
-  nav ul li:hover {
+  nav li:hover {
     background: transparent;
     color: var(--accent-color);
     -webkit-filter: brightness(0.6);

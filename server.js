@@ -17,6 +17,6 @@ app.use('/api', apiRoute);
 
 app.use(express.static(path.resolve(`${__dirname}/client/build`)));//STATIC FOLDER IS REACTS BUILD FOLDER
 
-app.get('/*', () => res.sendFile(path.resolve(`${__dirname}/client/build/index.html`)));
+app.get('/*', (req, res) => res.sendFile(path.resolve(`${__dirname}/client/build/index.html`)));
 
 app.listen(port, () => log.serverStart());
