@@ -5,6 +5,10 @@ import {
   Route,
   Switch
 } from 'react-router-dom'
+import Events from './Components/Events'
+import Blogs from './Components/Blogs'
+import Team from './Components/Team'
+
 
 import './css/App.css'
 
@@ -27,13 +31,13 @@ function App() {
             <Home />
           </Route>
           <Route path="/events">
-            <Home />
+            <Events />
           </Route>
           <Route path="/blogs">
-            <Home />
+            <Blogs />
           </Route>
           <Route path="/team">
-            <Home />
+            <Team />
           </Route>
         </Switch>
       </Router>
@@ -132,7 +136,7 @@ function About() {
 
 
   return (
-    <div className="about">
+    <div className="About">
       <div className="messages">{messages.map((m, i) => <Message key={i} {...m} />)}</div>
       <img src={aboutimg1} alt="resources" />
     </div>

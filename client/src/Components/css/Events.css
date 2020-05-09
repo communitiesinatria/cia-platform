@@ -1,0 +1,42 @@
+.events h1 {
+  line-height: 2rem;
+}
+
+.events > h1,
+.events h2 {
+  padding: 20px;
+  padding-bottom: 0;
+}
+
+.events h2 {
+  padding-bottom: 20px;
+}
+
+.events .event {
+  position: relative;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  background: -webkit-gradient(linear, left top, right top, from(white), color-stop(white), to(transparent));
+  background: linear-gradient(to right, white, white, transparent);
+}
+
+.events .event .about {
+  padding: 20px;
+  width: 50%;
+}
+
+.events .event .event-img {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  z-index: -10;
+}
+
+.events .event .event-img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+/*# sourceMappingURL=Events.css.map */
