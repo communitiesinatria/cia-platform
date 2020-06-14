@@ -100,6 +100,31 @@ function Event() {
 function EventView() {
   const history = useHistory();
 
-  console.log(history.location.data);
-  return <div className="event-view">{history.location.data.title}</div>;
+  const event = history.location.data;
+  return (
+    <div className="event-view">
+      <div className="event-img">
+        <img
+          src="https://engineering.tamu.edu/student-life/_files/_images/_feature-images/speaker-talk-11Oct2018.jpg"
+          alt=""
+        />
+      </div>
+      <div className="about">
+        <h1>Event title</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore neque
+          blanditiis veritatis repellendus! Veniam, veritatis fugiat Lorem ipsum
+          dolor sit amet consectetur adipisicing elit. Tempore neque blanditiis
+          veritatis repellendus! Veniam, veritatis fugiat Lorem ipsum dolor sit
+        </p>
+        <span className="date-time">3rd Jan 2020</span>
+
+        <div className="register-btn">
+          <span>
+            <a href="">Register</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  );
 }
