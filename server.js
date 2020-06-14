@@ -9,7 +9,7 @@ const cors = require('cors');
 const log = require('./log');
 
 const port = process.env.PORT || 8000;
-if (!process.env.NODE_ENV) app.use(cors()); //!DO NOT REMOVE THIS LINE
+!process.env.NODE_ENV && app.use(cors()); //!DO NOT REMOVE THIS LINE
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
