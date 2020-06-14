@@ -36,3 +36,7 @@ h1 {
 p {
   line-height: 1.6rem;
 }
+
+a {
+  text-decoration: none;
+}

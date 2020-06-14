@@ -1,15 +1,23 @@
 import React from "react";
+import { BrowserRouter as Router, useHistory, Route } from "react-router-dom";
 
 import "./css/Events.css";
 
 export default function Events() {
   return (
-    <div className="events">
-      <div className="this-week">
-        <EventMain />
-      </div>
-      <AllEvents />
-    </div>
+    <Router>
+      <Route path="/events" exact={true}>
+        <div className="events">
+          <div className="this-week">
+            <EventMain />
+          </div>
+          <AllEvents />
+        </div>
+      </Route>
+      <Route path="/events/view">
+        <EventView />
+      </Route>
+    </Router>
   );
 }
 
@@ -33,7 +41,9 @@ function EventMain() {
         <span className="date-time">3rd Jan 2020</span>
 
         <div className="register-btn">
-          <span>Register</span>
+          <span>
+            <a href="">Register</a>
+          </span>
         </div>
       </div>
     </div>
@@ -60,8 +70,16 @@ function AllEvents() {
 }
 
 function Event() {
+  const history = useHistory();
+
+  const event = { title: "test title" };
   return (
-    <div className="event">
+    <div
+      className="event"
+      onClick={() => {
+        history.push({ pathname: "events/view", data: event });
+      }}
+    >
       <div className="bg-img">
         <img
           src="https://total-event.com/wp-content/uploads/2018/01/event-planning-microsoft-ignite.jpg"
@@ -77,4 +95,11 @@ function Event() {
       </div>
     </div>
   );
+}
+
+function EventView() {
+  const history = useHistory();
+
+  console.log(history.location.data);
+  return <div className="event-view">{history.location.data.title}</div>;
 }
