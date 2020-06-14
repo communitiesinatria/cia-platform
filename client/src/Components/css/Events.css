@@ -2,33 +2,53 @@
   line-height: 2rem;
 }
 
-.events > h1,
-.events h2 {
+.events > h1 {
   padding: 20px;
   padding-bottom: 0;
 }
 
 .events h2 {
-  padding-bottom: 20px;
+  padding: 24px;
+  padding-bottom: 0;
 }
 
 .events .event {
   position: relative;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  background: -webkit-gradient(linear, left top, right top, from(white), color-stop(white), to(transparent));
-  background: linear-gradient(to right, white, white, transparent);
+  height: 50vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0.95)), color-stop(rgba(255, 255, 255, 0.8)), to(transparent));
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.8), transparent);
 }
 
 .events .event .about {
-  padding: 20px;
+  padding: 24px;
   width: 50%;
+}
+
+.events .event .about .date-time {
+  font-size: .8rem;
+  font-weight: 600;
+}
+
+.events .event .about .register-btn {
+  padding: 10px 20px;
+  margin-top: 10px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  background: var(--accent-color);
+  cursor: pointer;
 }
 
 .events .event .event-img {
   position: absolute;
   top: 0;
+  width: 100%;
   height: 100%;
   z-index: -10;
 }
@@ -38,5 +58,15 @@
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+@media only screen and (max-width: 600px) {
+  .events .event {
+    background: rgba(232, 255, 246, 0.8);
+  }
+  .events .event .about {
+    padding: 24px;
+    width: 100%;
+  }
 }
 /*# sourceMappingURL=Events.css.map */
