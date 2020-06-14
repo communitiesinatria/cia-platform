@@ -65,6 +65,9 @@
   display: grid;
   -ms-grid-columns: 1fr 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
+  padding: 30px;
 }
 
 .all-events .event {
@@ -72,6 +75,7 @@
   height: 200px;
   overflow-y: hidden;
   position: relative;
+  cursor: pointer;
   -webkit-transition: -webkit-transform 100ms ease, -webkit-box-shadow 100ms ease;
   transition: -webkit-transform 100ms ease, -webkit-box-shadow 100ms ease;
   transition: transform 100ms ease, box-shadow 100ms ease;

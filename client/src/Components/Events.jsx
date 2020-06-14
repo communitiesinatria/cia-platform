@@ -73,6 +73,7 @@ function Event() {
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia laborum
         </p>
+        <span className="date-time">3rd Jan 2020</span>
       </div>
     </div>
   );
