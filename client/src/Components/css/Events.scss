@@ -8,24 +8,27 @@
         padding-bottom: 0;
     }
 
-    h2 {
-        padding: 24px;
-        padding-bottom: 0;
-    }
 
-    .event {
+
+    .main-event {
         position: relative;
-        height: 50vh;
+        min-height: 50vh;
 
         display: flex;
         align-items: center;
-        background: linear-gradient(to right, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.8), transparent);
+        background: linear-gradient(to right, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.2));
 
         .about {
-            padding: 24px;
-            width: 50%;
+            padding: 30px;
+            width: 60%;
+
+            h2 {
+                padding-bottom: 0;
+            }
+
 
             .date-time {
+
                 font-size: .8rem;
                 font-weight: 600;
             }
@@ -34,6 +37,7 @@
                 padding: 10px 20px;
                 margin-top: 10px;
                 width: fit-content;
+                font-weight: 600;
                 background: var(--accent-color);
                 cursor: pointer;
             }
@@ -56,11 +60,71 @@
     }
 }
 
-@media only screen and (max-width: 600px) {
+.all-events {
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    .event {
+        /* width: 300px; */
+        height: 200px;
+        overflow-y: hidden;
+        position: relative;
+
+        transition: transform 100ms ease, box-shadow 100ms ease;
+
+        .about {
+            height: 100%;
+            padding: 30px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            background: rgba(255, 255, 255, 0.856);
+        }
+
+        &:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.192);
+            z-index: 100;
+        }
+
+        /*  &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: linear-gradient(to top, var(--light-bg), rgba(0, 0, 0, 0));
+            z-index: 10;
+        } */
+
+        .bg-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -10;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+
+    }
+}
+
+
+@media only screen and (max-width: 700px) {
     .events {
 
-        .event {
-            background: rgba(232, 255, 246, 0.8);
+        .main-event {
+            background: rgba(255, 255, 255, 0.8);
 
             .about {
                 padding: 24px;
@@ -68,5 +132,9 @@
             }
 
         }
+    }
+
+    .all-events {
+        grid-template-columns: 1fr;
     }
 }
