@@ -115,7 +115,6 @@ function EventView() {
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore neque
           blanditiis veritatis repellendus! Veniam, veritatis fugiat Lorem ipsum
           dolor sit amet consectetur adipisicing elit. Tempore neque blanditiis
-          veritatis repellendus! Veniam, veritatis fugiat Lorem ipsum dolor sit
         </p>
         <span className="date-time">3rd Jan 2020</span>
 
