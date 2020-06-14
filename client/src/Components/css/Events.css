@@ -23,6 +23,8 @@
 .events .main-event .about {
   padding: 30px;
   width: 60%;
+  -webkit-animation: slidein 500ms forwards ease;
+          animation: slidein 500ms forwards ease;
 }
 
 .events .main-event .about h2 {
@@ -35,6 +37,7 @@
 }
 
 .events .main-event .about .register-btn {
+  display: block;
   padding: 10px 20px;
   margin-top: 10px;
   width: -webkit-fit-content;
@@ -51,6 +54,8 @@
   width: 100%;
   height: 100%;
   z-index: -10;
+  -webkit-animation: fadein 1s forwards ease;
+          animation: fadein 1s forwards ease;
 }
 
 .events .main-event .event-img img {
@@ -149,6 +154,8 @@
 .event-view .about {
   padding: 30px;
   width: 60%;
+  -webkit-animation: slidein 500ms forwards ease;
+          animation: slidein 500ms forwards ease;
 }
 
 .event-view .about h2 {
@@ -161,6 +168,7 @@
 }
 
 .event-view .about .register-btn {
+  display: block;
   padding: 10px 20px;
   margin-top: 10px;
   width: -webkit-fit-content;
@@ -177,6 +185,8 @@
   width: 100%;
   height: 100%;
   z-index: -10;
+  -webkit-animation: fadein 1s forwards ease;
+          animation: fadein 1s forwards ease;
 }
 
 .event-view .event-img img {
@@ -204,6 +214,50 @@
   .all-events {
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
+  }
+}
+
+@-webkit-keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes slidein {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-10px);
+            transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@keyframes slidein {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-10px);
+            transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
   }
 }
 /*# sourceMappingURL=Events.css.map */

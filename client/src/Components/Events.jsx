@@ -40,33 +40,17 @@ function EventMain() {
         </p>
         <span className="date-time">3rd Jan 2020</span>
 
-        <div className="register-btn">
-          <span>
-            <a href="">Register</a>
-          </span>
-        </div>
+        <a className="register-btn" >
+          <span>Register</span>
+        </a>
       </div>
     </div>
   );
 }
 
 function AllEvents() {
-  return (
-    <div className="all-events">
-      <Event />
-      <Event />
-      <Event />
-      <Event />
-      <Event />
-      <Event />
-      <Event />
-      <Event />
-      <Event />
-      <Event />
-      <Event />
-      <Event />
-    </div>
-  );
+  const test = Array.from({ length: 10 });
+  return <div className="all-events">{test.map((e,i)=><Event key={i}/>)}</div>;
 }
 
 function Event() {
