@@ -40,7 +40,7 @@ function EventMain() {
         </p>
         <span className="date-time">3rd Jan 2020</span>
 
-        <a className="register-btn" >
+        <a className="register-btn">
           <span>Register</span>
         </a>
       </div>
