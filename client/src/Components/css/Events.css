@@ -111,13 +111,19 @@
       -ms-flex-direction: column;
           flex-direction: column;
   background: rgba(255, 255, 255, 0.856);
+  -webkit-transition: background 200ms ease;
+  transition: background 200ms ease;
 }
 
 .all-events .event:hover {
   -webkit-transform: scale(1.02);
           transform: scale(1.02);
-  border: 2px solid rgba(0, 0, 0, 0.349);
   z-index: 100;
+}
+
+.all-events .event:hover .about {
+  background: rgba(5, 5, 5, 0.767);
+  color: rgba(255, 255, 255, 0.89);
 }
 
 .all-events .event .bg-img {
