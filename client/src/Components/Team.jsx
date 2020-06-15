@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 //styles
 import "./css/Teams.css";
@@ -23,6 +23,22 @@ export default function Team() {
 }
 
 function MemberGrid() {
+  useEffect(() => {
+    const members = document.querySelectorAll(".member");
+
+    members.forEach((member) => {
+      member.addEventListener("mouseover", () => {
+        member.scrollIntoView();
+      });
+    });
+
+    return () => {
+      members.forEach((member) => {
+        member.removeEventListener("mouseover", () => {});
+      });
+    };
+  }, []);
+
   return (
     <div className="members">
       <Member />
