@@ -13,7 +13,7 @@
             margin-top: auto;
             margin-bottom: 40px;
             font-size: 2.5rem;
-            animation: opacity-fadein 1s forwards ease;
+            animation: opacity-fadein 800ms forwards ease;
         }
 
         .bg-img {
@@ -21,7 +21,7 @@
             width: 100%;
             height: 100%;
             z-index: -10;
-            animation: fade-from-top 1s forwards ease;
+            animation: fade-from-top 800ms forwards ease;
 
             img {
                 width: 100%;
@@ -38,7 +38,7 @@
     grid-gap: 30px;
     padding: 30px;
 
-    animation: fade-from-bottom 1.4s forwards ease;
+    animation: fade-from-bottom 1s forwards ease;
 
     .member {
         width: 100%;
