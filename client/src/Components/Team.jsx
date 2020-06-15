@@ -41,7 +41,17 @@ function Member() {
         <img src={rajImg} alt="raj" />
       </div>
       <div className="about">
-          <h3>Raj Sharma</h3>
+        <h3>Raj Sharma</h3>
+        <p>some role</p>
+      </div>
+      <div className="contact">
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://instagram.com/xrehpicx"
+        >
+          instagram
+        </a>
       </div>
     </div>
   );

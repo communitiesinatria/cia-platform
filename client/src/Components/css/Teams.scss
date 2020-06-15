@@ -39,7 +39,7 @@
 
 
     .member {
-        width: auto;
+        width: 100%;
         margin: auto;
         display: flex;
         flex-direction: column;
@@ -48,10 +48,21 @@
         padding: 40px;
         background: whitesmoke;
         transition: padding 200ms ease;
-        
+
+        .about {
+            text-align: center;
+        }
+
+        .contact {
+            a {
+                color: rgb(0, 0, 0);
+                text-decoration: underline;
+            }
+        }
+
         &:hover {
-            &{
-                padding: 20px;
+            & {
+                //padding: 20px;
             }
 
             .profile-img {

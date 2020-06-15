@@ -46,7 +46,7 @@
 }
 
 .members .member {
-  width: auto;
+  width: 100%;
   margin: auto;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -67,8 +67,13 @@
   transition: padding 200ms ease;
 }
 
-.members .member:hover {
-  padding: 20px;
+.members .member .about {
+  text-align: center;
+}
+
+.members .member .contact a {
+  color: black;
+  text-decoration: underline;
 }
 
 .members .member:hover .profile-img {
