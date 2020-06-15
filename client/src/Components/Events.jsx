@@ -40,7 +40,7 @@ function EventMain() {
         </p>
         <span className="date-time">3rd Jan 2020</span>
 
-        <a className="register-btn">
+        <a target="_blank" href="/" className="register-btn">
           <span>Register</span>
         </a>
       </div>
@@ -50,7 +50,13 @@ function EventMain() {
 
 function AllEvents() {
   const test = Array.from({ length: 10 });
-  return <div className="all-events">{test.map((e,i)=><Event key={i}/>)}</div>;
+  return (
+    <div className="all-events">
+      {test.map((e, i) => (
+        <Event key={i} />
+      ))}
+    </div>
+  );
 }
 
 function Event() {

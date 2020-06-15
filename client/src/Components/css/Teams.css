@@ -1,0 +1,119 @@
+.team header {
+  width: 100%;
+  height: 60vh;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.team header > h1 {
+  margin-top: auto;
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+}
+
+.team header .bg-img {
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+}
+
+.team header .bg-img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.members {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(200px, auto))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+  grid-gap: 30px;
+  padding: 30px;
+}
+
+.members .member {
+  width: auto;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 40px;
+  background: whitesmoke;
+  -webkit-transition: padding 200ms ease;
+  transition: padding 200ms ease;
+}
+
+.members .member:hover {
+  padding: 20px;
+}
+
+.members .member:hover .profile-img {
+  width: 150px;
+  height: 200px;
+  border-radius: 0;
+  margin-bottom: 10px;
+}
+
+.members .member:hover .profile-img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.members .about h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.members .profile-img {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+}
+
+.members .profile-img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+@media only screen and (max-width: 700px) {
+  .team > header > .bg-img {
+    overflow: hidden;
+  }
+  .team > header > .bg-img img {
+    -webkit-transform: scale(1.8);
+            transform: scale(1.8);
+  }
+}
+/*# sourceMappingURL=Teams.css.map */
