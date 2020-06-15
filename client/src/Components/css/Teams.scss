@@ -13,7 +13,7 @@
             margin-top: auto;
             margin-bottom: 40px;
             font-size: 2.5rem;
-
+            animation: opacity-fadein 1s forwards ease;
         }
 
         .bg-img {
@@ -21,6 +21,7 @@
             width: 100%;
             height: 100%;
             z-index: -10;
+            animation: fade-from-top 1s forwards ease;
 
             img {
                 width: 100%;
@@ -37,6 +38,7 @@
     grid-gap: 30px;
     padding: 30px;
 
+    animation: fade-from-bottom 1.4s forwards ease;
 
     .member {
         width: 100%;
@@ -117,5 +119,45 @@
             transform: scale(1.8);
             //object-fit: cover;
         }
+    }
+}
+
+@keyframes fade-from-top {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes opacity-fadein {
+
+    0%,
+    50% {
+        opacity: 0;
+
+    }
+
+    100% {
+        opacity: 1;
+
+    }
+}
+
+@keyframes fade-from-bottom {
+
+    0%,
+    60% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
