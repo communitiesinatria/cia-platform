@@ -82,14 +82,14 @@
   text-decoration: underline;
 }
 
-.members .member:hover .profile-img {
+.members .member:active .profile-img {
   width: 150px;
   height: 200px;
   border-radius: 0;
   margin-bottom: 10px;
 }
 
-.members .member:hover .profile-img img {
+.members .member:active .profile-img img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
