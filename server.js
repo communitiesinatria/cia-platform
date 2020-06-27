@@ -3,6 +3,8 @@ const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
 
+
+const admin = require('./admin');
 const apiRoute = require('./routes/api/api');
 
 const cors = require('cors');
@@ -13,7 +15,9 @@ const port = process.env.PORT || 8000;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
 app.use('/api', apiRoute);
+app.use('/admin', admin);
 
 app.use(express.static(path.resolve(`${__dirname}/client/build`)));//STATIC FOLDER IS REACTS BUILD FOLDER
 
