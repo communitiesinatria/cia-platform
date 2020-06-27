@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 
 
 const admin = require('./admin');
-const apiRoute = require('./routes/api/api');
+const apiRoute = require('./routes/api');
 
 const cors = require('cors');
 const log = require('./log');
