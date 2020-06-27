@@ -40,6 +40,7 @@ const EventSchema = new Schema({
     title: String,
     desc: String,
     event_img: String,
+    date: Date,
     links: Object
 });
 

@@ -7,7 +7,15 @@ AdminBro.registerAdapter(require('admin-bro-mongoose'))
 const { UserModel, TeamMemberModel, ProjectModel, EventModel } = require('./controller/model')
 
 const adminBro = new AdminBro({
-    resources: [UserModel, TeamMemberModel, ProjectModel, EventModel],
+    resources: [
+        UserModel,
+        TeamMemberModel,
+        ProjectModel,
+        EventModel
+    ],
+    branding: {
+        companyName: 'Communities in Atria',
+    },
     rootPath: '/admin',
 })
 
