@@ -31,10 +31,30 @@ const UserSchema = new Schema({
     email: String,
     props: Object,
 });
+const TeamMemberSchema = new Schema({
+    name: String,
+    profile_img: String,
+    contact: Object
+});
+const EventSchema = new Schema({
+    title: String,
+    desc: String,
+    event_img: String,
+    links: Object
+});
 
+const ProjectSchema = new Schema({
+    title: String,
+    desc: String,
+    project_img: String,
+    links: Object
+});
 
 
 const UserModel = mongoose.model('users', UserSchema);
+const TeamMemberModel = mongoose.model('teamdata', TeamMemberSchema);
+const EventModel = mongoose.model('events', EventSchema);
+const ProjectModel = mongoose.model('projects', ProjectSchema);
 
-module.exports = { UserModel, mongoose };
+module.exports = { ProjectModel, EventModel, UserModel, TeamMemberModel, mongoose };
 

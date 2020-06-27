@@ -17,6 +17,7 @@
   "dependencies": {
     "admin-bro": "^2.4.3",
     "admin-bro-expressjs": "^2.1.1",
+    "admin-bro-mongoose": "^0.5.2",
     "ascii-art": "^2.5.0",
     "ascii-art-image": "^1.2.2",
     "body-parser": "^1.19.0",
