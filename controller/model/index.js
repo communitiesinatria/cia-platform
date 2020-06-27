@@ -52,7 +52,7 @@ const ProjectSchema = new Schema({
 
 
 const UserModel = mongoose.model('users', UserSchema);
-const TeamMemberModel = mongoose.model('teamdata', TeamMemberSchema);
+const TeamMemberModel = mongoose.model('team', TeamMemberSchema);
 const EventModel = mongoose.model('events', EventSchema);
 const ProjectModel = mongoose.model('projects', ProjectSchema);
 
