@@ -44,14 +44,14 @@ const EventSchema = new Schema({
     event_img: String,
     date: { type: Date, required: true },
     register: { type: String, required: true },
-    other_links: Object
+    other_links: [String]
 });
 const ProjectSchema = new Schema({
     title: { type: String, required: true },
     desc: { type: String, required: true },
     project_img: String,
     join: { type: String, required: true },
-    other_links: Object
+    other_links: [String]
 });
 
 
