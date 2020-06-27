@@ -1,14 +1,56 @@
-const AdminBro = require('admin-bro')
-const AdminBroExpress = require('admin-bro-expressjs')
+require('dotenv').config()
 
+const AdminBro = require('admin-bro')
+const AdminBroExpressjs = require('admin-bro-expressjs')
 AdminBro.registerAdapter(require('admin-bro-mongoose'))
 
+const CryptoJS = require("crypto-js");
+
+const x = {
+    key: process.env.CRPYT_KEY,
+    encrypt: function (txt) {
+        return CryptoJS.AES.encrypt(txt, this.key).toString();
+    },
+    decrypt: function (txt) {
+        return CryptoJS.AES.decrypt(txt, this.key).toString(CryptoJS.enc.Utf8);
+    },
+}
 //resources or models
 const { UserModel, TeamMemberModel, ProjectModel, EventModel } = require('./controller/model')
 
 const adminBro = new AdminBro({
     resources: [
-        UserModel,
+        {
+            resource: UserModel,
+            options: {
+                properties: {
+                    password: {
+                        isVisible: false
+                    },
+                    setpassword: {
+                        type: 'string',
+                        isVisible: {
+                            list: false, edit: !!1, filter: !1, show: !1,
+                        },
+                    },
+                },
+                actions: {
+                    new: {
+                        before: (request) => {
+                            if (request.payload.setpassword) {
+                                request.payload = {
+                                    ...request.payload,
+                                    password: x.encrypt(request.payload.setpassword),
+                                    setpassword: undefined,
+                                }
+                            }
+                            return request
+                        },
+                    }
+                }
+            },
+
+        },
         TeamMemberModel,
         ProjectModel,
         EventModel
@@ -19,6 +61,19 @@ const adminBro = new AdminBro({
     rootPath: '/admin',
 })
 
-const router = AdminBroExpress.buildRouter(adminBro)
+const router = AdminBroExpressjs.buildAuthenticatedRouter(adminBro, {
+    authenticate: async (username, password) => {
+        const user = await User.findOne({ username });
+        if (user) {
+
+            if (x.decrypt(user.password) === password) {
+                return user
+            }
+        }
+        return false
+    },
+    cookiePassword: process.env.CRPYT_KEY,
+})
+// const router = AdminBroExpressjs.buildRouter(adminBro)
 
 module.exports = router;

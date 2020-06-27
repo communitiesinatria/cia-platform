@@ -26,28 +26,30 @@ db.on('connected', () => console.log('database connected'));
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-    name: String,
-    pwd: String,
-    email: String,
+    username: { type: String, required: true },
+    email: { type: String, required: true },
+    password:String,
     props: Object,
+    role: String
 });
 const TeamMemberSchema = new Schema({
-    name: String,
-    profile_img: String,
+    name: { type: String, required: true },
+    profile_img: { type: String, required: true },
     contact: Object
 });
 const EventSchema = new Schema({
-    title: String,
-    desc: String,
+    title: { type: String, required: true },
+    desc: { type: String, required: true },
     event_img: String,
-    date: Date,
+    date: { type: String, required: true },
+    register: { type: String, required: true },
     links: Object
 });
-
 const ProjectSchema = new Schema({
-    title: String,
-    desc: String,
+    title: { type: String, required: true },
+    desc: { type: String, required: true },
     project_img: String,
+    join: { type: String, required: true },
     links: Object
 });
 
