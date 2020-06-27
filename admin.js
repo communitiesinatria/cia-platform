@@ -75,5 +75,4 @@ const router = AdminBroExpressjs.buildAuthenticatedRouter(adminBro, {
     cookiePassword: process.env.CRPYT_KEY,
 })
 // const router = AdminBroExpressjs.buildRouter(adminBro)
-
 module.exports = router;
