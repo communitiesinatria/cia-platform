@@ -32,5 +32,5 @@ const ProjectSchema = new Schema({
 const EventSchema = mongoose.model('events', EventSchema);
 const ProjectSchema = mongoose.model('projects', ProjectSchema);
 
-module.exports = { TeamMemberModel, mongoose };
+module.exports = { ProjectSchema, EventSchema, mongoose };
 
