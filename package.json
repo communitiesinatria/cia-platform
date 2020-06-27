@@ -4,7 +4,7 @@
   "description": "cia platform server",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"smh\" && exit 0",
+    "test": "node test.js",
     "start": "node server.js",
     "start-react": "cd client && npm start && cd ..",
     "build-react": "cd client && npm run build && cd ..",
