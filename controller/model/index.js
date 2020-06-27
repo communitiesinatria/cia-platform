@@ -13,7 +13,7 @@ const x = {
 }
 
 //Set up default mongoose connection
-const mongoDB = process.env.USERS_DB;
+const mongoDB = process.env.CIA_DATA_DB;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.set('useFindAndModify', false);
 //Get the default connection
