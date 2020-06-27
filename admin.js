@@ -19,8 +19,7 @@ const x = {
     },
 }
 //resources or models
-const { UserModel, TeamMemberModel, ProjectModel, EventModel } = require('./controller/model');
-const { request } = require('http');
+const { UserModel, TeamMemberModel, ProjectModel, EventModel } = require('./controller/model')
 
 const adminBro = new AdminBro({
     resources: [
@@ -50,8 +49,8 @@ const adminBro = new AdminBro({
                                     password: x.encrypt(request.payload.setpassword),
                                     setpassword: undefined,
                                 }
-                            }
-
+                            } 
+                            
                             return request
                         },
                     }
@@ -60,17 +59,7 @@ const adminBro = new AdminBro({
 
         },
         TeamMemberModel,
-        { resource: ProjectModel, 
-            options:{
-                actions:{
-                    new:{
-                        before:request=>{
-                            
-                        }
-                    }
-                }
-            }
-        },
+        ProjectModel,
         EventModel
     ],
     branding: {
