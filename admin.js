@@ -60,23 +60,18 @@ const adminBro = new AdminBro({
 
         },
         TeamMemberModel,
-        {
-            resource: ProjectModel,
-            options: {
-                actions: {
-                    new: {
-                        before: request => {
-                            if (request.payload.links) {
-                                request.payload = {
-                                    ...request.payload,
-                                    links: request.payload.links.split(',')
-                                }
-                            }
+        { resource: ProjectModel, 
+            options:{
+                actions:{
+                    new:{
+                        before:request=>{
+                            
                         }
                     }
                 }
-            },
-            EventModel
+            }
+        },
+        EventModel
     ],
     branding: {
         companyName: 'Communities in Atria',
