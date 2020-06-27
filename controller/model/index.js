@@ -42,7 +42,7 @@ const EventSchema = new Schema({
     title: { type: String, required: true },
     desc: { type: String, required: true },
     event_img: String,
-    date: { type: String, required: true },
+    date: { type: Date, required: true },
     register: { type: String, required: true },
     links: Object
 });

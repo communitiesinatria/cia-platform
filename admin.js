@@ -49,6 +49,11 @@ const adminBro = new AdminBro({
                                     password: x.encrypt(request.payload.setpassword),
                                     setpassword: undefined,
                                 }
+                            } else if (request.payload.links){
+                                request.payload={
+                                    ...request.payload,
+                                    //links:
+                                }
                             }
                             return request
                         },
