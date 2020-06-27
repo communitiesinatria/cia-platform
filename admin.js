@@ -36,6 +36,9 @@ const adminBro = new AdminBro({
                             list: false, edit: !!1, filter: !1, show: !1,
                         },
                     },
+                    props:{
+                        isVisible: false
+                    }
                 },
                 actions: {
                     new: {

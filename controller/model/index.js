@@ -28,6 +28,7 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
     username: { type: String, required: true },
     email: { type: String, required: true },
+    profile_img: String,
     password:String,
     props: Object,
     role: String
