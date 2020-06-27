@@ -13,11 +13,11 @@ const log = require('./log');
 const port = process.env.PORT || 8000;
 !process.env.NODE_ENV && app.use(cors()); //!DO NOT REMOVE THIS LINE
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-
 app.use('/api', apiRoute);
 app.use('/admin', admin);
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.use(express.static(path.resolve(`${__dirname}/client/build`)));//STATIC FOLDER IS REACTS BUILD FOLDER
 
