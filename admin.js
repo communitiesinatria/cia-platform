@@ -63,7 +63,7 @@ const adminBro = new AdminBro({
 
 const router = AdminBroExpressjs.buildAuthenticatedRouter(adminBro, {
     authenticate: async (username, password) => {
-        const user = await User.findOne({ username });
+        const user = await UserModel.findOne({ username });
         if (user) {
 
             if (x.decrypt(user.password) === password) {
