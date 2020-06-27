@@ -1,8 +1,11 @@
 require('dotenv').config()
 
+const path = require('path');
 const AdminBro = require('admin-bro')
 const AdminBroExpressjs = require('admin-bro-expressjs')
 AdminBro.registerAdapter(require('admin-bro-mongoose'))
+
+
 
 const CryptoJS = require("crypto-js");
 
@@ -57,6 +60,14 @@ const adminBro = new AdminBro({
     ],
     branding: {
         companyName: 'Communities in Atria',
+        theme:{
+            colors:{
+                primary100:'#00E9AA',
+                accent:'#00E9AA',
+                separator:'#454655',
+            }
+            
+        }
     },
     rootPath: '/admin',
 })
