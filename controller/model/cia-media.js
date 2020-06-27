@@ -1,19 +1,8 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
-const CryptoJS = require("crypto-js");
-
-const x = {
-    key: 'default',
-    encrypt: async function (txt) {
-        return CryptoJS.AES.encrypt(txt, this.key).toString();
-    },
-    decrypt: async function (txt) {
-        return CryptoJS.AES.decrypt(txt, this.key).toString(CryptoJS.enc.Utf8);
-    },
-}
 
 //Set up default mongoose connection
-const mongoDB = process.env.MONGO_URL;
+const mongoDB = process.env.CIA_MEDIA_DB;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.set('useFindAndModify', false);
 //Get the default connection
@@ -25,16 +14,23 @@ db.on('connected', () => console.log('database connected'));
 
 const Schema = mongoose.Schema;
 
-const UserSchema = new Schema({
-    name: String,
-    pwd: String,
-    email: String,
-    props: Object,
+const EventSchema = new Schema({
+    title: String,
+    desc: String,
+    event_img: String,
+    links: Object
+});
+
+const ProjectSchema = new Schema({
+    title: String,
+    desc: String,
+    project_img: String,
+    links: Object
 });
 
 
+const EventSchema = mongoose.model('events', EventSchema);
+const ProjectSchema = mongoose.model('projects', ProjectSchema);
 
-const UserModel = mongoose.model('users', UserSchema);
-
-module.exports = UserModel;
+module.exports = { TeamMemberModel, mongoose };
 

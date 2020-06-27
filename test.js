@@ -2,7 +2,7 @@ const dbtest = require('./tests/db');
 
 (async () => {
 
-    const status = await dbtest();
+    await dbtest();
 
 
     process.exit();

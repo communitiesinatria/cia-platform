@@ -1,15 +1,13 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
 module.exports = () => {
-    const mongoDB = process.env.MONGO_URL;
+    const ciamedia = process.env.CIA_MEDIA_DB;
     return new Promise((res, rej) => {
-        mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
-
-        const db = mongoose.connection;
+        mongoose.connect(ciamedia, { useNewUrlParser: true, useUnifiedTopology: true });
+        const cia_media_connection = mongoose.connection;
 
         //Bind connection to error event (to get notification of connection errors)
-        db.on('error', (e) => {
-            
+        db.on('error', (e) => {  
             console.log('DB connection failed',e);
             rej(1);
         });
