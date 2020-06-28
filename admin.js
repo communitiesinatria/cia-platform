@@ -49,8 +49,8 @@ const adminBro = new AdminBro({
                                     password: x.encrypt(request.payload.setpassword),
                                     setpassword: undefined,
                                 }
-                            } 
-                            
+                            }
+
                             return request
                         },
                     }
