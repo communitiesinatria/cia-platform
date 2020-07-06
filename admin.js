@@ -35,27 +35,36 @@ const adminBro = new AdminBro({
                         isVisible: false,
                     },
                     _id: {
+                        isId: !!1,
                         isVisible: {
-                            list: false, edit: !!1, filter: !!1,
+                            list: false, edit: !1, filter: !!1, show: !1,
                         },
+                    },
+                    role: {
+                        availableValues: Object.values(roles)
                     },
                     setpassword: {
                         type: 'string',
+                        name: 'set new password to:',
                         isVisible: {
                             list: false, edit: !!1, filter: !1, show: !1,
                         },
                     },
                     github: {
+                        name: 'Your Github username',
+                        label: 'Your Github username',
                         isVisible: {
                             list: false, edit: !!1, filter: !!1,
                         },
                     },
                     instagram: {
+                        name: 'Your Instagram username without the "@"',
                         isVisible: {
                             list: false, edit: !!1, filter: !!1,
                         },
                     },
                     profile_img: {
+                        name: 'url of profile photo, if not specified will fallback to insta or github profile image',
                         isVisible: {
                             list: false, edit: !!1, filter: !1,
                         },
@@ -72,7 +81,7 @@ const adminBro = new AdminBro({
                 },
                 actions: {
                     edit: {
-                        isAccessible: data => (data.currentAdmin.role === roles.ADMIN) || (data.currentAdmin.role === roles.CORE),
+                        isAccessible: data => (data.currentAdmin.role === roles.ADMIN) || (data.currentAdmin.role === roles.CORE) && (data.currentAdmin._id === data.record.param('_id')),
                         before: onchange,
                     },
                     new: {
@@ -148,5 +157,5 @@ const router = AdminBroExpressjs.buildAuthenticatedRouter(adminBro, {
     },
     cookiePassword: process.env.CRPYT_KEY,
 })
-// const router = AdminBroExpressjs.buildRouter(adminBro)
+
 module.exports = router;
