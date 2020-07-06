@@ -33,7 +33,9 @@ const adminBro = new AdminBro({
                 properties: {
                     password: {
                         isVisible: false,
-
+                    },
+                    id: {
+                        isVisible: false,
                     },
                     setpassword: {
                         type: 'string',
