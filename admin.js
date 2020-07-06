@@ -138,7 +138,7 @@ async function onchange(request) {
 const router = AdminBroExpressjs.buildAuthenticatedRouter(adminBro, {
     authenticate: async (email, password) => {
         const user = await UserModel.findOne({ email });
-        if (user.role === 'admin') {
+        if ((user.role === roles.ADMIN) || (user.role === roles.CORE) || (user.role === roles.GOD)) {
 
             if (x.decrypt(user.password) === password) {
                 return user
