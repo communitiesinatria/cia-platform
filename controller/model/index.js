@@ -2,6 +2,9 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const CryptoJS = require("crypto-js");
 
+const roles = require('../../roles.json')
+
+
 const x = {
     key: 'default',
     encrypt: async function (txt) {
@@ -29,15 +32,14 @@ const UserSchema = new Schema({
     username: { type: String, required: true },
     email: { type: String, required: true },
     profile_img: String,
-    password: String,
+    bio: String,
+    github: String,
+    instagram: String,
+    password: { type: String, required: true },
     props: Object,
-    role: String
+    role: { type: String, default: roles.NOOB }
 });
-const TeamMemberSchema = new Schema({
-    name: { type: String, required: true },
-    profile_img: { type: String, required: true },
-    contact: Object
-});
+
 const EventSchema = new Schema({
     title: { type: String, required: true },
     desc: { type: String, required: true },
@@ -56,9 +58,8 @@ const ProjectSchema = new Schema({
 
 
 const UserModel = mongoose.model('users', UserSchema);
-const TeamMemberModel = mongoose.model('team', TeamMemberSchema);
 const EventModel = mongoose.model('events', EventSchema);
 const ProjectModel = mongoose.model('projects', ProjectSchema);
 
-module.exports = { ProjectModel, EventModel, UserModel, TeamMemberModel, mongoose };
+module.exports = { ProjectModel, EventModel, UserModel, mongoose };
 

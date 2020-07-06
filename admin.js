@@ -1,8 +1,12 @@
-require('dotenv').config()
-
+try {
+    require('dotenv').config()
+} catch{ }
+const axios = require('axios');
 const path = require('path');
 const AdminBro = require('admin-bro')
 const AdminBroExpressjs = require('admin-bro-expressjs')
+const roles = require('./roles.json')
+
 AdminBro.registerAdapter(require('admin-bro-mongoose'))
 
 
@@ -19,7 +23,7 @@ const x = {
     },
 }
 //resources or models
-const { UserModel, TeamMemberModel, ProjectModel, EventModel } = require('./controller/model')
+const { UserModel, ProjectModel, EventModel } = require('./controller/model')
 
 const adminBro = new AdminBro({
     resources: [
@@ -28,10 +32,16 @@ const adminBro = new AdminBro({
             options: {
                 properties: {
                     password: {
-                        isVisible: false
+                        isVisible: false,
+
                     },
                     setpassword: {
                         type: 'string',
+                        isVisible: {
+                            list: false, edit: !!1, filter: !1, show: !1,
+                        },
+                    },
+                    profile_img: {
                         isVisible: {
                             list: false, edit: !!1, filter: !1, show: !1,
                         },
@@ -41,13 +51,44 @@ const adminBro = new AdminBro({
                     }
                 },
                 actions: {
-                    new: {
-                        before: (request) => {
+                    edit: {
+                        isAccessible: data => (data.currentAdmin.role === roles.ADMIN) || (data.currentAdmin.role === roles.CORE),
+                        before: async (request) => {
                             if (request.payload.setpassword) {
                                 request.payload = {
                                     ...request.payload,
                                     password: x.encrypt(request.payload.setpassword),
                                     setpassword: undefined,
+                                }
+                            }
+                            if (request.payload.github) {
+                                const profile_img = (await axios.get(`https://api.github.com/users/${request.payload.github}`)).data.avatar_url;
+
+                                request.payload = {
+                                    ...request.payload,
+                                    profile_img
+                                }
+                            }
+
+                            return request
+                        },
+                    },
+                    new: {
+                        isAccessible: data => (data.currentAdmin.role === roles.ADMIN) || (data.currentAdmin.role === roles.CORE),
+                        before: async (request) => {
+                            if (request.payload.setpassword) {
+                                request.payload = {
+                                    ...request.payload,
+                                    password: x.encrypt(request.payload.setpassword),
+                                    setpassword: undefined,
+                                }
+                            }
+                            if (request.payload.github) {
+                                const profile_img = (await axios.get(`https://api.github.com/users/${request.payload.github}`)).data.avatar_url;
+
+                                request.payload = {
+                                    ...request.payload,
+                                    profile_img
                                 }
                             }
 
@@ -58,7 +99,6 @@ const adminBro = new AdminBro({
             },
 
         },
-        TeamMemberModel,
         ProjectModel,
         EventModel
     ],
