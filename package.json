@@ -8,16 +8,16 @@
     "start": "node server.js",
     "dev": "nodemon server.js",
     "start-react": "cd client && npm start && cd ..",
-    "build": "cd client && npm i && npm run build && cd ..",
+    "build-react": "cd client && npm i && npm run build && cd ..",
     "setup": "npm i && cd client && npm i && cd .. && node log.js setup",
-    "deploy": "npm run build && git add . && git commit -m 'cia-deploy' && git push",
-    "build-deploy": "npm run build && git add . && git commit -m 'cia-deploy' && git push",
+    "deploy": "npm run build-react && git add . && git commit -m 'cia-deploy' && git push",
+    "build-deploy": "npm run build-react && git add . && git commit -m 'cia-deploy' && git push",
     "server-deploy": "git add . && git commit -m 'cia-deploy' && git push"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "admin-bro": "^2.4.3",
+    "admin-bro": "^2.6.0",
     "admin-bro-expressjs": "^2.1.1",
     "admin-bro-mongoose": "^0.5.2",
     "admin-bro-theme-dark": "^1.0.0",
@@ -32,6 +32,6 @@
     "express": "^4.17.1",
     "express-formidable": "^1.2.0",
     "express-session": "^1.17.1",
-    "mongoose": "^5.9.20"
+    "mongoose": "^5.9.21"
   }
 }
