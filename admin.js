@@ -45,6 +45,16 @@ const adminBro = new AdminBro({
                             list: false, edit: !!1, filter: !1, show: !1,
                         },
                     },
+                    github: {
+                        isVisible: {
+                            list: false, edit: !!1, filter: !!1,
+                        },
+                    },
+                    instagram: {
+                        isVisible: {
+                            list: false, edit: !!1, filter: !!1,
+                        },
+                    },
                     profile_img: {
                         isVisible: {
                             list: false, edit: !!1, filter: !1,
@@ -55,6 +65,7 @@ const adminBro = new AdminBro({
                             list: false, edit: !!1, filter: !1,
                         },
                     },
+
                     props: {
                         isVisible: false
                     }
