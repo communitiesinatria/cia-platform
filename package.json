@@ -7,9 +7,9 @@
     "test": "node test.js",
     "start": "node server.js",
     "start-react": "cd client && npm start && cd ..",
-    "build-react": "cd client && npm run build && cd ..",
+    "build": "cd client && npm run build && cd ..",
     "setup": "npm i && cd client && npm i && cd .. && node log.js setup",
-    "deploy": "npm run build-react && git add . && git commit -m 'cia-deploy' && git push",
+    "deploy": "npm run build && git add . && git commit -m 'cia-deploy' && git push",
     "server-deploy": "git add . && git commit -m 'cia-deploy' && git push"
   },
   "author": "",
