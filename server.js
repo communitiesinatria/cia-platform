@@ -11,7 +11,7 @@ const cors = require('cors');
 const log = require('./log');
 
 const port = process.env.PORT || 8000;
-!process.env.NODE_ENV && app.use(cors()); //!DO NOT REMOVE THIS LINE
+app.use(cors());
 
 app.use('/api', apiRoute);
 app.use('/admin', admin);

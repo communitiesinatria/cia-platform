@@ -232,7 +232,8 @@ header .landing-content .landing-message p {
 
 .philosophy img {
   width: 50%;
-  margin-bottom: auto;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .philosophy .messages {
@@ -243,6 +244,12 @@ header .landing-content .landing-message p {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 .philosophy .message {

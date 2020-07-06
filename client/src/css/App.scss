@@ -176,7 +176,8 @@ header {
 
     img {
         width: 50%;
-        margin-bottom: auto;
+        
+        object-fit: contain;
     }
 
     .messages {
@@ -185,7 +186,8 @@ header {
 
     &>div {
         display: flex;
-
+        align-items: center;
+        height: fit-content;
     }
 
     .message {
