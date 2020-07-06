@@ -34,7 +34,7 @@ const adminBro = new AdminBro({
                     password: {
                         isVisible: false,
                     },
-                    id: {
+                    _id: {
                         isVisible: {
                             list: false, edit: !!1, filter: !!1,
                         },
