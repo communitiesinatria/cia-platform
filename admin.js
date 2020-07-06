@@ -35,7 +35,9 @@ const adminBro = new AdminBro({
                         isVisible: false,
                     },
                     id: {
-                        isVisible: false,
+                        isVisible: {
+                            list: false, edit: !!1, filter: !!1,
+                        },
                     },
                     setpassword: {
                         type: 'string',
@@ -45,7 +47,12 @@ const adminBro = new AdminBro({
                     },
                     profile_img: {
                         isVisible: {
-                            list: false, edit: !!1, filter: !1, show: !1,
+                            list: false, edit: !!1, filter: !1,
+                        },
+                    },
+                    bio: {
+                        isVisible: {
+                            list: false, edit: !!1, filter: !1,
                         },
                     },
                     props: {
