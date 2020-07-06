@@ -73,47 +73,11 @@ const adminBro = new AdminBro({
                 actions: {
                     edit: {
                         isAccessible: data => (data.currentAdmin.role === roles.ADMIN) || (data.currentAdmin.role === roles.CORE),
-                        before: async (request) => {
-                            if (request.payload.setpassword) {
-                                request.payload = {
-                                    ...request.payload,
-                                    password: x.encrypt(request.payload.setpassword),
-                                    setpassword: undefined,
-                                }
-                            }
-                            if (request.payload.github) {
-                                const profile_img = (await axios.get(`https://api.github.com/users/${request.payload.github}`)).data.avatar_url;
-
-                                request.payload = {
-                                    ...request.payload,
-                                    profile_img
-                                }
-                            }
-
-                            return request
-                        },
+                        before: onchange,
                     },
                     new: {
                         isAccessible: data => (data.currentAdmin.role === roles.ADMIN) || (data.currentAdmin.role === roles.CORE),
-                        before: async (request) => {
-                            if (request.payload.setpassword) {
-                                request.payload = {
-                                    ...request.payload,
-                                    password: x.encrypt(request.payload.setpassword),
-                                    setpassword: undefined,
-                                }
-                            }
-                            if (request.payload.github) {
-                                const profile_img = (await axios.get(`https://api.github.com/users/${request.payload.github}`)).data.avatar_url;
-
-                                request.payload = {
-                                    ...request.payload,
-                                    profile_img
-                                }
-                            }
-
-                            return request
-                        },
+                        before: onchange,
                     }
                 }
             },
@@ -136,6 +100,40 @@ const adminBro = new AdminBro({
     },
     rootPath: '/admin',
 })
+
+async function onchange(request) {
+
+    if (request.payload.setpassword) {
+        request.payload = {
+            ...request.payload,
+            password: x.encrypt(request.payload.setpassword),
+            setpassword: undefined,
+        }
+    }
+
+    if (!request.payload.profile_img) {
+        if (request.payload.github) {
+            const profile_img = (await axios.get(`https://api.github.com/users/${request.payload.github}`)).data.avatar_url;
+
+            request.payload = {
+                ...request.payload,
+                profile_img
+            }
+        }
+        else if (request.payload.instagram) {
+            const profile_img = (await axios.get(`https://www.instagram.com/${request.payload.instagram}/?__a=1`)).data.graphql.user.profile_pic_url;
+
+            request.payload = {
+                ...request.payload,
+                profile_img
+            }
+        }
+    }
+
+    return request
+
+}
+
 
 const router = AdminBroExpressjs.buildAuthenticatedRouter(adminBro, {
     authenticate: async (email, password) => {
