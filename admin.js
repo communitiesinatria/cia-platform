@@ -1,15 +1,27 @@
 try {
     require('dotenv').config()
 } catch{ }
+
 const axios = require('axios');
+const { setupCache } = require('axios-cache-adapter');
+
 const path = require('path');
 const AdminBro = require('admin-bro')
 const AdminBroExpressjs = require('admin-bro-expressjs')
 const roles = require('./roles.json')
+//resources or models
+const { UserModel, ProjectModel, EventModel } = require('./controller/model')
 
 AdminBro.registerAdapter(require('admin-bro-mongoose'))
 
+const cache = setupCache({
+    maxAge: 15 * 60 * 1000
+})
 
+// Create `axios` instance passing the newly created `cache.adapter`
+const api = axios.create({
+    adapter: cache.adapter
+})
 
 const CryptoJS = require("crypto-js");
 
@@ -22,8 +34,6 @@ const x = {
         return CryptoJS.AES.decrypt(txt, this.key).toString(CryptoJS.enc.Utf8);
     },
 }
-//resources or models
-const { UserModel, ProjectModel, EventModel } = require('./controller/model')
 
 const adminBro = new AdminBro({
     resources: [
@@ -122,7 +132,7 @@ async function onchange(request) {
 
     if (!request.payload.profile_img) {
         if (request.payload.github) {
-            const profile_img = (await axios.get(`https://api.github.com/users/${request.payload.github}`)).data.avatar_url;
+            const profile_img = (await api.get(`https://api.github.com/users/${request.payload.github}`)).data.avatar_url;
 
             request.payload = {
                 ...request.payload,
@@ -130,7 +140,7 @@ async function onchange(request) {
             }
         }
         else if (request.payload.instagram) {
-            const profile_img = (await axios.get(`https://www.instagram.com/${request.payload.instagram}/?__a=1`)).data.graphql.user.profile_pic_url;
+            const profile_img = (await api.get(`https://www.instagram.com/${request.payload.instagram}/?__a=1`)).data.graphql.user.profile_pic_url;
 
             request.payload = {
                 ...request.payload,

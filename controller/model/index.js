@@ -29,6 +29,7 @@ db.on('connected', () => console.log('database connected'));
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
+    name: { type: String, default: 'Noob' },
     username: { type: String, required: true },
     email: { type: String, required: true },
     profile_img: String,

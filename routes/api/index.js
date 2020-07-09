@@ -28,12 +28,19 @@ router.get('/team', async (req, res) => {
                 }
                 member.profile_img = profile_img;
 
-                
+
             }
-            const name = (await axios.get(`https://api.github.com/users/${member.github}`)).data.name;
+            let name;
+            try {
+                name = (await axios.get(`https://api.github.com/users/${member.github}`)).data.name;
+            } catch (error) {
+                console.log(error)
+            }
+
             member.name = name;
             console.log(member.name);
             return member
+
         })())
     });
 
