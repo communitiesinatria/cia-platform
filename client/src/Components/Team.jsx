@@ -7,7 +7,6 @@ import './css/Teams.css';
 import headerImage from '../assets/team.png';
 
 //team member photos
-import rajImg from '../assets/teams/raj.jpg';
 import { getMembers } from './api';
 
 export default function Team() {

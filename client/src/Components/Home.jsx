@@ -1,5 +1,5 @@
-
 import React, { useEffect } from 'react';
+
 import {
   BrowserRouter as Router,
   useHistory,
@@ -46,6 +46,7 @@ export default function Home() {
           <li onClick={() => history.push({ pathname: '/events' })}>Events</li>
           {/* <li onClick={() => history.push({ pathname: '/blogs' })}>Blogs</li> */}
           <li onClick={() => history.push({ pathname: '/team' })}>Team</li>
+          <li onClick={() => history.push({ pathname: '/account' })}>Account</li>
         </ul>
       </nav>
       <Header />

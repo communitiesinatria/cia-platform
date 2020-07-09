@@ -9,6 +9,7 @@ import Home from './Components/Home';
 import Events from './Components/Events';
 import Blogs from './Components/Blogs';
 import Team from './Components/Team';
+import Account from './Components/Account';
 
 import './css/App.css';
 
@@ -31,6 +32,9 @@ function App() {
           </Route>
           <Route path="/team">
             <Team />
+          </Route>
+          <Route path="/account">
+            <Account />
           </Route>
         </Switch>
       </Router>
