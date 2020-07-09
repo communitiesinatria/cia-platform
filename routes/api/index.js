@@ -27,8 +27,6 @@ router.get('/team', async (req, res) => {
                     profile_img = (await axios.get(`https://www.instagram.com/${member.instagram}/?__a=1`)).data.graphql.user.profile_pic_url;
                 }
                 member.profile_img = profile_img;
-
-
             }
             let name;
             try {
@@ -48,6 +46,11 @@ router.get('/team', async (req, res) => {
 
     res.send(JSON.stringify(members));
 
+})
+
+router.post('/register',async (req,res)=>{
+    console.log(req.body);
+    res.send(JSON.stringify((await User.registeruser(req.body))));
 })
 
 module.exports = router;
