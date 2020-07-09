@@ -31,18 +31,15 @@ export default function Account() {
 }
 
 const Login = () => {
-
-    const history=useHistory();
+  const history = useHistory();
   return (
     <form className="login">
       <h1>Log in</h1>
 
-      
-        <div className="form-section">
-          <TextView label="email/username" />
-          <TextView label="password" type="password" />
-        </div>
-      
+      <div className="form-section">
+        <TextView label="email/username" />
+        <TextView label="password" type="password" />
+      </div>
 
       <button>Log in</button>
       <span onClick={() => history.push('/account/')}>sign up</span>
@@ -50,7 +47,7 @@ const Login = () => {
   );
 };
 const Register = () => {
-    const history = useHistory();
+  const history = useHistory();
   return (
     <form className="register">
       <h1>Register</h1>
@@ -75,7 +72,7 @@ const Register = () => {
   );
 };
 
-const TextView = ({ label, type = 'text', id, validation }) => {
+const TextView = ({ label, type = 'text', id, validation, required }) => {
   const inputDom = useRef();
   const labelDom = useRef();
   const [focus, setfocus] = useState(false);
@@ -85,7 +82,7 @@ const TextView = ({ label, type = 'text', id, validation }) => {
       setfocus(true);
     };
     const onblur = () => {
-      setfocus(false);
+      if (!inputDom.current.value) setfocus(false);
     };
     inputDom.current.addEventListener('focus', onfocus);
     inputDom.current.addEventListener('blur', onblur);
