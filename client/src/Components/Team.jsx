@@ -1,12 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from 'react';
 
 //styles
-import "./css/Teams.css";
+import './css/Teams.css';
 
 //assets
-import headerImage from "../assets/team.png";
+import headerImage from '../assets/team.png';
+
 //team member photos
-import rajImg from "../assets/teams/raj.jpg";
+import rajImg from '../assets/teams/raj.jpg';
+import { getMembers } from './api';
 
 export default function Team() {
   return (
@@ -23,51 +25,78 @@ export default function Team() {
 }
 
 function MemberGrid() {
+  const [members, setmembers] = useState([]);
   useEffect(() => {
-    const members = document.querySelectorAll(".member");
+    getMembers().then((d) => {
+      console.log(d);
+      setmembers(d);
+    });
+
+    const members = document.querySelectorAll('.member');
 
     members.forEach((member) => {
-      member.addEventListener("mouseover", () => {
+      member.addEventListener('mouseover', () => {
         member.scrollIntoView();
       });
     });
 
     return () => {
       members.forEach((member) => {
-        member.removeEventListener("mouseover", () => {});
+        member.removeEventListener('mouseover', () => {});
       });
     };
   }, []);
 
   return (
     <div className="members">
-      <Member />
-      <Member />
-      <Member />
-      <Member />
-      <Member />
+      {members.map((member, i) => (
+        <Member key={i} {...member} />
+      ))}
     </div>
   );
 }
 
-function Member() {
+function Member({
+  name,
+  email,
+  github,
+  instagram,
+  profile_img,
+  role,
+  username,
+}) {
   return (
     <div className="member">
       <div className="profile-img">
-        <img src={rajImg} alt="raj" />
+        <img src={profile_img} alt="raj" />
       </div>
       <div className="about">
-        <h3>Raj Sharma</h3>
-        <p>some role</p>
+        <h3>{name ? name : username}</h3>
+        <p>{role}</p>
       </div>
       <div className="contact">
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://instagram.com/xrehpicx"
-        >
-          instagram
-        </a>
+        {instagram ? (
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href={'https://instagram.com/' + instagram}
+          >
+            instagram
+          </a>
+        ) : (
+          <></>
+        )}
+        {github ? (
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href={'https://github.com/' + github}
+          >
+            github
+          </a>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );

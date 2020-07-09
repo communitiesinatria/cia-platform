@@ -40,9 +40,9 @@ const adminBro = new AdminBro({
                             list: false, edit: !1, filter: !!1, show: !1,
                         },
                     },
-                    role: {
-                        availableValues: Object.values(roles)
-                    },
+                    /* role: {
+                        
+                    }, */
                     setpassword: {
                         type: 'string',
                         name: 'set new password to:',
@@ -58,7 +58,7 @@ const adminBro = new AdminBro({
                         },
                     },
                     instagram: {
-                        name: 'Your Instagram username without the "@"',
+                        name: 'Instagram username',
                         isVisible: {
                             list: false, edit: !!1, filter: !!1,
                         },

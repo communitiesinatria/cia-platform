@@ -36,7 +36,11 @@ const UserSchema = new Schema({
     github: String,
     instagram: String,
     password: { type: String, required: true },
-    props: Object,
+    props: {
+        type: Object, default: {
+            joined_on: Date.now()
+        }
+    },
     role: { type: String, default: roles.NOOB }
 });
 

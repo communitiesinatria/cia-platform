@@ -13,8 +13,8 @@ const log = require('./log');
 const port = process.env.PORT || 8000;
 app.use(cors());
 
-app.use('/api', apiRoute);
 app.use('/admin', admin);
+app.use('/api', apiRoute);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
