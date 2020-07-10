@@ -1,8 +1,8 @@
 const { UserModel, ProjectModel, EventModel } = require('./model');
 const Joi = require('@hapi/joi');
 const x = require('../crypt');
-const { exist } = require('@hapi/joi');
-//test commit
+
+
 const User = {
     model: UserModel,
     _ls: async function (filter = {}) {
@@ -13,13 +13,13 @@ const User = {
     authenticateUserCredentials: async function ({ email, username, password }) {
         if (email) {
             const user = await UserModel.findOne({ email })
-            
-            if (!user) return 2;
+
+            if (!user) return !1;
 
             if (x.decrypt(user.password) === password) {
-                return 0
+                return !!1
             } else {
-                return 1
+                return !1
             }
         }
     },
