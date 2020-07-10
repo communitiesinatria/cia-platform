@@ -1,6 +1,7 @@
 const { UserModel, ProjectModel, EventModel } = require('./model');
 const Joi = require('@hapi/joi');
 const x = require('../crypt');
+const { exist } = require('@hapi/joi');
 //test commit
 const User = {
     model: UserModel,
@@ -46,6 +47,14 @@ const User = {
         }
         return { details: [{ message: 'some field missing' }] }
     },
+    userexist: async (email) => {
+        const user = await UserModel.findOne({ email });
+        if (user) {
+            return [{ message: 'User exist' }]
+        } else {
+            return false
+        }
+    },
     registeruser: async function ({ email, username, password, github, instagram }) {
 
         const schema = Joi.object({
@@ -70,9 +79,17 @@ const User = {
         }
 
         if (!github && !instagram)
-            return { details: [{ message: 'you must add either github or instagram username' }] }
+            return [{ message: 'you must add either github or instagram username' }]
 
-        return value;
+        const exists = this.userexist(email);
+        if (exists) return exists;
+
+        try {
+            return await adduser({ email, username, password, github, instagram })
+        } catch (error) {
+            return error;
+        }
+
 
     }
 

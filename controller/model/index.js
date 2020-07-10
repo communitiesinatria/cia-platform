@@ -38,6 +38,7 @@ const UserSchema = new Schema({
     instagram: String,
     password: { type: String, required: true },
     props: {
+        state: '',
         type: Object, default: {
             joined_on: Date.now()
         }

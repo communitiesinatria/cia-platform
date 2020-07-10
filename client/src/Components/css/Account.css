@@ -48,11 +48,19 @@ form h1 {
   text-align: left;
 }
 
+form p {
+  width: 100%;
+  text-align: left;
+  font-size: .9rem;
+  color: rgba(255, 0, 0, 0.5);
+}
+
 form > span {
   display: block;
   text-decoration: underline;
   font-size: .9rem;
   margin-top: 8px;
+  opacity: .6;
   cursor: pointer;
 }
 
@@ -115,6 +123,10 @@ form .input-text span {
   top: 0;
   left: 0;
   opacity: .8;
+}
+
+#requiredtag {
+  display: inline;
 }
 
 @media only screen and (max-width: 500px) {

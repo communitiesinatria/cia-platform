@@ -7,6 +7,8 @@ import {
   useHistory,
 } from 'react-router-dom';
 
+import { register } from './api';
+
 //styles
 import background from '../assets/loginpage.png';
 import './css/form-elements.css';
@@ -48,33 +50,96 @@ const Login = () => {
 };
 const Register = () => {
   const history = useHistory();
+
+  const email = useRef();
+  const username = useRef();
+  const password = useRef();
+  const retypedpassword = useRef();
+  const github = useRef();
+  const instagram = useRef();
+
+  const [vailditymessage, setVailditymessage] = useState([]);
+
+  const sendregisterdata = (e) => {
+    e.preventDefault();
+    console.log(email.current.value);
+    console.log(username.current.value);
+    console.log(password.current.value);
+    console.log(github.current.value);
+    console.log(instagram.current.value);
+
+    (async () => {
+      const emailv = email.current.value;
+      const usernamev = username.current.value;
+      const passwordv = password.current.value;
+      const githubv = github.current.value;
+      const instagramv = instagram.current.value;
+
+      const result = await register({
+        email: emailv,
+        username: usernamev,
+        password: passwordv,
+        github: githubv,
+        instagram: instagramv,
+      });
+      if (Array.isArray(result)) {
+        setVailditymessage(result);
+      } else {
+        setVailditymessage([]);
+        // alert('check ur mail and verify ur email before loging in');
+        history.push('/account/login');
+      }
+      console.log(result);
+    })();
+  };
+
   return (
     <form className="register">
       <h1>Register</h1>
-
+      {vailditymessage
+        ? vailditymessage.map((detail, i) => <p key={i}>{detail.message}</p>)
+        : ''}
       <div className="form-sections">
         <div className="form-section">
-          <TextView label="email" />
-          <TextView label="username" />
-          <TextView label="password" type="password" />
+          <TextView label="email" required valueref={email} />
+          <TextView label="username" required valueref={username} />
+          <TextView
+            label="password"
+            required
+            type="password"
+            valueref={password}
+          />
         </div>
 
         <div className="form-section">
-          <TextView label="github username" />
-          <TextView label="instagram username" />
-          <TextView label="re-type password" type="password" />
+          <TextView label="github username" valueref={github} />
+          <TextView label="instagram username" valueref={instagram} />
+          <TextView
+            required
+            label="re-type password"
+            type="password"
+            valueref={retypedpassword}
+          />
         </div>
       </div>
 
-      <button>Register</button>
+      <button onClick={sendregisterdata}>Register</button>
       <span onClick={() => history.push('/account/login')}>Log in</span>
     </form>
   );
 };
 
-const TextView = ({ label, type = 'text', id, validation, required }) => {
-  const inputDom = useRef();
+const TextView = ({
+  label,
+  type = 'text',
+  id,
+  valueref,
+  invalidmessage,
+  required,
+}) => {
+  const inputDom = valueref;
   const labelDom = useRef();
+
   const [focus, setfocus] = useState(false);
 
   useEffect(() => {
@@ -84,12 +149,17 @@ const TextView = ({ label, type = 'text', id, validation, required }) => {
     const onblur = () => {
       if (!inputDom.current.value) setfocus(false);
     };
-    inputDom.current.addEventListener('focus', onfocus);
-    inputDom.current.addEventListener('blur', onblur);
+    try {
+      inputDom.current.addEventListener('focus', onfocus);
+      inputDom.current.addEventListener('blur', onblur);
+    } catch (error) {}
+
+    const onchange = () => {};
 
     return () => {
       try {
         inputDom.current.removeEventListener('focus', onfocus);
+        // eslint-disable-next-line
         inputDom.current.removeEventListener('blur', onblur);
       } catch (e) {}
     };
@@ -99,8 +169,14 @@ const TextView = ({ label, type = 'text', id, validation, required }) => {
     <div className="input-text">
       <span ref={labelDom} id={focus ? 'infocus' : ''}>
         {label}
+        {required ? ' *' : ''}
       </span>
-      <input ref={inputDom} type={type} id={id ? id : label} />
+      <input
+        onChange={onchange}
+        ref={inputDom}
+        type={type}
+        id={id ? id : label}
+      />
     </div>
   );
 };

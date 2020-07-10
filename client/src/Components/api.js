@@ -22,5 +22,15 @@ export async function getMembers() {
         console.log(error);
         return [];
     }
+}
 
+export async function register({ email, username, password, github, instagram }) {
+    let result;
+    try {
+        result = await api.post(`${endpoint}/api/register`, { email, username, password, github, instagram });
+        return result.data;
+    } catch (error) {
+        console.log(error);
+        return [];
+    }
 }

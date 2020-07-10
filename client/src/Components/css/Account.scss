@@ -30,11 +30,19 @@ form {
         text-align: left;
     }
 
+    p {
+        width: 100%;
+        text-align: left;
+        font-size: .9rem;
+        color: rgba(255, 0, 0, 0.5);
+    }
+
     &>span {
         display: block;
         text-decoration: underline;
         font-size: .9rem;
         margin-top: 8px;
+        opacity: .6;
         cursor: pointer;
     }
 
@@ -97,6 +105,10 @@ form {
     opacity: .8;
 }
 
+#requiredtag {
+    display: inline;
+}
+
 @media only screen and (max-width: 500px) {
 
     form .form-sections {
@@ -104,9 +116,10 @@ form {
         flex-direction: column;
         width: 100%;
     }
-    form{
+
+    form {
         padding: 20px auto;
         width: 100%;
-        margin: 0 25px;   
+        margin: 0 25px;
     }
 }
