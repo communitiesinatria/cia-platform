@@ -13,7 +13,7 @@ const route = require('express').Router();
 
 
 route.post('/', async (request, response) => {
-	console.log(req.body);
+	console.log(request.body);
 	var password = request.body.password;
 	var email = request.body.email;
 	if (email && password) {
@@ -22,7 +22,7 @@ route.post('/', async (request, response) => {
 		if (isValid) {
 			// request.session.loggedin = true;
 			// request.session.username = email;
-			response.redirect('/home');
+			response.send("valid");
 		} else {
 			response.send('Incorrect Username and/or Password!');
 		}
