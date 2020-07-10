@@ -13,7 +13,7 @@ const route = require('express').Router();
 
 
 route.post('/', async (request, response) => {
-	console.log(req.body);
+	console.log(request.body);
 	var password = request.body.password;
 	var email = request.body.email;
 	if (email && password) {
