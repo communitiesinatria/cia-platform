@@ -44,27 +44,25 @@ const adminBro = new AdminBro({
                         
                     }, */
                     setpassword: {
-                        type: 'string',
-                        name: 'set new password to:',
+                        
                         isVisible: {
                             list: false, edit: !!1, filter: !1, show: !1,
                         },
                     },
                     github: {
-                        name: 'Your Github username',
-                        label: 'Your Github username',
+                        
                         isVisible: {
                             list: false, edit: !!1, filter: !!1,
                         },
                     },
                     instagram: {
-                        name: 'Instagram username',
+                        
                         isVisible: {
                             list: false, edit: !!1, filter: !!1,
                         },
                     },
                     profile_img: {
-                        name: 'url of profile photo, if not specified will fallback to insta or github profile image',
+                        
                         isVisible: {
                             list: false, edit: !!1, filter: !1,
                         },
@@ -81,11 +79,11 @@ const adminBro = new AdminBro({
                 },
                 actions: {
                     edit: {
-                        isAccessible: data => (data.currentAdmin.role === roles.ADMIN) || (data.currentAdmin.role === roles.CORE) && (data.currentAdmin._id === data.record.param('_id')),
+                        // isAccessible: data => (data.currentAdmin.role === roles.ADMIN) || (data.currentAdmin.role === roles.CORE) /* && (data.currentAdmin._id === data.record.param('_id')) */,
                         before: onchange,
                     },
                     new: {
-                        isAccessible: data => (data.currentAdmin.role === roles.ADMIN) || (data.currentAdmin.role === roles.CORE),
+                        // isAccessible: data => (data.currentAdmin.role === roles.ADMIN) || (data.currentAdmin.role === roles.CORE),
                         before: onchange,
                     }
                 }

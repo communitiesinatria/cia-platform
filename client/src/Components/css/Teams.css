@@ -80,6 +80,8 @@
 .members .member .contact a {
   color: black;
   text-decoration: underline;
+  display: block;
+  text-align: center;
 }
 
 .members .member:active .profile-img {

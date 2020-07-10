@@ -37,6 +37,11 @@ const UserSchema = new Schema({
     role: { type: String, default: roles.NOOB }
 });
 
+UserSchema.pre('save', async function () {
+    this.name = this.username;
+    console.log(this);
+});
+
 const EventSchema = new Schema({
     title: { type: String, required: true },
     desc: { type: String, required: true },
