@@ -5,7 +5,6 @@ try {
 const axios = require('axios');
 const { setupCache } = require('axios-cache-adapter');
 
-const path = require('path');
 const AdminBro = require('admin-bro')
 const AdminBroExpressjs = require('admin-bro-expressjs')
 const roles = require('./roles.json')

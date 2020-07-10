@@ -42,9 +42,7 @@ export default function Home() {
       <nav>
         <h1>Communities in Atria</h1>
         <ul>
-          {/* <li onClick={() => history.push({ pathname: '/' })}>Home</li> */}
           <li onClick={() => history.push({ pathname: '/events' })}>Events</li>
-          {/* <li onClick={() => history.push({ pathname: '/blogs' })}>Blogs</li> */}
           <li onClick={() => history.push({ pathname: '/team' })}>Team</li>
           <li onClick={() => history.push({ pathname: '/account' })}>Account</li>
         </ul>
