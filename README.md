@@ -2,6 +2,9 @@
 Communities In Atria Platform
 this platform inlcudes the server side development code and the react frontend in the client folder.
 
+## To contribute to this repo read: 
+    [contribution guide](https://github.com/communitiesinatria/cia-platform/blob/master/CONTRIBUTING.md)
+
 ### Setup Project for development:
 1. Fork and clone the repo
 2. run the following to download and install all dependencies:
