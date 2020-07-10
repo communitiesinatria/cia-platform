@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
-
+const login_route = require('./routes/api/login_auth')
 
 const admin = require('./admin');
 const apiRoute = require('./routes/api');
@@ -19,8 +19,9 @@ app.use('/admin', admin);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
+app.use('/auth',login_route);
 app.use('/api', apiRoute);
+
 
 app.use(express.static(path.resolve(`${__dirname}/client/build`)));//STATIC FOLDER IS REACTS BUILD FOLDER
 
