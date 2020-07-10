@@ -48,9 +48,11 @@ router.get('/team', async (req, res) => {
 
 })
 
-router.post('/register',async (req,res)=>{
+router.post('/register', async (req, res) => {
     console.log(req.body);
-    res.send(JSON.stringify((await User.registeruser(req.body))));
+    const result = (await User.registeruser(req.body));
+    console.log(result);
+    res.send(JSON.stringify(result));
 })
 
 module.exports = router;

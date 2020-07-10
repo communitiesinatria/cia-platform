@@ -9,6 +9,20 @@ const User = {
         const results = await UserModel.find(filter);
         return results.map(user => user.username);
     },
+
+    authenticateUserCredentials: async function ({ email, username, password }) {
+        if (email) {
+            const user = await UserModel.findOne({ email })
+            
+            if (!user) return 2;
+
+            if (x.decrypt(user.password) === password) {
+                return 0
+            } else {
+                return 1
+            }
+        }
+    },
     getwithrole: async function (role) {
         const results = await UserModel.find({ role });
 
@@ -47,6 +61,7 @@ const User = {
         }
         return { details: [{ message: 'some field missing' }] }
     },
+
     userexist: async (email) => {
         const user = await UserModel.findOne({ email });
         if (user) {

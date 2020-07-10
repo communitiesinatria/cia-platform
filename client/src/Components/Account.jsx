@@ -74,6 +74,7 @@ const Register = () => {
       const passwordv = password.current.value;
       const githubv = github.current.value;
       const instagramv = instagram.current.value;
+      const retypedpasswordv = retypedpassword.current.value;
 
       const result = await register({
         email: emailv,
@@ -82,6 +83,13 @@ const Register = () => {
         github: githubv,
         instagram: instagramv,
       });
+
+      if (retypedpasswordv !== passwordv) {
+        console.log(retypedpasswordv, passwordv);
+        setVailditymessage([{ message: 'Passwords dont match' }]);
+        return 
+      }
+
       if (Array.isArray(result)) {
         setVailditymessage(result);
       } else {
