@@ -21,6 +21,8 @@ const User = {
     },
 
     authenticateUserCredentials: async function ({ email, username, password }) {
+
+        console.log(email, username, password);
         let user;
         if (email) {
             user = await UserModel.findOne({ email })
