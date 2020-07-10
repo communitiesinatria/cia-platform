@@ -24,9 +24,11 @@ const User = {
         let user;
         if (email) {
             user = await UserModel.findOne({ email })
+            console.log(user)
         }
         else if (username) {
             user = await UserModel.findOne({ username })
+            console.log(user)
         }
 
         if (!user) return !1;
