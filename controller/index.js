@@ -1,7 +1,17 @@
 const { UserModel, ProjectModel, EventModel } = require('./model');
+const axios = require('axios');
+const { setupCache } = require('axios-cache-adapter');
 const Joi = require('@hapi/joi');
 const x = require('../crypt');
 
+const cache = setupCache({
+    maxAge: 15 * 60 * 1000
+})
+
+// Create `axios` instance passing the newly created `cache.adapter`
+const api = axios.create({
+    adapter: cache.adapter
+})
 
 const User = {
     model: UserModel,
@@ -38,25 +48,27 @@ const User = {
         });
     },
     adduser: async function ({ email, username, password, github, instagram, profile_img }) {
-
+        console.log('adding user');
         if (!profile_img) {
             if (github) {
-                profile_img = (await api.get(`https://api.github.com/users/${request.payload.github}`)).data.avatar_url;
+                profile_img = (await api.get(`https://api.github.com/users/${github}`)).data.avatar_url;
 
             }
             else if (instagram) {
-                profile_img = (await api.get(`https://www.instagram.com/${request.payload.instagram}/?__a=1`)).data.graphql.user.profile_pic_url;
+                profile_img = (await api.get(`https://www.instagram.com/${instagram}/?__a=1`)).data.graphql.user.profile_pic_url;
             }
         }
 
         if (email && username && password) {
             const user = {
                 email, username,
+                name: username,
                 password: x.encrypt(password),
                 github, instagram,
                 profile_img
             }
             const newuser = new UserModel(user);
+            console.log('user added');
             return await newuser.save();
         }
         return { details: [{ message: 'some field missing' }] }
@@ -96,11 +108,12 @@ const User = {
         if (!github && !instagram)
             return [{ message: 'you must add either github or instagram username' }]
 
-        const exists = this.userexist(email);
+        const exists = await this.userexist(email);
+        console.log('user exists: ', exists);
         if (exists) return exists;
 
         try {
-            return await adduser({ email, username, password, github, instagram })
+            return await this.adduser({ email, username, password, github, instagram })
         } catch (error) {
             return error;
         }

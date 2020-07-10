@@ -1,19 +1,10 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
-const CryptoJS = require("crypto-js");
 
 const roles = require('../../roles.json')
 
 
-const x = {
-    key: 'default',
-    encrypt: async function (txt) {
-        return CryptoJS.AES.encrypt(txt, this.key).toString();
-    },
-    decrypt: async function (txt) {
-        return CryptoJS.AES.decrypt(txt, this.key).toString(CryptoJS.enc.Utf8);
-    },
-}
+
 
 //Set up default mongoose connection
 const mongoDB = process.env.CIA_DATA_DB;
