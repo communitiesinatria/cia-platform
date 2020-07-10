@@ -14,7 +14,7 @@ const route = require('express').Router();
 
 route.post('/', async (request, response) => {
 	console.log(request.body);
-	if ((request.body.email || request.body.username) && password) {
+	if ((request.body.email || request.body.username) && request.body.password) {
 
 		const isValid = (await User.authenticateUserCredentials({ email, password }))
 		if (isValid) {
