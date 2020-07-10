@@ -4,8 +4,12 @@ const roles = require('../../roles.json')
 const axios = require('axios')
 
 
+
+
+
 router.get('/testing', async (req, res) => {
     res.send(JSON.stringify((await User._ls())));
+    
 });
 
 router.get('/team', async (req, res) => {
@@ -54,5 +58,10 @@ router.post('/register', async (req, res) => {
     console.log(result);
     res.send(JSON.stringify(result));
 })
+
+
+
+
+
 
 module.exports = router;
