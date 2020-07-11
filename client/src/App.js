@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Home from './Components/Home';
 import Events from './Components/Events';
@@ -11,6 +7,7 @@ import Blogs from './Components/Blogs';
 import Team from './Components/Team';
 import Account from './Components/Account';
 
+//styles
 import './css/App.css';
 
 /* import darklogo from './assets/dark-logo.png';
