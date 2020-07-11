@@ -21,16 +21,24 @@ const User = {
     },
 
     authenticateUserCredentials: async function ({ email, username, password }) {
+
+        console.log(email, username, password);
+        let user;
         if (email) {
-            const user = await UserModel.findOne({ email })
+            user = await UserModel.findOne({ email })
+            console.log(user)
+        }
+        else if (username) {
+            user = await UserModel.findOne({ username })
+            console.log(user)
+        }
 
-            if (!user) return !1;
+        if (!user) return !1;
 
-            if (x.decrypt(user.password) === password) {
-                return 1;
-            } else {
-                return !1
-            }
+        if (x.decrypt(user.password) === password) {
+            return 1;
+        } else {
+            return !1
         }
     },
     getwithrole: async function (role) {
