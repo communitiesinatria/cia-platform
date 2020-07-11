@@ -24,11 +24,11 @@ app.use('/auth', login_route);
 app.use('/api', apiRoute);
 
 // IRENIC
-app.use('/irenic/', express.static(path.resolve(`${__dirname}/frontend/irenic/build`)));
-app.get('/irenic/*', (req, res) => res.sendFile(path.resolve(`${__dirname}/frontend/irenic/build/index.html`)));
+app.use('/irenic/', express.static(path.resolve(`${__dirname}/client/irenic/build`)));
+app.get('/irenic/*', (req, res) => res.sendFile(path.resolve(`${__dirname}/client/irenic/build/index.html`)));
 
 // MAIN STATIC CIA PAGE
-app.use('/', express.static(path.resolve(`${__dirname}/frontend/client/build`)));//STATIC FOLDER IS REACTS BUILD FOLDER
-app.get('/*', (req, res) => res.sendFile(path.resolve(`${__dirname}/frontend/client/build/index.html`)));
+app.use('/', express.static(path.resolve(`${__dirname}/client/home/build`)));//STATIC FOLDER IS REACTS BUILD FOLDER
+app.get('/*', (req, res) => res.sendFile(path.resolve(`${__dirname}/client/home/build/index.html`)));
 
 app.listen(port, () => log.serverStart());
