@@ -1,10 +1,6 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
-
 const roles = require('../../roles.json')
-
-
-
 
 //Set up default mongoose connection
 const mongoDB = process.env.CIA_DATA_DB;
@@ -58,14 +54,13 @@ const ProjectSchema = new Schema({
     other_links: [String]
 });
 
-const TokenSchema= new Schema({
-    
+const TokenSchema = new Schema({
+    token: String
 });
-
 
 const UserModel = mongoose.model('users', UserSchema);
 const EventModel = mongoose.model('events', EventSchema);
 const ProjectModel = mongoose.model('projects', ProjectSchema);
+const TokenModel = mongoose.model('tokens', TokenSchema);
 
-module.exports = { ProjectModel, EventModel, UserModel, mongoose };
-
+module.exports = { ProjectModel, EventModel, UserModel, TokenModel, mongoose };

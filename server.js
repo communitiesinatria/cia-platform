@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-
+const cookieParser = require('cookie-parser');
 const path = require('path');
 const bodyParser = require('body-parser');
 const login_route = require('./routes/auth')
@@ -15,6 +15,7 @@ const port = process.env.PORT || 8000;
 
 // dont rearrange the app.use order
 app.use(cors());
+app.use(cookieParser());
 
 app.use('/admin', admin);
 

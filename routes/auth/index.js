@@ -17,14 +17,13 @@ route.post('/', async (request, response) => {
 
 		const user = (await User.authenticateUserCredentials(request.body))
 		if (user) {
-			// request.session.loggedin = true;
-			// request.session.username = email;
-			//accesToken =( await signAccessToken(request.body.email).catch(err => console.log(err)))
-			//const token = JSON.stringify(accessToken)
-			//response.send(token)
+
 			console.log('sending_accesstoken')
-			
-			response.send(await signAccessToken(user));
+
+			response.cookie('token', await signAccessToken(user));
+
+			response.redirect('/irenic');
+
 		} else {
 			response.send('Incorrect Username and/or Password!');
 		}
