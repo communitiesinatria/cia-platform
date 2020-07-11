@@ -15,16 +15,20 @@ const port = process.env.PORT || 8000;
 // dont rearrange the app.use order
 app.use(cors());
 
-app.use('/admin', admin);
+//app.use('/admin', admin);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use('/auth',login_route);
+app.use('/auth', login_route);
 app.use('/api', apiRoute);
 
-app.use(express.static(path.resolve(`${__dirname}/client/build`)));//STATIC FOLDER IS REACTS BUILD FOLDER
+// IRENIC
+app.use('/irenic/', express.static(path.resolve(`${__dirname}/irenic/build`)));
+app.get('/irenic/*', (req, res) => res.sendFile(path.resolve(`${__dirname}/irenic/build/index.html`)));
 
+// MAIN STATIC CIA PAGE
+app.use('/', express.static(path.resolve(`${__dirname}/client/build`)));//STATIC FOLDER IS REACTS BUILD FOLDER
 app.get('/*', (req, res) => res.sendFile(path.resolve(`${__dirname}/client/build/index.html`)));
 
 app.listen(port, () => log.serverStart());

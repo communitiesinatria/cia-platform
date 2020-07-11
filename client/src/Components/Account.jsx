@@ -10,7 +10,7 @@ import {
 import { register } from './api';
 
 //styles
-import background from '../assets/loginpage.png';
+import background from '../assets/loginpage.svg';
 import './css/form-elements.css';
 import './css/Account.css';
 

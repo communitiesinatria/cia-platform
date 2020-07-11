@@ -12,6 +12,7 @@ import './css/App.css';
 
 /* import darklogo from './assets/dark-logo.png';
 import lighlogo from './assets/light-logo.png' */
+import fullimg from './assets/loginpage.svg'
 
 function App() {
   return (
@@ -33,8 +34,23 @@ function App() {
           <Route path="/account">
             <Account />
           </Route>
+          <Route>
+            <Page404 />
+          </Route>
         </Switch>
       </Router>
+    </div>
+  );
+}
+
+function Page404(){
+
+  return (
+    <div className="page404">
+      <img src={fullimg} alt="404" />
+
+      <h1>404</h1>
+      <p>page not found</p>
     </div>
   );
 }

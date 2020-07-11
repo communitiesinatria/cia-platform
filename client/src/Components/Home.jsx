@@ -7,9 +7,9 @@ import {
   Switch,
 } from 'react-router-dom';
 
-import communitylogo from '../assets/community.png';
-import aboutimg1 from '../assets/resources.png';
-import philosophyimg from '../assets/philosophy.png';
+import communitylogo from '../assets/community.svg';
+import aboutimg1 from '../assets/resources.svg';
+import philosophyimg from '../assets/philosophy.svg';
 
 export default function Home() {
   const history = useHistory();
