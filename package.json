@@ -7,9 +7,11 @@
     "generate_keys": "node ./routes/jwt_helpers/generate_Keys.js",
     "test": "nodemon test.js",
     "start": "node server.js",
-    "dev": "nodemon server.js",
+    "dev": "nodemon --ignore './frontend/' server.js",
     "push": "git add . && git commit -m 'changes pushed' && git push",
-    "deploy": "cd client && npm run build && cd .. && git add . && git commit -m 'deploying' && git push",
+    "deploy": "npm run static-build && npm run irenic-build && git add . && git commit -m 'server and client commit' && git push",
+    "static-build": "cd ./client/home && npm run build && cd ../../ ",
+    "irenic-build": "cd ./client/irenic && npm run build && cd ../../ ",
     "setup": "npm i && cd client && npm i && cd .. && node log.js setup"
   },
   "author": "",

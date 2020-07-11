@@ -9,15 +9,12 @@ const route = require('express').Router();
 	secret: 'secret',
 	resave: true,
 	saveUninitialized: true
-}));
-*/
-
-const accessToken = ""
+}));*/
 
 route.post('/', async (request, response) => {
 	console.log(request.body);
-	if ( (request.body.email || request.body.username) && request.body.password) {
-		
+	if ((request.body.email || request.body.username) && request.body.password) {
+
 		const isValid = (await User.authenticateUserCredentials(request.body))
 		if (isValid) {
 			// request.session.loggedin = true;
