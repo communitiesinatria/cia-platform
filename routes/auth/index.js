@@ -1,4 +1,5 @@
 const { User } = require('../../controller')
+const {signAccessToken} = require('../jwt_helpers/jwt_helper')
 
 const route = require('express').Router();
 
@@ -18,7 +19,11 @@ route.post('/', async (request, response) => {
 		if (isValid) {
 			// request.session.loggedin = true;
 			// request.session.username = email;
-			response.redirect('/home');
+			 //accesToken =( await signAccessToken(request.body.email).catch(err => console.log(err)))
+			 //const token = JSON.stringify(accessToken)
+			 //response.send(token)
+			 console.log('sending_accesstoken')
+			response.send((await signAccessToken(request.body.email)));
 		} else {
 			response.send('Incorrect Username and/or Password!');
 		}
