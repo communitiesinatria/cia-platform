@@ -58,6 +58,10 @@ const ProjectSchema = new Schema({
     other_links: [String]
 });
 
+const TokenSchema= new Schema({
+    
+});
+
 
 const UserModel = mongoose.model('users', UserSchema);
 const EventModel = mongoose.model('events', EventSchema);

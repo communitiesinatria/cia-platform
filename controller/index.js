@@ -36,7 +36,7 @@ const User = {
         if (!user) return !1;
 
         if (x.decrypt(user.password) === password) {
-            return 1;
+            return user;
         } else {
             return !1
         }
