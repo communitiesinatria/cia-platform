@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import './css/Teams.css';
 
 //assets
-import headerImage from '../assets/team.png';
+import headerImage from '../assets/team.svg';
 
 //team member photos
 import { getMembers } from './api';
