@@ -7,7 +7,8 @@ import {
   useHistory,
 } from 'react-router-dom';
 
-import { register } from './api';
+
+import { register, login } from './api';
 
 //styles
 import background from '../assets/loginpage.svg';
@@ -34,16 +35,35 @@ export default function Account() {
 
 const Login = () => {
   const history = useHistory();
+  const [vailditymessage, setVailditymessage] = useState([]);
+
+  const username_email = useRef();
+  const password = useRef();
+
+  const submit = (e) => {
+    e.preventDefault();
+    const username_email_v = username_email.current.value;
+    const password_v = password.current.value;
+
+    login({ username: username_email_v, password: password_v }).then(
+      (message) => {
+        setVailditymessage(message);
+      }
+    );
+  };
+
   return (
     <form className="login">
       <h1>Log in</h1>
-
+      {Array.isArray(vailditymessage)
+        ? vailditymessage.map((detail, i) => <p key={i}>{detail.message}</p>)
+        : ''}
       <div className="form-section">
-        <TextView label="email/username" />
-        <TextView label="password" type="password" />
+        <TextView label="email/username" valueref={username_email} />
+        <TextView label="password" type="password" valueref={password} />
       </div>
 
-      <button>Log in</button>
+      <button onClick={submit}>Log in</button>
       <span onClick={() => history.push('/account/')}>sign up</span>
     </form>
   );
@@ -62,11 +82,6 @@ const Register = () => {
 
   const sendregisterdata = (e) => {
     e.preventDefault();
-    console.log(email.current.value);
-    console.log(username.current.value);
-    console.log(password.current.value);
-    console.log(github.current.value);
-    console.log(instagram.current.value);
 
     (async () => {
       const emailv = email.current.value;

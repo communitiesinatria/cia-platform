@@ -1,15 +1,8 @@
 const { User } = require('../../controller')
-const { signAccessToken } = require('../jwt_helpers/jwt_helper')
+const { signAccessToken } = require('./jwt_helpers')
 
 const route = require('express').Router();
 
-//var session = require('express-session');
-
-/*route.use(session({
-	secret: 'secret',
-	resave: true,
-	saveUninitialized: true
-}));*/
 
 route.post('/', async (request, response) => {
 	console.log(request.body);
@@ -18,30 +11,20 @@ route.post('/', async (request, response) => {
 		const user = (await User.authenticateUserCredentials(request.body))
 		if (user) {
 
-			console.log('sending_accesstoken')
+			//response.cookie('token', await signAccessToken(user), { maxAge: 900000, httpOnly: true });
 
-			response.cookie('token', await signAccessToken(user));
-
-			response.redirect('/irenic');
+			response.send(String(await signAccessToken(user)));
 
 		} else {
-			response.send('Incorrect Username and/or Password!');
+			response.status(400).send('Invalid Credentials');
 		}
 		response.end();
 
 	} else {
-		response.send('Please enter Username and Password!');
+		response.status(401).send();
 		response.end();
 	}
 });
 
-/* route.get('/home', function (request, response) {
-	if (request.session.loggedin) {
-		response.send('Welcome back, ' + request.session.username + '!');
-	} else {
-		response.send('Please login to view this page!');
-	}
-	response.end();
-}); */
 
 module.exports = route
