@@ -23,13 +23,14 @@ export async function checkAuth() {
   if (!token) {
     window.location.href = `${endpoint}/account/login`;
   } else {
-    const result = await api.get(`${endpoint}/auth/user`, {
-      withCredentials: true,
-    });
-    if (result.status >= 400) {
-      window.location.href = `${endpoint}/account/login`;
-    } else {
+    try {
+      const result = await api.get(`${endpoint}/auth/user`, {
+        withCredentials: true,
+      });
+
       return result.data;
+    } catch (error) {
+      window.location.href = `${endpoint}/account/login`;
     }
   }
 }
