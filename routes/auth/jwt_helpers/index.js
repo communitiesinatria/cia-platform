@@ -22,7 +22,7 @@ module.exports = {
       const secret = process.env.ACCESS_TOKEN_KEY || process.env.CRPYT_KEY;
       console.log(_id);
       const options = {
-        expiresIn: '99999999s',
+        expiresIn: '86400s',
         issuer: 'CommunitiesInAtria',
         audience: _id + '',
       }
