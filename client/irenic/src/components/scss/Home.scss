@@ -33,14 +33,15 @@
         display: flex;
         align-items: center;
         border-top: 1px solid whitesmoke;
-        
+
         cursor: pointer;
 
-        .about{
+        .about {
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
+
         img {
             display: block;
             width: 45px;
@@ -88,4 +89,76 @@
         background: var(--accent-color);
         font-weight: 600;
     }
+}
+
+.feed {
+
+    header {
+        width: 100%;
+        height: 50px;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        border-bottom: 2px solid whitesmoke;
+    }
+
+}
+
+.create-post {
+
+    padding: 20px;
+    border-bottom: 2px solid whitesmoke;
+
+    form {
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+
+    form>img {
+        margin-bottom: auto;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        margin-right: 10px;
+    }
+
+    .compose {
+        width: 100%;
+
+        textarea {
+            height: 100%;
+            width: 100%;
+            padding-top: 0.5rem;
+            outline: none;
+            border: none;
+            resize: none;
+            font-size: 1.2rem;
+            color: var(--text-color);
+        }
+
+    }
+
+    button {
+        margin-left: auto;
+        width: 100%;
+        background: white;
+        padding: 8px 10px;
+        font-weight: 600;
+        border: 2px solid var(--accent-color);
+        transition: all 1s ease;
+    }
+
+    .disabled-post {
+        filter: grayscale(.6) blur(1px);
+        cursor: not-allowed;
+    }
+
+}
+
+.activity{
+    border-left: 2px solid whitesmoke;
 }
