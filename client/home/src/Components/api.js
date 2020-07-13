@@ -55,7 +55,7 @@ export async function login({ username, email, password }) {
         } else if (result.status === 200) {
             const cookies = new Cookies();
             cookies.set('token', result.data, { path: '/' });
-            window.location.href = (`${endpoint}/irenic`);
+            window.location.href = (`${endpoint}/irenic/`);
             return result.data;
         }
 
