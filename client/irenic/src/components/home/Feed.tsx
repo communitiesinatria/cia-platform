@@ -47,8 +47,9 @@ const CreatePost: React.FC<CreatePostProps> = ({ profile_img }) => {
           />
         </div>
       </form>
-      <p>{charcount >= 10 ? charcount : ''}</p>
-      <button className={!charcount ? 'disabled-post' : ''}>Post</button>
+      <p>{charcount >= 10 ? charcount : <></>}</p>
+
+      <button className={!(charcount > 10) ? 'disabled-post' : ''}>Post</button>
     </div>
   );
 };

@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/irenic/static/css/main.3b915280.chunk.css",
-    "main.js": "/irenic/static/js/main.ba43499f.chunk.js",
-    "main.js.map": "/irenic/static/js/main.ba43499f.chunk.js.map",
+    "main.css": "/irenic/static/css/main.2af237fe.chunk.css",
+    "main.js": "/irenic/static/js/main.c4c529dd.chunk.js",
+    "main.js.map": "/irenic/static/js/main.c4c529dd.chunk.js.map",
     "runtime-main.js": "/irenic/static/js/runtime-main.646b3e01.js",
     "runtime-main.js.map": "/irenic/static/js/runtime-main.646b3e01.js.map",
-    "static/js/2.2136912b.chunk.js": "/irenic/static/js/2.2136912b.chunk.js",
-    "static/js/2.2136912b.chunk.js.map": "/irenic/static/js/2.2136912b.chunk.js.map",
+    "static/js/2.3f7e4a6b.chunk.js": "/irenic/static/js/2.3f7e4a6b.chunk.js",
+    "static/js/2.3f7e4a6b.chunk.js.map": "/irenic/static/js/2.3f7e4a6b.chunk.js.map",
     "index.html": "/irenic/index.html",
-    "precache-manifest.6a6810ce6badeaf1370731151c8087bc.js": "/irenic/precache-manifest.6a6810ce6badeaf1370731151c8087bc.js",
+    "precache-manifest.0c8984c745ba9d33ea0da0238b368d5e.js": "/irenic/precache-manifest.0c8984c745ba9d33ea0da0238b368d5e.js",
     "service-worker.js": "/irenic/service-worker.js",
-    "static/css/main.3b915280.chunk.css.map": "/irenic/static/css/main.3b915280.chunk.css.map",
-    "static/js/2.2136912b.chunk.js.LICENSE.txt": "/irenic/static/js/2.2136912b.chunk.js.LICENSE.txt",
+    "static/css/main.2af237fe.chunk.css.map": "/irenic/static/css/main.2af237fe.chunk.css.map",
+    "static/js/2.3f7e4a6b.chunk.js.LICENSE.txt": "/irenic/static/js/2.3f7e4a6b.chunk.js.LICENSE.txt",
     "static/media/irenic.svg": "/irenic/static/media/irenic.dc4ab841.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.646b3e01.js",
-    "static/js/2.2136912b.chunk.js",
-    "static/css/main.3b915280.chunk.css",
-    "static/js/main.ba43499f.chunk.js"
+    "static/js/2.3f7e4a6b.chunk.js",
+    "static/css/main.2af237fe.chunk.css",
+    "static/js/main.c4c529dd.chunk.js"
   ]
 }

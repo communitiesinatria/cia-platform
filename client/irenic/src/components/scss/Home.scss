@@ -150,6 +150,7 @@
         font-weight: 600;
         border: 2px solid var(--accent-color);
         transition: all 1s ease;
+        animation: fadefrombottom 100ms forwards ease;
     }
 
     .disabled-post {
@@ -159,6 +160,6 @@
 
 }
 
-.activity{
+.activity {
     border-left: 2px solid whitesmoke;
 }

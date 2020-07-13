@@ -177,6 +177,8 @@
   border: 2px solid var(--accent-color);
   -webkit-transition: all 1s ease;
   transition: all 1s ease;
+  -webkit-animation: fadefrombottom 100ms forwards ease;
+          animation: fadefrombottom 100ms forwards ease;
 }
 
 .create-post .disabled-post {
