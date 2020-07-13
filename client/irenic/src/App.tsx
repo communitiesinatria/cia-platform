@@ -8,6 +8,9 @@ import Home from './components/home/Home';
 
 import { login } from './components/api';
 
+// GlobalContext
+import {GlobalContextProvider} from './components/GlobalContext'
+
 import {
   BrowserRouter as Router,
   Route,
@@ -18,9 +21,13 @@ import {
 
 function App() {
   useEffect(() => {
-    // login({ username: 'raj', password: 'adminpassword' });
+    
   });
-  return <Home />;
+  return (
+    <GlobalContextProvider>
+      <Home />
+    </GlobalContextProvider>
+  );
 }
 
 /* const Test = () => {

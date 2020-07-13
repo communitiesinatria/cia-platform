@@ -1,11 +1,23 @@
-import React, { createContext, useEffect } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 
-export const GlobalContext = createContext({});
+// Api
+import { checkAuth } from './api';
+//types
+import { User, GlobalContextValue } from './ContextTypes';
+
+export const GlobalContext = createContext<GlobalContextValue>({});
 
 export const GlobalContextProvider: React.FC = ({ children }) => {
-  
-  
-    useEffect(() => {}, []);
+  const [user, setUser] = useState<User>();
 
-  return <GlobalContext.Provider value={{}}>{children}</GlobalContext.Provider>;
+  useEffect(() => {
+    checkAuth().then((newuser) => {
+      console.log(newuser);
+      setUser(newuser);
+    });
+  }, []);
+
+  return (
+    <GlobalContext.Provider value={{ user }}>{children}</GlobalContext.Provider>
+  );
 };

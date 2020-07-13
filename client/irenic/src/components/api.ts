@@ -10,17 +10,29 @@ const cache = setupCache({
 const api = axios.create({
   adapter: cache.adapter,
 });
+
+const cookie = new Cookies();
+
 const endpoint =
   window.location.origin === 'http://localhost:3000'
     ? 'http://localhost:8000'
     : window.location.origin;
 
-
-export async function checkAuth(){
-
-    
+export async function checkAuth() {
+  const token = cookie.get('token');
+  if (!token) {
+    window.location.href = `${endpoint}/account/login`;
+  } else {
+    const result = await api.get(`${endpoint}/auth/user`, {
+      withCredentials: true,
+    });
+    if (result.status >= 400) {
+      window.location.href = `${endpoint}/account/login`;
+    } else {
+      return result.data;
+    }
+  }
 }
-
 
 export async function getMembers() {
   console.log(endpoint);
@@ -90,7 +102,6 @@ export async function login(login: LoginDetails) {
 
     //result = await loadDoc(`${endpoint}/auth`, { email, username, password })
 
-    console.log(result);
     if (result.status === 400) {
       return [{ message: result.data }];
     } else if (result.status === 200) {
@@ -105,7 +116,7 @@ export async function login(login: LoginDetails) {
   }
 }
 
-function loadDoc(url: string, { username, email, password }:any) {
+function loadDoc(url: string, { username, email, password }: any) {
   const id = email || username;
   const id_name = email ? 'email' : username ? 'username' : '';
 

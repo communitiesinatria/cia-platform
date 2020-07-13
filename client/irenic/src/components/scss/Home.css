@@ -3,13 +3,20 @@
   width: 100%;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 200px auto 200px;
-      grid-template-columns: 200px auto 200px;
+  -ms-grid-columns: 250px auto 200px;
+      grid-template-columns: 250px auto 200px;
 }
 
 .nav {
   overflow: hidden;
   border-right: 2px solid whitesmoke;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .nav img {
@@ -22,6 +29,49 @@
 
 .nav header img {
   width: 80px;
+}
+
+.nav .profile-preview {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 10px;
+  margin-top: auto;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-top: 1px solid whitesmoke;
+  cursor: pointer;
+}
+
+.nav .profile-preview .about {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.nav .profile-preview img {
+  display: block;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin-right: 10px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .nav-links img {
@@ -45,15 +95,15 @@
 .nav-links .nav-link {
   margin: 10px;
   cursor: pointer;
-  -webkit-transition: background 200ms ease, -webkit-transform 100ms ease;
-  transition: background 200ms ease, -webkit-transform 100ms ease;
-  transition: transform 100ms ease, background 200ms ease;
-  transition: transform 100ms ease, background 200ms ease, -webkit-transform 100ms ease;
+  -webkit-transition: background 200ms ease, font-weight 100ms ease, -webkit-transform 200ms ease;
+  transition: background 200ms ease, font-weight 100ms ease, -webkit-transform 200ms ease;
+  transition: transform 200ms ease, background 200ms ease, font-weight 100ms ease;
+  transition: transform 200ms ease, background 200ms ease, font-weight 100ms ease, -webkit-transform 200ms ease;
 }
 
 .nav-links .nav-link:hover {
-  -webkit-transform: scale(1.05);
-          transform: scale(1.05);
+  -webkit-transform: scale(1.06);
+          transform: scale(1.06);
   font-weight: 600;
 }
 

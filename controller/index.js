@@ -20,14 +20,14 @@ const User = {
         return results.map(user => user.username);
     },
     getUserData: async function (_id) {
-        
+
         let user;
         try {
             user = await UserModel.findOne({ _id });
+            user.password = undefined;
         } catch (error) {
             user = { error }
         }
-        console.log('user', user);
         return user;
 
     },
@@ -37,11 +37,9 @@ const User = {
         let user;
         if (email) {
             user = await UserModel.findOne({ email })
-            console.log(user)
         }
         else if (username) {
             user = await UserModel.findOne({ username })
-            console.log(user)
         }
 
         if (!user) return !1;

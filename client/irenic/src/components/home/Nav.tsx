@@ -1,22 +1,46 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import { Link, useHistory } from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
+
+// Context
+import { GlobalContext } from '../GlobalContext';
+// types
+import { User } from '../ContextTypes';
 // assets
 import irenic_logo from '../../assets/irenic.svg';
 const Nav: React.FC = () => {
+  const { user } = useContext(GlobalContext);
   return (
     <div className="nav">
       <header>
         <img src={irenic_logo} alt="irenic" />
       </header>
+
       <div className="nav-links">
         <NavLink to="/home" label="Home" />
         <NavLink to="/notifications" label="Notifications" />
         <NavLink to="/profile" label="Profile" />
       </div>
+
+      <LoggedinProfile user={user} />
     </div>
   );
+};
+
+const LoggedinProfile: React.FC<{ user: User | undefined }> = ({ user }) => {
+  if (user) {
+    return (
+      <div className="profile-preview">
+        <img src={user.profile_img} alt="profilepicture" />
+        <div className="about">
+          <h4>{user.name}</h4>
+          <p>{user.bio ? user.bio : ''}</p>
+          <p>{user.username}</p>
+        </div>
+      </div>
+    );
+  } else return <></>;
 };
 
 interface NavLinkProps {
@@ -31,10 +55,6 @@ const NavLink: React.FC<NavLinkProps> = ({ to, label }) => {
 
   useEffect(() => {
     history.listen(({ pathname }) => setCurrentpath(pathname));
-
-    axios
-      .get('http://localhost:8000/auth/user', { withCredentials: true })
-      .then((d) => console.log(d));
   }, [history]);
 
   interface Icons {
