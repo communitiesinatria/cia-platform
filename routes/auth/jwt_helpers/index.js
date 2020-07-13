@@ -19,7 +19,7 @@ module.exports = {
 
     return new Promise((resolve, reject) => {
       const payload = {};
-      const secret = process.env.ACCESS_TOKEN_KEY;
+      const secret = process.env.ACCESS_TOKEN_KEY || process.env.CRPYT_KEY ;
       console.log(_id);
       const options = {
         expiresIn: '99999999s',
