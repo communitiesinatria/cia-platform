@@ -1,0 +1,64 @@
+.home {
+  height: 100vh;
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 200px auto 200px;
+      grid-template-columns: 200px auto 200px;
+}
+
+.nav {
+  overflow: hidden;
+  border-right: 2px solid whitesmoke;
+}
+
+.nav img {
+  width: 100%;
+}
+
+.nav header {
+  padding: 20px;
+}
+
+.nav header img {
+  width: 80px;
+}
+
+.nav-links img {
+  width: 20px;
+  margin-right: 10px;
+}
+
+.nav-links a {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  color: var(--text-color);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.nav-links .nav-link {
+  margin: 10px;
+  cursor: pointer;
+  -webkit-transition: background 200ms ease, -webkit-transform 100ms ease;
+  transition: background 200ms ease, -webkit-transform 100ms ease;
+  transition: transform 100ms ease, background 200ms ease;
+  transition: transform 100ms ease, background 200ms ease, -webkit-transform 100ms ease;
+}
+
+.nav-links .nav-link:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  font-weight: 600;
+}
+
+.nav-links .selected-nav-link {
+  background: var(--accent-color);
+  font-weight: 600;
+}
+/*# sourceMappingURL=Home.css.map */

@@ -1,26 +1,29 @@
 import React, { useEffect } from 'react';
-import logo from './logo.svg';
+
 import './App.css';
-import Cookies from 'universal-cookie';
+/* import Cookies from 'universal-cookie'; */
+
+// components
+import Home from './components/home/Home';
+
+import { login } from './components/api';
 
 import {
   BrowserRouter as Router,
   Route,
   Switch,
+  Redirect,
   useHistory,
 } from 'react-router-dom';
 
 function App() {
-  return (
-    <div className="App">
-      <Router basename="/irenic">
-        <Test />
-      </Router>
-    </div>
-  );
+  useEffect(() => {
+    // login({ username: 'raj', password: 'adminpassword' });
+  });
+  return <Home />;
 }
 
-const Test = () => {
+/* const Test = () => {
   const history = useHistory();
   useEffect(() => {
     const cookies = new Cookies();
@@ -29,6 +32,6 @@ const Test = () => {
   });
 
   return <div className="App"></div>;
-};
+}; */
 
 export default App;

@@ -19,7 +19,18 @@ const User = {
         const results = await UserModel.find(filter);
         return results.map(user => user.username);
     },
+    getUserData: async function (_id) {
+        
+        let user;
+        try {
+            user = await UserModel.findOne({ _id });
+        } catch (error) {
+            user = { error }
+        }
+        console.log('user', user);
+        return user;
 
+    },
     authenticateUserCredentials: async function ({ email, username, password }) {
 
         console.log(email, username, password);
