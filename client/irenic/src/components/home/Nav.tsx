@@ -50,9 +50,10 @@ interface NavLinkProps {
 const NavLink: React.FC<NavLinkProps> = ({ to, label }) => {
   const history = useHistory();
 
-  const [currentpath, setCurrentpath] = useState<string>(history.location.pathname);
+  const [currentpath, setCurrentpath] = useState<string>('/home');
 
   useEffect(() => {
+    setCurrentpath(history.location.pathname);
     history.listen(({ pathname }) => setCurrentpath(pathname));
   }, [history]);
 
