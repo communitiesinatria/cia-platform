@@ -104,6 +104,27 @@
         border-bottom: 2px solid whitesmoke;
     }
 
+    .posts {
+        width: 100%;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .no-posts {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        filter: contrast(.05);
+
+        img {
+            width: 35px;
+            height: 30px;
+            margin-bottom: 8px;
+        }
+    }
 }
 
 .create-post {
@@ -166,9 +187,56 @@
 
 }
 
+.notifications {
+    grid-column: 2/4;
+
+    header {
+        padding: 20px;
+        border-bottom: 1px solid whitesmoke;
+    }
+
+    .notification {
+        padding: 12px 18px;
+        margin: 10px;
+        // border: 1px solid var(--accent-color);
+        background: var(--accent-color);
+        max-width: 400px;
+
+        h4 {
+
+            font-size: 1.6rem;
+        }
+    }
+}
+
 .activity {
     border-left: 2px solid whitesmoke;
+
+    .search {
+        display: flex;
+        height: 50px;
+        align-items: center;
+        padding: 8px;
+    }
+
+    input {
+        width: 100%;
+        height: 100%;
+        border: none;
+        outline: none;
+        padding-left: 10px;
+        font-size: 1rem;
+        // border: 1.5px solid var(--accent-color);
+        background: rgb(204, 255, 231);
+        border-radius: 1px;
+
+        &::placeholder {
+            color: rgba(0, 0, 0, 0.685);
+        }
+    }
 }
+
+
 
 @media only screen and (max-width: 700px) {
     .home {
@@ -208,6 +276,7 @@
         display: flex;
         flex-direction: row-reverse;
         justify-content: flex-end;
+
         .profile-preview {
             width: fit-content;
             border: none;
@@ -216,14 +285,16 @@
                 display: none;
             }
         }
-        header{
+
+        header {
             display: none;
         }
+
         .nav-links {
             display: flex;
             flex-direction: row;
             width: 100%;
-            
+
             .nav-link {
                 justify-content: center;
 
@@ -231,7 +302,7 @@
 
             img {
                 margin: 0;
-                
+
             }
 
             span {
@@ -242,5 +313,27 @@
 
     .activity {
         display: none;
+    }
+
+    .notifications {
+
+        header {
+            padding: 20px;
+            border-bottom: 1px solid whitesmoke;
+        }
+
+        .notification {
+            padding: 12px 18px;
+            margin: 10px;
+            // border: 1px solid var(--accent-color);
+            background: var(--accent-color);
+            width: auto;
+            display: block;
+
+            h4 {
+
+                font-size: 1.6rem;
+            }
+        }
     }
 }

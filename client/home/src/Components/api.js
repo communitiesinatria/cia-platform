@@ -66,7 +66,7 @@ export async function login({ username, email, password }) {
     }
 }
 
-function loadDoc(url, { username, email, password }) {
+/* function loadDoc(url, { username, email, password }) {
 
     const id = email || username;
     const id_name = email ? 'email' : username ? 'username' : '';
@@ -86,3 +86,4 @@ function loadDoc(url, { username, email, password }) {
     })
 
 }
+ */

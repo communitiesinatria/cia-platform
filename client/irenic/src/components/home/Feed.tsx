@@ -9,6 +9,28 @@ const Feed: React.FC = () => {
         <h3>Home</h3>
       </header>
       <CreatePost profile_img={user?.profile_img} />
+      <Posts />
+    </div>
+  );
+};
+
+interface PostsProps {}
+const Posts: React.FC<PostsProps> = () => {
+  const [posts, setPosts] = useState([]);
+
+  return (
+    <div className="posts">
+      {!posts.length ? (
+        <div className="no-posts">
+          <img
+            src="https://img.icons8.com/material-sharp/24/000000/activity-feed-2.png"
+            alt=""
+          />
+          <span>No Posts yet</span>
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

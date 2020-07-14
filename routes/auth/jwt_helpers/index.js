@@ -10,6 +10,8 @@ module.exports = {
 
       jwt.verify(token, secret, (err, decoded) => {
         if (err) rej(err);
+
+        
         res(decoded);
       })
 

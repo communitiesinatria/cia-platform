@@ -16,6 +16,7 @@ import '../scss/Home.css';
 import Activity from './Activity';
 import Nav from './Nav';
 import Feed from './Feed';
+import Notifications from '../Notifications';
 
 interface HomeProps {}
 
@@ -27,16 +28,19 @@ const Home: React.FC<HomeProps> = () => {
         <Switch>
           <Route path="/home">
             <Feed />
+            <Activity />
           </Route>
+          <Route path="/notifications">
+            <Notifications />
+          </Route>
+
           <Route exact path="/">
             <Redirect to="/home" />
           </Route>
         </Switch>
-        <Activity />
       </div>
     </Router>
   );
 };
 
 export default Home;
-
