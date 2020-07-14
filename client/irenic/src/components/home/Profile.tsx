@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 // context
 import { GlobalContext } from '../GlobalContext';
@@ -6,6 +6,11 @@ import { GlobalContext } from '../GlobalContext';
 interface ProfileProps {}
 const Profile: React.FC<ProfileProps> = () => {
   const { user } = useContext(GlobalContext);
+
+  useEffect(() => {
+    document.title = 'irenic | Profile';
+  }, []);
+
   console.log(user);
   return (
     <div className="profile">
