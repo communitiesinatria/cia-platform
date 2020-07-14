@@ -45,7 +45,9 @@ const User = {
         if (!user) return !1;
 
         if (x.decrypt(user.password) === password) {
+            console.log('authenticated')
             return user;
+
         } else {
             return !1
         }

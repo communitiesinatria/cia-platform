@@ -12,7 +12,6 @@ export const GlobalContextProvider: React.FC = ({ children }) => {
 
   useEffect(() => {
     checkAuth().then((newuser) => {
-      console.log(newuser);
       setUser(newuser);
     });
   }, []);

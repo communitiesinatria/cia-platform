@@ -5,7 +5,7 @@ module.exports = {
 
   verifyToken: ({ token }) => {
     const secret = process.env.ACCESS_TOKEN_KEY || process.env.CRPYT_KEY;
-
+    console.log(secret)
     return new Promise((res, rej) => {
 
       jwt.verify(token, secret, (err, decoded) => {
@@ -20,7 +20,7 @@ module.exports = {
     return new Promise((resolve, reject) => {
       const payload = {};
       const secret = process.env.ACCESS_TOKEN_KEY || process.env.CRPYT_KEY;
-      console.log(_id);
+      console.log(secret)
       const options = {
         expiresIn: '86400s',
         issuer: 'CommunitiesInAtria',

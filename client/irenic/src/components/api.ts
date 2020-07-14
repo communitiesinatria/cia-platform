@@ -30,7 +30,7 @@ export async function checkAuth() {
 
       return result.data;
     } catch (error) {
-      window.location.href = `${endpoint}/account/login`;
+       window.location.href = `${endpoint}/account/login`;
     }
   }
 }
@@ -108,7 +108,7 @@ export async function login(login: LoginDetails) {
     } else if (result.status === 200) {
       const cookies = new Cookies();
       cookies.set('token', result.data, { path: '/' });
-      window.location.href = `${endpoint}/irenic`;
+      //window.location.href = `${endpoint}/irenic`;
       return result.data;
     }
   } catch (error) {
@@ -135,3 +135,5 @@ function loadDoc(url: string, { username, email, password }: any) {
     xhttp.send(`${id_name}=${id}&password=${password}`);
   });
 }
+
+
