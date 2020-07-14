@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 interface NotificationsProps {}
 const Notifications: React.FC<NotificationsProps> = () => {
@@ -10,6 +10,22 @@ const Notifications: React.FC<NotificationsProps> = () => {
 
       <div className="notification-list">
         <Notification />
+        <Notification />
+        <Notification />
+        <Notification />
+        <Notification />
+        <Notification />
+        <Notification />
+        <Notification />
+        <Notification />
+        <Notification />
+        <Notification />
+        <Notification />
+        <Notification />
+        <Notification />
+        <Notification />
+        <Notification />
+        <Notification />
       </div>
     </div>
   );
@@ -17,6 +33,9 @@ const Notifications: React.FC<NotificationsProps> = () => {
 
 interface NotificationProps {}
 const Notification: React.FC<NotificationProps> = () => {
+  useEffect(() => {
+    document.title = 'irenic | Notifications';
+  }, []);
   return (
     <div className="notification">
       <h4>Title</h4>

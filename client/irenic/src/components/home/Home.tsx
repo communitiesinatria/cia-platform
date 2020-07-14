@@ -16,7 +16,8 @@ import '../scss/Home.css';
 import Activity from './Activity';
 import Nav from './Nav';
 import Feed from './Feed';
-import Notifications from '../Notifications';
+import Notifications from './Notifications';
+import Profile from './Profile';
 
 interface HomeProps {}
 
@@ -32,6 +33,9 @@ const Home: React.FC<HomeProps> = () => {
           </Route>
           <Route path="/notifications">
             <Notifications />
+          </Route>
+          <Route path="/profile">
+            <Profile />
           </Route>
 
           <Route exact path="/">

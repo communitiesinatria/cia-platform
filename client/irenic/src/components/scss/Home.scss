@@ -189,10 +189,19 @@
 
 .notifications {
     grid-column: 2/4;
+    overflow-y: scroll;
 
     header {
         padding: 20px;
+        background: white;
         border-bottom: 1px solid whitesmoke;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+
+    .notification-list {
+        padding: 65px 0;
     }
 
     .notification {
@@ -207,6 +216,7 @@
             font-size: 1.6rem;
         }
     }
+
 }
 
 .activity {
@@ -232,6 +242,41 @@
 
         &::placeholder {
             color: rgba(0, 0, 0, 0.685);
+        }
+    }
+}
+
+.profile {
+    grid-column: 2/4;
+
+    header {
+        width: 100%;
+        padding: 20px;
+        display: flex;
+        border-bottom: 2px solid whitesmoke;
+
+        .profile-img {
+            width: 100px;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .about {
+            padding-left: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        a {
+            color: var(--accent-color);
+            filter: brightness(.8);
+            text-decoration: underline;
         }
     }
 }
@@ -270,8 +315,10 @@
     }
 
     .nav {
-        margin-top: auto;
-
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        background: white;
         border-top: 2px solid whitesmoke;
         display: flex;
         flex-direction: row-reverse;

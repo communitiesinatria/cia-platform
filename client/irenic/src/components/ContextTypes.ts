@@ -12,6 +12,7 @@ export interface User {
   name?: string;
   profile_img?: string;
   github?: string;
+  instagram?: string;
 }
 
 export interface GlobalContextValue {

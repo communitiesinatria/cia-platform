@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useRef, useState, useEffect } from 'react';
 
 import { GlobalContext } from '../GlobalContext';
 const Feed: React.FC = () => {
@@ -18,6 +18,10 @@ interface PostsProps {}
 const Posts: React.FC<PostsProps> = () => {
   const [posts, setPosts] = useState([]);
 
+  useEffect(() => {
+    document.title = 'irenic | Home';
+  }, []);
+  
   return (
     <div className="posts">
       {!posts.length ? (

@@ -235,11 +235,20 @@
   -ms-grid-column: 2;
   -ms-grid-column-span: 2;
   grid-column: 2/4;
+  overflow-y: scroll;
 }
 
 .notifications header {
   padding: 20px;
+  background: white;
   border-bottom: 1px solid whitesmoke;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.notifications .notification-list {
+  padding: 65px 0;
 }
 
 .notifications .notification {
@@ -295,6 +304,54 @@
   color: rgba(0, 0, 0, 0.685);
 }
 
+.profile {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 2;
+  grid-column: 2/4;
+}
+
+.profile header {
+  width: 100%;
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-bottom: 2px solid whitesmoke;
+}
+
+.profile header .profile-img {
+  width: 100px;
+}
+
+.profile header img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+}
+
+.profile header .about {
+  padding-left: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.profile header a {
+  color: var(--accent-color);
+  -webkit-filter: brightness(0.8);
+          filter: brightness(0.8);
+  text-decoration: underline;
+}
+
 @media only screen and (max-width: 700px) {
   .home {
     height: 100vh;
@@ -331,7 +388,10 @@
     width: 100%;
   }
   .nav {
-    margin-top: auto;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: white;
     border-top: 2px solid whitesmoke;
     display: -webkit-box;
     display: -ms-flexbox;
