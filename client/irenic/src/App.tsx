@@ -1,15 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 
 import './App.css';
 /* import Cookies from 'universal-cookie'; */
+import { GlobalContext } from './components/GlobalContext';
 
 // components
+import Login from './components/Login';
 import Home from './components/home/Home';
 
-import { login } from './components/api';
-
-// GlobalContext
-import {GlobalContextProvider} from './components/GlobalContext'
+import { checkAuth } from './components/api';
 
 import {
   BrowserRouter as Router,
@@ -20,14 +19,17 @@ import {
 } from 'react-router-dom';
 
 function App() {
+  const { user, setUser } = useContext(GlobalContext);
   useEffect(() => {
-    
-  });
-  return (
-    <GlobalContextProvider>
-      <Home />
-    </GlobalContextProvider>
-  );
+    // login({ username: 'raj', password: 'adminpassword' });
+
+    checkAuth().then((newuser) => {
+      setUser && setUser(newuser);
+    });
+  }, []);
+
+  if (user?.username) return <Home />;
+  return <Login />;
 }
 
 /* const Test = () => {

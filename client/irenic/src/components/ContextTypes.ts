@@ -17,4 +17,5 @@ export interface User {
 
 export interface GlobalContextValue {
   user?: User;
+  setUser?: React.Dispatch<React.SetStateAction<User | undefined>>;
 }

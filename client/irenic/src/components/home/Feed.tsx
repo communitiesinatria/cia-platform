@@ -16,12 +16,20 @@ const Feed: React.FC = () => {
 
 interface PostsProps {}
 const Posts: React.FC<PostsProps> = () => {
+  const post = {
+    message:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem debitis sit porro placeat repellendus libero, perferendis corporis qui tempore quaerat id veniam magnam ad enim itaque? Dolor quas aliquid quod.',
+    writer: 'xrehpicx',
+    profile_img: 'https://avatars3.githubusercontent.com/u/22765674?v=4',
+    created_on: Date.now(),
+  };
+
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     document.title = 'irenic | Home';
   }, []);
-  
+
   return (
     <div className="posts">
       {!posts.length ? (

@@ -13,6 +13,7 @@ import {
 import '../scss/Home.css';
 
 // Components
+
 import Activity from './Activity';
 import Nav from './Nav';
 import Feed from './Feed';
@@ -37,11 +38,10 @@ const Home: React.FC<HomeProps> = () => {
           <Route path="/profile">
             <Profile />
           </Route>
-
-          <Route exact path="/">
-            <Redirect to="/home" />
-          </Route>
         </Switch>
+        <Route exact path="/">
+          <Redirect to="/home" />
+        </Route>
       </div>
     </Router>
   );

@@ -21,7 +21,8 @@ const endpoint =
 export async function checkAuth() {
   const token = cookie.get('token');
   if (!token) {
-    window.location.href = `${endpoint}/account/login`;
+    // window.location.href = `${endpoint}/account/login`;
+    return;
   } else {
     try {
       const result = await api.get(`${endpoint}/auth/user`, {
@@ -30,7 +31,8 @@ export async function checkAuth() {
 
       return result.data;
     } catch (error) {
-       window.location.href = `${endpoint}/account/login`;
+      //  window.location.href = `${window.location.origin}/account/login`;
+      return;
     }
   }
 }
@@ -135,5 +137,3 @@ function loadDoc(url: string, { username, email, password }: any) {
     xhttp.send(`${id_name}=${id}&password=${password}`);
   });
 }
-
-

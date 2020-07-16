@@ -37,7 +37,7 @@ export async function register({ email, username, password, github, instagram })
 
 export async function login({ username, email, password }) {
     let result;
-    try {
+try {
         //result = await api.post(`${endpoint}/auth`, { email, username, password });
 
         result = await api({

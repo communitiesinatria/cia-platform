@@ -1,0 +1,123 @@
+.login-page {
+    height: 100vh;
+    // background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &>img {
+        width: 100%;
+        position: absolute;
+        z-index: -10;
+        bottom: 0;
+    }
+}
+
+form {
+    width: 500px;
+    // background: white;
+    backdrop-filter: blur(10px);
+    padding: 25px 50px;
+    // box-shadow: 0 0 2px 1px var(--accent-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &>img {
+        width: 100%;
+    }
+
+    p {
+        width: 100%;
+        text-align: left;
+        font-size: .9rem;
+        color: rgba(255, 0, 0, 0.5);
+    }
+
+    &>span {
+        display: block;
+        text-decoration: underline;
+        font-size: .9rem;
+        margin-top: 8px;
+        opacity: .6;
+        cursor: pointer;
+    }
+
+    .form-sections {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 30px;
+
+    }
+
+    .input-text {
+        display: flex;
+        flex-direction: column;
+        margin: 6px 0;
+        position: relative;
+        padding: 20px 0;
+        width: 100%;
+
+        input {
+            padding: 6px 4px;
+            max-width: 300px;
+
+            border-radius: 0;
+            outline: none;
+            //background: var(--accent-color);
+            border: none;
+            border-bottom: 2px solid var(--accent-color);
+            caret-color: var(--accent-color);
+
+            filter: grayscale(1);
+            transition: filter 200ms ease;
+
+            &:focus {
+                filter: grayscale(0);
+            }
+
+        }
+
+        span {
+            position: absolute;
+            z-index: 10;
+            pointer-events: none;
+            font-size: .8rem;
+            top: 22px;
+            left: 4px;
+            opacity: .5;
+            // in focus
+            transition: all 200ms ease;
+
+        }
+
+
+
+    }
+}
+
+#infocus {
+    top: 0;
+    left: 0;
+    opacity: .8;
+}
+
+#requiredtag {
+    display: inline;
+}
+
+@media only screen and (max-width: 500px) {
+
+    form .form-sections {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    form {
+        padding: 20px auto;
+        width: 100%;
+        margin: 0 25px;
+    }
+}
