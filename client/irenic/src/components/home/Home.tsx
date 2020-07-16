@@ -19,6 +19,7 @@ import Nav from './Nav';
 import Feed from './Feed';
 import Notifications from './Notifications';
 import Profile from './Profile';
+import Settings from './Settings';
 
 interface HomeProps {}
 
@@ -37,6 +38,9 @@ const Home: React.FC<HomeProps> = () => {
           </Route>
           <Route path="/profile">
             <Profile />
+          </Route>
+          <Route path="/settings">
+            <Settings />
           </Route>
         </Switch>
         <Route exact path="/">

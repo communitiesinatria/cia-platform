@@ -18,7 +18,7 @@
   bottom: 0;
 }
 
-form {
+.login-page form {
   width: 500px;
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
@@ -38,18 +38,18 @@ form {
           justify-content: center;
 }
 
-form > img {
+.login-page form > img {
   width: 100%;
 }
 
-form p {
+.login-page form p {
   width: 100%;
   text-align: left;
   font-size: .9rem;
   color: rgba(255, 0, 0, 0.5);
 }
 
-form > span {
+.login-page form > span {
   display: block;
   text-decoration: underline;
   font-size: .9rem;
@@ -58,7 +58,7 @@ form > span {
   cursor: pointer;
 }
 
-form .form-sections {
+.login-page form .form-sections {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr;
@@ -66,7 +66,7 @@ form .form-sections {
   grid-gap: 30px;
 }
 
-form .input-text {
+.login-page form .input-text {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -80,7 +80,7 @@ form .input-text {
   width: 100%;
 }
 
-form .input-text input {
+.login-page form .input-text input {
   padding: 6px 4px;
   max-width: 300px;
   border-radius: 0;
@@ -96,12 +96,12 @@ form .input-text input {
   transition: filter 200ms ease, -webkit-filter 200ms ease;
 }
 
-form .input-text input:focus {
+.login-page form .input-text input:focus {
   -webkit-filter: grayscale(0);
           filter: grayscale(0);
 }
 
-form .input-text span {
+.login-page form .input-text span {
   position: absolute;
   z-index: 10;
   pointer-events: none;

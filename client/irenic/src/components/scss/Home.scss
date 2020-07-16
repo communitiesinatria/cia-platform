@@ -51,6 +51,20 @@
             object-fit: cover;
         }
     }
+
+    #settings-icon {
+        margin-left: auto;
+        border-radius: 50%;
+        padding: 4px;
+        width: 30px;
+        height: 30px;
+        transition: transform 100ms ease-in-out,
+            background 200ms ease-in-out;
+
+        &:hover {
+            transform: rotate(90deg);
+        }
+    }
 }
 
 

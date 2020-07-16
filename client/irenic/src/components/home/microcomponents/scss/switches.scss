@@ -1,0 +1,53 @@
+.switch1 {
+    cursor: pointer;
+
+    .switch-track {
+        width: 44px;
+        height: 20px;
+        background-color: rgb(233, 233, 233);
+        display: flex;
+        align-items: center;
+        transition: background 100ms ease;
+    }
+
+    .switch-head {
+        width: 20px;
+        height: 20px;
+        background-color: rgb(184, 184, 184);
+        transition: background 100ms ease,
+            filter 100ms ease,
+            margin 400ms ease,
+            width 400ms ease;
+    }
+
+    .track-on {
+        background-color: var(--accent-color);
+    }
+
+    .head-on {
+        background-color: var(--accent-color);
+        filter: brightness(.9);
+        margin-left: 24px;
+    }
+
+    .loading-track {}
+
+    .loading-head {
+        // margin-left: 12px;
+        width: 100%;
+        background-color: var(--accent-color);
+        animation: pulse 500ms infinite ease;
+    }
+
+    @keyframes pulse {
+
+        100%,
+        0% {
+            filter: brightness(1)
+        }
+
+        50% {
+            filter: brightness(.8)
+        }
+    }
+}

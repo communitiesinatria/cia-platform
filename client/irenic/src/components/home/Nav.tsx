@@ -21,6 +21,7 @@ const Nav: React.FC = () => {
         <NavLink to="/home" label="Home" />
         <NavLink to="/notifications" label="Notifications" />
         <NavLink to="/profile" label="Profile" />
+        <NavLink to="/settings" label="Settings" />
       </div>
 
       <LoggedinProfile user={user} />
@@ -29,6 +30,16 @@ const Nav: React.FC = () => {
 };
 
 const LoggedinProfile: React.FC<{ user: User | undefined }> = ({ user }) => {
+  const history = useHistory();
+  const [currentpath, setCurrentpath] = useState<string>('');
+
+  useEffect(() => {
+    setCurrentpath(history.location.pathname);
+    history.listen(({ pathname }) => {
+      setCurrentpath(pathname);
+    });
+  }, [history]);
+
   if (user) {
     return (
       <div className="profile-preview">
@@ -38,6 +49,16 @@ const LoggedinProfile: React.FC<{ user: User | undefined }> = ({ user }) => {
           <p>{user.bio ? user.bio : ''}</p>
           <p>{user.username}</p>
         </div>
+        <img
+          onClick={() => history.push('/settings')}
+          style={{
+            background:
+              currentpath === '/settings' ? 'var(--accent-color)' : '',
+          }}
+          id="settings-icon"
+          src="https://img.icons8.com/material-sharp/24/000000/settings.png"
+          alt=""
+        />
       </div>
     );
   } else return <></>;
@@ -77,6 +98,10 @@ const NavLink: React.FC<NavLinkProps> = ({ to, label }) => {
     Profile: [
       'https://img.icons8.com/material-outlined/24/000000/user-male-circle.png',
       'https://img.icons8.com/material/24/000000/user-male-circle--v1.png',
+    ],
+    Settings: [
+      'https://img.icons8.com/windows/24/000000/settings.png',
+      'https://img.icons8.com/material-sharp/24/000000/settings.png',
     ],
   };
 

@@ -74,6 +74,23 @@
      object-fit: cover;
 }
 
+.nav #settings-icon {
+  margin-left: auto;
+  border-radius: 50%;
+  padding: 4px;
+  width: 30px;
+  height: 30px;
+  -webkit-transition: background 200ms ease-in-out, -webkit-transform 100ms ease-in-out;
+  transition: background 200ms ease-in-out, -webkit-transform 100ms ease-in-out;
+  transition: transform 100ms ease-in-out, background 200ms ease-in-out;
+  transition: transform 100ms ease-in-out, background 200ms ease-in-out, -webkit-transform 100ms ease-in-out;
+}
+
+.nav #settings-icon:hover {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
 .nav-links img {
   width: 20px;
   margin-right: 10px;
