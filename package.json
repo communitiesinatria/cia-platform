@@ -12,7 +12,7 @@
     "deploy": "npm run static-build && npm run irenic-build && git add . && git commit -m 'server and client commit' && git push",
     "static-build": "cd ./client/home && npm run build && cd ../../ ",
     "irenic-build": "cd ./client/irenic && npm run build && cd ../../ ",
-    "setup": "npm i && cd client && npm i && cd .. && node log.js setup"
+    "setup": "npm i && cd client/home && npm i && cd .. && cd irenic && npm i && cd ../../ && node log.js setup"
   },
   "author": "",
   "license": "ISC",
