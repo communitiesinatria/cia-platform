@@ -1,4 +1,4 @@
-const { UserModel, ProjectModel, EventModel } = require('./model');
+const { UserModel, PostModel, ProjectModel, EventModel } = require('./model');
 const axios = require('axios');
 const { setupCache } = require('axios-cache-adapter');
 const Joi = require('@hapi/joi');
@@ -108,6 +108,7 @@ const User = {
                 .alphanum()
                 .min(4)
                 .max(20)
+                .lowercase()
                 .required(),
             password: Joi.string()
                 .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$'))
@@ -142,4 +143,32 @@ const User = {
 
 }
 
-module.exports = { User };
+const Post = {
+    model: PostModel,
+    getPosts: async function () {
+        try {
+            return await PostModel.find({});
+        } catch (error) {
+            throw new Error(error)
+        }
+    },
+    postPost: async function ({ message, created_at, created_by }) {
+
+        try {
+            if (message && created_at && created_at && created_by.username) {
+                const post = new PostModel({
+                    message, created_at, created_by
+                })
+                const newpost = await post.save()
+                return true
+            } else {
+                throw new Error('someting missing')
+            }
+        } catch (error) {
+            console.log('posting failed')
+            throw new Error(error)
+        }
+    }
+}
+
+module.exports = { User, Post };

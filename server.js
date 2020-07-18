@@ -5,7 +5,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const login_route = require('./routes/auth')
 
-const admin = require('./admin');
+// const admin = require('./admin');
 const apiRoute = require('./routes/api');
 
 const cors = require('cors');
@@ -17,7 +17,7 @@ const port = process.env.PORT || 8000;
 app.use(cors());
 app.use(cookieParser());
 
-app.use('/admin', admin);
+// app.use('/admin', admin);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

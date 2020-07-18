@@ -22,7 +22,7 @@
 
 body {
   background: var(--bg);
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 li {

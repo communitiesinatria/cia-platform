@@ -1,6 +1,9 @@
 import React, { useContext, useRef, useState, useEffect } from 'react';
 
 import { GlobalContext } from '../GlobalContext';
+
+//api
+import { post, getPosts } from '../api';
 const Feed: React.FC = () => {
   const { user } = useContext(GlobalContext);
   return (
@@ -15,19 +18,27 @@ const Feed: React.FC = () => {
 };
 
 interface PostsProps {}
-const Posts: React.FC<PostsProps> = () => {
-  const post = {
-    message:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem debitis sit porro placeat repellendus libero, perferendis corporis qui tempore quaerat id veniam magnam ad enim itaque? Dolor quas aliquid quod.',
-    writer: 'xrehpicx',
-    profile_img: 'https://avatars3.githubusercontent.com/u/22765674?v=4',
-    created_on: Date.now(),
+type Post = {
+  message: string;
+  created_by: {
+    username: string;
+    profile_img?: string;
   };
-
-  const [posts, setPosts] = useState([]);
+  created_at: number;
+  vote?: {
+    up: number;
+    down: number;
+  };
+};
+const Posts: React.FC<PostsProps> = () => {
+  const [posts, setPosts] = useState<Array<Post>>([]);
 
   useEffect(() => {
     document.title = 'irenic | Home';
+    getPosts().then((ps) => {
+      console.log(ps);
+      setPosts(ps);
+    });
   }, []);
 
   return (
@@ -41,8 +52,44 @@ const Posts: React.FC<PostsProps> = () => {
           <span>No Posts yet</span>
         </div>
       ) : (
-        <></>
+        posts.map((post, i) => {
+          return <Post key={i} {...post} />;
+        })
       )}
+    </div>
+  );
+};
+
+const Post: React.FC<Post> = ({
+  message,
+  created_at,
+  created_by,
+  children,
+  vote,
+}) => {
+  return (
+    <div className="post">
+      <div className="post-body">
+        <img src={created_by.profile_img} alt="img" />
+        <div className="message">
+          <h4>{created_by.username}</h4>
+          <p>{message}</p>
+        </div>
+      </div>
+      <div className="post-actions">
+        <div className="vote" id="positive">
+          <img
+            src="https://img.icons8.com/windows/24/000000/plus-math.png"
+            alt=""
+          />
+        </div>
+        <div className="vote" id="negative">
+          <img
+            src="https://img.icons8.com/material-two-tone/24/000000/minus--v1.png"
+            alt=""
+          />
+        </div>
+      </div>
     </div>
   );
 };
@@ -53,6 +100,30 @@ interface CreatePostProps {
 const CreatePost: React.FC<CreatePostProps> = ({ profile_img }) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [charcount, setCharcount] = useState(0);
+  const { user } = useContext(GlobalContext);
+  const postPost = async () => {
+    if (
+      charcount >= 10 &&
+      textareaRef.current &&
+      textareaRef.current.value &&
+      user
+    ) {
+      const newpost = {
+        message: textareaRef.current.value.trim(),
+        created_by: {
+          username: user.username,
+          profile_img: user.profile_img,
+        },
+        created_at: Date.now(),
+      };
+      const poststatus = await post(newpost);
+      if (poststatus) {
+        textareaRef.current.value = '';
+        onchange();
+      }
+    }
+  };
+
   const onchange = () => {
     if (textareaRef.current) {
       // adjust height of textarea
@@ -83,7 +154,12 @@ const CreatePost: React.FC<CreatePostProps> = ({ profile_img }) => {
       </form>
       <p>{charcount >= 10 ? charcount : <></>}</p>
 
-      <button className={!(charcount > 10) ? 'disabled-post' : ''}>Post</button>
+      <button
+        onClick={postPost}
+        className={!(charcount >= 10) ? 'disabled-post' : ''}
+      >
+        Post
+      </button>
     </div>
   );
 };

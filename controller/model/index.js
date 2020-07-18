@@ -58,9 +58,25 @@ const TokenSchema = new Schema({
     token: String
 });
 
+const PostSchema = new Schema({
+    message: String,
+    created_at: Date,
+    created_by: {
+        username: String,
+        profile_img: String,
+    },
+    votes: {
+        up: { type: Number, default: 0 },
+        down: { type: Number, default: 0 },
+    }
+});
+
+
 const UserModel = mongoose.model('users', UserSchema);
 const EventModel = mongoose.model('events', EventSchema);
 const ProjectModel = mongoose.model('projects', ProjectSchema);
 const TokenModel = mongoose.model('tokens', TokenSchema);
+const PostModel = mongoose.model('test-posts', PostSchema);
+// const PostModel = mongoose.model('posts', PostSchema);
 
-module.exports = { ProjectModel, EventModel, UserModel, TokenModel, mongoose };
+module.exports = { ProjectModel, EventModel, UserModel, TokenModel, PostModel, mongoose };

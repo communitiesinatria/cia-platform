@@ -11,6 +11,9 @@ import { login } from './api';
 interface LoginProps {}
 
 const LoginPage: React.FC<LoginProps> = () => {
+  useEffect(() => {
+    document.title = 'irenic | Login';
+  }, []);
   return (
     <div className="login-page">
       <Login />

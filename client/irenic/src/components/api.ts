@@ -37,48 +37,6 @@ export async function checkAuth() {
   }
 }
 
-export async function getMembers() {
-  console.log(endpoint);
-  let result;
-  try {
-    result = await api.get(`${endpoint}/api/team`);
-    return result.data;
-  } catch (error) {
-    console.log(error);
-    return [];
-  }
-}
-
-type RegisterationDetails = {
-  email: string;
-  username: string;
-  password: string;
-  github?: string;
-  instagram?: string;
-};
-export async function register({
-  email,
-  username,
-  password,
-  github,
-  instagram,
-}: RegisterationDetails) {
-  let result;
-  try {
-    result = await api.post(`${endpoint}/api/register`, {
-      email,
-      username,
-      password,
-      github,
-      instagram,
-    });
-    return result.data;
-  } catch (error) {
-    console.log(error);
-    return [];
-  }
-}
-
 interface PasswordLogin {
   password: string;
 }
@@ -119,7 +77,46 @@ export async function login(login: LoginDetails) {
   }
 }
 
-function loadDoc(url: string, { username, email, password }: any) {
+type Post = {
+  message: string;
+  created_by: {
+    username: string;
+    profile_img?: string;
+  };
+  created_at: number;
+  vote?: { up: number; down: number };
+};
+export async function post(post: Post) {
+  try {
+    await api({
+      maxRedirects: 0,
+      method: 'post',
+      url: `${endpoint}/auth/posts`,
+      data: post,
+      withCredentials: true,
+    });
+    return true;
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
+}
+
+export async function getPosts(): Promise<Array<Post>> {
+  try {
+    const { data } = await api({
+      maxRedirects: 0,
+      method: 'get',
+      url: `${endpoint}/auth/posts`,
+    });
+    return data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+}
+
+/* function loadDoc(url: string, { username, email, password }: any) {
   const id = email || username;
   const id_name = email ? 'email' : username ? 'username' : '';
 
@@ -137,3 +134,4 @@ function loadDoc(url: string, { username, email, password }: any) {
     xhttp.send(`${id_name}=${id}&password=${password}`);
   });
 }
+ */

@@ -18,6 +18,7 @@
         }
     }
 
+    height: 100vh;
     overflow: hidden;
     border-right: 2px solid whitesmoke;
     display: flex;
@@ -106,6 +107,8 @@
 }
 
 .feed {
+    height: 100vh;
+    overflow-y: scroll;
 
     header {
         width: 100%;
@@ -114,16 +117,75 @@
         display: flex;
         align-items: center;
         position: sticky;
+        background-color: white;
         top: 0;
         border-bottom: 2px solid whitesmoke;
     }
 
     .posts {
         width: 100%;
-        padding: 20px;
+        height: auto;
+    }
+
+    .post {
+        width: 100%;
+        max-height: 250px;
+        overflow: hidden;
+        border-bottom: 2px solid whitesmoke;
+        position: relative;
+
+        img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .post-actions {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: whitesmoke;
+            padding: 8px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .vote {
+            width: 20px;
+            height: 20px;
+            padding: 4px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 50%;
+            }
+        }
+
+    }
+
+
+
+    .post-body {
         display: flex;
-        justify-content: center;
-        align-items: center;
+        padding: 20px;
+        padding-bottom: 40px;
+
+        .message {
+            margin-left: 10px;
+
+            p {
+                white-space: pre;
+            }
+        }
     }
 
     .no-posts {
@@ -145,6 +207,10 @@
 
     padding: 20px;
     border-bottom: 2px solid whitesmoke;
+    background: white;
+    z-index: 100;
+    position: sticky;
+    top: 0;
 
     form {
         display: flex;
@@ -155,14 +221,14 @@
     form>img {
         margin-bottom: auto;
         border-radius: 50%;
+        object-fit: cover;
         width: 40px;
         height: 40px;
-        object-fit: cover;
-        margin-right: 10px;
     }
 
     .compose {
         width: 100%;
+        margin-left: 10px;
 
         textarea {
             height: 100%;
@@ -329,9 +395,10 @@
     }
 
     .nav {
-        position: absolute;
+        position: fixed;
         bottom: 0;
         width: 100%;
+        height: 70px;
         background: white;
         border-top: 2px solid whitesmoke;
         display: flex;
@@ -348,6 +415,10 @@
         }
 
         header {
+            display: none;
+        }
+
+        #settings-icon {
             display: none;
         }
 

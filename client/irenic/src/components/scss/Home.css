@@ -8,6 +8,7 @@
 }
 
 .nav {
+  height: 100vh;
   overflow: hidden;
   border-right: 2px solid whitesmoke;
   display: -webkit-box;
@@ -129,6 +130,11 @@
   font-weight: 600;
 }
 
+.feed {
+  height: 100vh;
+  overflow-y: scroll;
+}
+
 .feed header {
   width: 100%;
   height: 50px;
@@ -141,22 +147,88 @@
           align-items: center;
   position: -webkit-sticky;
   position: sticky;
+  background-color: white;
   top: 0;
   border-bottom: 2px solid whitesmoke;
 }
 
 .feed .posts {
   width: 100%;
-  padding: 20px;
+  height: auto;
+}
+
+.feed .post {
+  width: 100%;
+  max-height: 250px;
+  overflow: hidden;
+  border-bottom: 2px solid whitesmoke;
+  position: relative;
+}
+
+.feed .post img {
+  width: 40px;
+  height: 40px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+}
+
+.feed .post .post-actions {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: whitesmoke;
+  padding: 8px 18px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.feed .post .vote {
+  width: 20px;
+  height: 20px;
+  padding: 4px;
+  border-radius: 50%;
+  background: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.feed .post .vote img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+}
+
+.feed .post-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 20px;
+  padding-bottom: 40px;
+}
+
+.feed .post-body .message {
+  margin-left: 10px;
+}
+
+.feed .post-body .message p {
+  white-space: pre;
 }
 
 .feed .no-posts {
@@ -186,6 +258,11 @@
 .create-post {
   padding: 20px;
   border-bottom: 2px solid whitesmoke;
+  background: white;
+  z-index: 100;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
 }
 
 .create-post form {
@@ -201,15 +278,15 @@
 .create-post form > img {
   margin-bottom: auto;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
   -o-object-fit: cover;
      object-fit: cover;
-  margin-right: 10px;
+  width: 40px;
+  height: 40px;
 }
 
 .create-post .compose {
   width: 100%;
+  margin-left: 10px;
 }
 
 .create-post .compose textarea {
@@ -405,9 +482,10 @@
     width: 100%;
   }
   .nav {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
+    height: 70px;
     background: white;
     border-top: 2px solid whitesmoke;
     display: -webkit-box;
@@ -431,6 +509,9 @@
     display: none;
   }
   .nav header {
+    display: none;
+  }
+  .nav #settings-icon {
     display: none;
   }
   .nav .nav-links {

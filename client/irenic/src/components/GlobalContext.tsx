@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 
 // Api
-import { checkAuth, login } from './api';
+// import { checkAuth, login } from './api';
 //types
 import { User, GlobalContextValue } from './ContextTypes';
 
