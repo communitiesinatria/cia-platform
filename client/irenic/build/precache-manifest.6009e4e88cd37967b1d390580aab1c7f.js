@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e59ab7f4a2fc1e057c02844400cea970",
+    "revision": "06c60e0f29d74dac14b787e6d90fb006",
     "url": "/irenic/index.html"
   },
   {
-    "revision": "f288561d056450e60aa4",
-    "url": "/irenic/static/css/main.f5525382.chunk.css"
+    "revision": "231d409a05a72a6019d0",
+    "url": "/irenic/static/css/main.a17d7246.chunk.css"
   },
   {
     "revision": "fc9631ca8a02e0fc8011",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/irenic/static/js/2.4200bee1.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "f288561d056450e60aa4",
-    "url": "/irenic/static/js/main.24c24b45.chunk.js"
+    "revision": "231d409a05a72a6019d0",
+    "url": "/irenic/static/js/main.fe7a53c2.chunk.js"
   },
   {
     "revision": "bef9fff05ff1da3f9af1",

@@ -37,7 +37,7 @@ export async function register({ email, username, password, github, instagram })
 
 export async function login({ username, email, password }) {
     let result;
-try {
+    try {
         //result = await api.post(`${endpoint}/auth`, { email, username, password });
 
         result = await api({
@@ -49,7 +49,7 @@ try {
 
         //result = await loadDoc(`${endpoint}/auth`, { email, username, password })
 
-        console.log(result);
+        
         if (result.status === 400) {
             return [{ message: result.data }]
         } else if (result.status === 200) {
@@ -65,7 +65,9 @@ try {
         return [{ message: 'invalid username or password' }]
     }
 }
-
+export function redirectIrenic(){
+    window.location.href = (`${endpoint}/irenic/`);
+}
 /* function loadDoc(url, { username, email, password }) {
 
     const id = email || username;

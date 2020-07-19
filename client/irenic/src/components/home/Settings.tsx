@@ -23,9 +23,19 @@ const Settings: React.FC<ProfileProps> = () => {
 
   return (
     <div className="settings">
-      <Switch state={switch1} onswitch={dispatchswitch1} />
+      {/* <Switch state={switch1} onswitch={dispatchswitch1} /> */}
+      <Setting type="expand" title={'change username'}></Setting>
+      <Setting type="expand" title={'change password'}></Setting>
     </div>
   );
+};
+
+interface SettingProps {
+  type: 'expand' | null;
+  title: string;
+}
+const Setting: React.FC<SettingProps> = ({ title, type, children }) => {
+  return <div className="setting"></div>;
 };
 
 export default Settings;
