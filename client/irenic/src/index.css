@@ -25,6 +25,7 @@ body {
   /* overflow: hidden; */
 }
 
+
 li {
   cursor: pointer;
 }
@@ -53,6 +54,7 @@ button {
   background-color: var(--accent-color);
   font-size: .9rem;
   color: black;
+  cursor: pointer;
 }
 
 

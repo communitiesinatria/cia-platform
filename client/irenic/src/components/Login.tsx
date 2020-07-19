@@ -32,16 +32,24 @@ const Login = () => {
     e.preventDefault();
     const username_email_v = username_email.current?.value;
     const password_v = password.current?.value;
-    if (username_email_v && password_v)
-      login({ username: username_email_v, password: password_v }).then(
-        (message) => {
-          if (typeof message === 'string') {
-            window.location.reload();
-          } else {
-            setVailditymessage(message);
-          }
+    if (username_email_v && password_v) {
+      const handleLogin = (message: any) => {
+        if (typeof message === 'string') {
+          window.location.reload();
+        } else {
+          setVailditymessage(message);
         }
-      );
+      };
+      if (!ValidateEmail(username_email_v)) {
+        login({ username: username_email_v, password: password_v }).then(
+          handleLogin
+        );
+      } else {
+        login({ email: username_email_v, password: password_v }).then(
+          handleLogin
+        );
+      }
+    }
   };
 
   return (
@@ -115,5 +123,12 @@ const TextView: React.FC<TextViewProps> = ({
     </div>
   );
 };
+
+function ValidateEmail(mail: string) {
+  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+    return true;
+  }
+  return false;
+}
 
 export default LoginPage;

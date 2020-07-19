@@ -6,7 +6,7 @@ const route = require('express').Router();
 // User authentication route
 route.post('/', async (req, res) => {
 	if ((req.body.email || req.body.username) && req.body.password) {
-		const user = (await User.authenticateUserCredentials(req.body))
+		const user = await User.authenticateUserCredentials(req.body)
 		if (user) {
 			res.send(String(await signAccessToken(user)));
 		} else {
@@ -21,6 +21,7 @@ route.post('/', async (req, res) => {
 
 // get router details
 route.get('/user', autherize, async (req, res) => {
+
 	if (req.user_id) {
 		res.send(JSON.stringify(await User.getUserData(req.user_id)));
 	} else {
@@ -29,9 +30,17 @@ route.get('/user', autherize, async (req, res) => {
 });
 
 route.post('/posts', autherize, async (req, res) => {
+
+	try {
+		res.send(JSON.stringify(await Post.postPost(req.body)));
+	} catch (error) {
+		res.status(401).send(error);
+	}
+});
+route.put('/posts', autherize, async (req, res) => {
 	if (req.user_id) { // if autherized
 		try {
-			res.send(JSON.stringify(await Post.postPost(req.body)));
+
 		} catch (error) {
 			res.status(401).send(error);
 		}
@@ -54,7 +63,9 @@ async function autherize(req, res, next) {
 	if (req.cookies.token) {
 
 		try {
-			req.user_id = (await verifyToken(req.cookies)).aud
+			const payload = await verifyToken(req.cookies)
+			req.user_id = payload._id
+			req.username = payload.username
 			next();
 		} catch (error) {
 			res.status(401).send('Token invalid')

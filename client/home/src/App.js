@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 import Home from './Components/Home';
 import Events from './Components/Events';
@@ -13,7 +13,13 @@ import './css/App.css';
 import lighlogo from './assets/light-logo.png' */
 import fullimg from './assets/loginpage.svg'
 
+import Cookies from 'universal-cookie';
+
+
 function App() {
+  const cookies = new Cookies();
+  const token = cookies.get('token');
+
   return (
     <div className="app">
       <Router>
@@ -28,7 +34,7 @@ function App() {
             <Team />
           </Route>
           <Route path="/account">
-            <Account />
+            {!token ? <Account /> : <Redirect to="/irenic" />}
           </Route>
           <Route>
             <Page404 />
@@ -39,7 +45,7 @@ function App() {
   );
 }
 
-function Page404(){
+function Page404() {
 
   return (
     <div className="page404">

@@ -108,7 +108,10 @@
 
 .feed {
     height: 100vh;
-    overflow-y: scroll;
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
 
     header {
         width: 100%;
@@ -124,7 +127,8 @@
 
     .posts {
         width: 100%;
-        height: auto;
+        height: 100%;
+        overflow: scroll;
     }
 
     .post {
@@ -145,11 +149,10 @@
             position: absolute;
             bottom: 0;
             width: 100%;
-            background-color: whitesmoke;
+            background: whitesmoke;
             padding: 8px 18px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
         }
 
         .vote {
@@ -161,6 +164,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            cursor: pointer;
 
             img {
                 width: 100%;
@@ -222,8 +226,12 @@
         margin-bottom: auto;
         border-radius: 50%;
         object-fit: cover;
-        width: 40px;
+        width: 40px !important;
         height: 40px;
+    }
+
+    &>p {
+        filter: contrast(.01);
     }
 
     .compose {
@@ -392,11 +400,13 @@
 
     .feed {
         width: 100%;
+        padding-bottom: 70px;
     }
 
     .nav {
         position: fixed;
         bottom: 0;
+        z-index: 100;
         width: 100%;
         height: 70px;
         background: white;

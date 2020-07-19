@@ -65,9 +65,10 @@ const PostSchema = new Schema({
         username: String,
         profile_img: String,
     },
+    parent_post: { type: String, default: '' },
     votes: {
-        up: { type: Number, default: 0 },
-        down: { type: Number, default: 0 },
+        up: { type: [String], default: [] },
+        down: { type: [String], default: [] },
     }
 });
 

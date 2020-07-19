@@ -1,46 +1,29 @@
 import React, { useContext, useRef, useState, useEffect } from 'react';
 
 import { GlobalContext } from '../GlobalContext';
-
+import { PostsContext, PostsContextProvider } from './PostsContext';
+import { Post as PostType } from '../ContextTypes';
 //api
 import { post, getPosts } from '../api';
 const Feed: React.FC = () => {
-  const { user } = useContext(GlobalContext);
   return (
     <div className="feed">
       <header>
         <h3>Home</h3>
       </header>
-      <CreatePost profile_img={user?.profile_img} />
-      <Posts />
+      <PostsContextProvider>
+        <CreatePost />
+        <Posts />
+      </PostsContextProvider>
     </div>
   );
 };
 
-interface PostsProps {}
-type Post = {
-  message: string;
-  created_by: {
-    username: string;
-    profile_img?: string;
-  };
-  created_at: number;
-  vote?: {
-    up: number;
-    down: number;
-  };
-};
-const Posts: React.FC<PostsProps> = () => {
-  const [posts, setPosts] = useState<Array<Post>>([]);
-
+const Posts: React.FC = () => {
+  const { posts } = useContext(PostsContext);
   useEffect(() => {
     document.title = 'irenic | Home';
-    getPosts().then((ps) => {
-      console.log(ps);
-      setPosts(ps);
-    });
   }, []);
-
   return (
     <div className="posts">
       {!posts.length ? (
@@ -52,15 +35,13 @@ const Posts: React.FC<PostsProps> = () => {
           <span>No Posts yet</span>
         </div>
       ) : (
-        posts.map((post, i) => {
-          return <Post key={i} {...post} />;
-        })
+        posts.map((post: PostType, i: number) => <Post key={i} {...post} />)
       )}
     </div>
   );
 };
 
-const Post: React.FC<Post> = ({
+const Post: React.FC<PostType> = ({
   message,
   created_at,
   created_by,
@@ -94,13 +75,13 @@ const Post: React.FC<Post> = ({
   );
 };
 
-interface CreatePostProps {
-  profile_img: string | undefined;
-}
-const CreatePost: React.FC<CreatePostProps> = ({ profile_img }) => {
+const CreatePost: React.FC = () => {
+  const { updatePosts } = useContext(PostsContext);
+
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [charcount, setCharcount] = useState(0);
   const { user } = useContext(GlobalContext);
+
   const postPost = async () => {
     if (
       charcount >= 10 &&
@@ -117,6 +98,7 @@ const CreatePost: React.FC<CreatePostProps> = ({ profile_img }) => {
         created_at: Date.now(),
       };
       const poststatus = await post(newpost);
+      updatePosts && updatePosts();
       if (poststatus) {
         textareaRef.current.value = '';
         onchange();
@@ -138,11 +120,12 @@ const CreatePost: React.FC<CreatePostProps> = ({ profile_img }) => {
       }
     }
   };
+  useEffect(onchange);
 
   return (
     <div className="create-post">
       <form>
-        <img src={profile_img} alt="profile_img" />
+        <img src={user?.profile_img} alt="profile_img" />
         <div className="compose">
           <textarea
             maxLength={255}

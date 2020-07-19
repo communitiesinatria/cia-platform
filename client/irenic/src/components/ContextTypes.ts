@@ -19,3 +19,16 @@ export interface GlobalContextValue {
   user?: User;
   setUser?: React.Dispatch<React.SetStateAction<User | undefined>>;
 }
+
+export interface Post {
+  message: string;
+  created_by: {
+    username: string;
+    profile_img?: string;
+  };
+  created_at: number;
+  vote?: {
+    up: number;
+    down: number;
+  };
+}

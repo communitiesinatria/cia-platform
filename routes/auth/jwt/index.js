@@ -10,22 +10,21 @@ module.exports = {
       jwt.verify(token, secret, (err, decoded) => {
         if (err) rej(err);
 
-        
+
         res(decoded);
       })
 
     })
   },
-  signAccessToken: ({ _id }) => {
+  signAccessToken: ({ _id, username }) => {
 
     return new Promise((resolve, reject) => {
-      const payload = {};
+      const payload = { username, _id };
       const secret = process.env.ACCESS_TOKEN_KEY || process.env.CRPYT_KEY;
-      
+
       const options = {
         expiresIn: '86400s',
         issuer: 'CommunitiesInAtria',
-        audience: _id + '',
       }
       jwt.sign(payload, secret, options, (err, token) => {
         if (err) {
