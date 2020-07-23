@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "06c60e0f29d74dac14b787e6d90fb006",
+    "revision": "5121b9cc41e982bae06174a35bc602d5",
     "url": "/irenic/index.html"
   },
   {
-    "revision": "231d409a05a72a6019d0",
+    "revision": "062c9fcfa72bd205c507",
     "url": "/irenic/static/css/main.a17d7246.chunk.css"
   },
   {
@@ -16,16 +16,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/irenic/static/js/2.4200bee1.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "231d409a05a72a6019d0",
-    "url": "/irenic/static/js/main.fe7a53c2.chunk.js"
+    "revision": "062c9fcfa72bd205c507",
+    "url": "/irenic/static/js/main.4da2ba65.chunk.js"
   },
   {
     "revision": "bef9fff05ff1da3f9af1",
     "url": "/irenic/static/js/runtime-main.646b3e01.js"
   },
   {
-    "revision": "dc4ab841abcc650b19467cdfc3c715d0",
-    "url": "/irenic/static/media/irenic.dc4ab841.svg"
+    "revision": "66e07cdc2efae83838b003ee03003125",
+    "url": "/irenic/static/media/irenic.66e07cdc.svg"
   },
   {
     "revision": "f5c45a130c1cfcbf0ab1e5ba8b5dcd61",

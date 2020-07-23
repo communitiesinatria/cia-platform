@@ -5,7 +5,6 @@ const axios = require('axios')
 
 router.get('/testing', async (req, res) => {
     res.send(JSON.stringify((await User._ls())));
-
 });
 
 router.get('/team', async (req, res) => {

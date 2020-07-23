@@ -31,6 +31,15 @@ const User = {
         return user;
 
     },
+    updateUser: async function (_id, data) {
+        try {
+            await UserModel.updateOne({ _id }, data);
+            return !!1
+        } catch (error) {
+            console.log(error);
+            return !1
+        }
+    },
     authenticateUserCredentials: async function ({ email, username, password }) {
 
         console.log(email, username, password);
@@ -45,7 +54,6 @@ const User = {
         if (!user) return !1;
 
         if (x.decrypt(user.password) === password) {
-            console.log('authenticated')
             return user;
 
         } else {
@@ -67,7 +75,6 @@ const User = {
         });
     },
     adduser: async function ({ email, username, password, github, instagram, profile_img }) {
-        console.log('adding user');
         if (!profile_img) {
             if (github) {
                 profile_img = (await api.get(`https://api.github.com/users/${github}`)).data.avatar_url;
@@ -81,8 +88,7 @@ const User = {
         if (email && username && password) {
             const user = {
                 email, username,
-                name: username,
-                password: x.encrypt(password),
+                password,
                 github, instagram,
                 profile_img
             }
@@ -93,11 +99,14 @@ const User = {
         return { details: [{ message: 'some field missing' }] }
     },
 
-    userexist: async (email) => {
-        const user = await UserModel.findOne({ email });
-        if (user) {
+    userexist: async (email, username) => {
+        const emailcheck = await UserModel.findOne({ email });
+        if (emailcheck) {
             return [{ message: 'User exist' }]
         } else {
+            const usernamecheck = await UserModel.findOne({ username });
+            if (usernamecheck)
+                return [{ message: 'Username taken' }]
             return false
         }
     },
@@ -111,13 +120,14 @@ const User = {
                 .lowercase()
                 .required(),
             password: Joi.string()
+                .min(6)
+                .max(20)
                 .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$'))
                 .required(),
             email: Joi.string()
                 .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } })
                 .required(),
         });
-
         let value;
         try {
             value = await schema.validateAsync({ email, username, password });
@@ -128,7 +138,7 @@ const User = {
         if (!github && !instagram)
             return [{ message: 'you must add either github or instagram username' }]
 
-        const exists = await this.userexist(email);
+        const exists = await this.userexist(email, username);
         console.log('user exists: ', exists);
         if (exists) return exists;
 

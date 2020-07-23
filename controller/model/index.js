@@ -1,6 +1,7 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
 const roles = require('../../roles.json')
+const x = require('../../crypt')
 
 //Set up default mongoose connection
 const mongoDB = process.env.CIA_DATA_DB;
@@ -34,7 +35,8 @@ const UserSchema = new Schema({
 });
 
 UserSchema.pre('save', async function () {
-    this.name = this.username;
+    if (!this.name) this.name = this.username;
+    this.password = x.encrypt(this.password);
     console.log(this);
 });
 

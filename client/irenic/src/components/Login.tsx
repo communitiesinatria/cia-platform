@@ -66,7 +66,13 @@ const Login = () => {
       </div>
 
       <button onClick={submit}>Log in</button>
-      <span>sign up</span>
+      <span
+        onClick={() => {
+          window.location.pathname = '/account';
+        }}
+      >
+        sign up
+      </span>
     </form>
   );
 };
@@ -111,6 +117,7 @@ const TextView: React.FC<TextViewProps> = ({
         inputDom?.current?.removeEventListener('blur', onblur);
       } catch (e) {}
     };
+    // eslint-disable-next-line
   }, []);
 
   return (
@@ -125,6 +132,7 @@ const TextView: React.FC<TextViewProps> = ({
 };
 
 function ValidateEmail(mail: string) {
+  // eslint-disable-next-line
   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
     return true;
   }
