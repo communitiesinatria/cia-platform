@@ -14,7 +14,10 @@ const log = require('./log');
 const port = process.env.PORT || 8000;
 
 // dont rearrange the app.use order
-app.use(cors());
+app.use(cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+}));
 app.use(cookieParser());
 
 app.use('/admin', admin);
