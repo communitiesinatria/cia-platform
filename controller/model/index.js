@@ -1,9 +1,17 @@
-require('dotenv').config();
+try {
+    require('dotenv').config();
+} catch (error) {
+    console.log('.env module not needed');
+}
 const mongoose = require('mongoose');
 const roles = require('../../roles.json')
 const x = require('../../crypt')
 
 //Set up default mongoose connection
+if (!process.env.CIA_DATA_DB) {
+    console.log('MONGO URL NOT SPECIFIED IN .env file')
+    process.exit();
+}
 const mongoDB = process.env.CIA_DATA_DB;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.set('useFindAndModify', false);
