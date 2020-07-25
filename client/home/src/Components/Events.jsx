@@ -43,7 +43,12 @@ function EventMain({ title, desc, register, event_img, date }) {
         <p>{desc}</p>
         <span className="date-time">{date}</span>
 
-        <a target="_blank" href={register} className="register-btn">
+        <a
+          target="_blank"
+          href={register}
+          className="register-btn"
+          rel="noopener noreferrer"
+        >
           <span>Register</span>
         </a>
       </div>
@@ -104,13 +109,12 @@ function timeConverter(date) {
     'Nov',
     'Dec',
   ];
-  var year = a.getFullYear();
-  var month = months[a.getMonth()];
-  var date = a.getDate();
-  var hour = a.getHours();
-  var min = a.getMinutes();
-  var sec = a.getSeconds();
-  var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min;
+  const year = a.getFullYear();
+  const month = months[a.getMonth()];
+  const d = a.getDate();
+  const hour = a.getHours();
+  const min = a.getMinutes();
+  const time = d + ' ' + month + ' ' + year + ' ' + hour + ':' + min;
   return time;
 }
 
@@ -131,7 +135,9 @@ function EventView() {
 
         <div className="register-btn">
           <span>
-            <a href={event.register}>Register</a>
+            <a target="_blank" rel="noopener noreferrer" href={event.register}>
+              Register
+            </a>
           </span>
         </div>
       </div>
