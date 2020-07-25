@@ -13,7 +13,7 @@ const api = axios.create({
 const endpoint = window.location.origin === 'http://localhost:3000' ? 'http://localhost:8000' : window.location.origin;
 
 export async function getMembers() {
-    console.log(endpoint);
+    
     let result;
     try {
         result = await api.get(`${endpoint}/api/team`);

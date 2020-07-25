@@ -51,7 +51,6 @@ router.get('/team', async (req, res) => {
 })
 
 router.post('/register', async (req, res) => {
-
     const result = (await User.registeruser(req.body));
     res.send(JSON.stringify(result));
 })
