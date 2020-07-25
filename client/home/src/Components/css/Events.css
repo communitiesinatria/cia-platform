@@ -120,6 +120,13 @@
   transition: background 200ms ease;
 }
 
+.all-events .event .about p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
 .all-events .event:hover {
   -webkit-transform: scale(1.02);
           transform: scale(1.02);

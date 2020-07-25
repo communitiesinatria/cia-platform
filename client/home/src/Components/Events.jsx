@@ -19,7 +19,7 @@ export default function Events() {
       <Route path="/events" exact={true}>
         <div className="events">
           <div className="this-week">
-            <EventMain {...events[0]} />
+            <EventMain {...events[1]} />
           </div>
           <AllEvents events={events} />
         </div>
@@ -41,7 +41,7 @@ function EventMain({ title, desc, register, event_img, date }) {
       <div className="about">
         <h1>{title}</h1>
         <p>{desc}</p>
-        <span className="date-time">{date}</span>
+        <span className="date-time">{timeConverter(date)}</span>
 
         <a
           target="_blank"
