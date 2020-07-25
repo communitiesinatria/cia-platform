@@ -44,7 +44,9 @@ export default function Home() {
         <ul>
           <li onClick={() => history.push({ pathname: '/events' })}>Events</li>
           <li onClick={() => history.push({ pathname: '/team' })}>Team</li>
-          <li onClick={() => history.push({ pathname: '/account' })}>Account</li>
+          {/* <li onClick={() => history.push({ pathname: '/account' })}>
+            Account
+          </li> */}
         </ul>
       </nav>
       <Header />
@@ -71,7 +73,7 @@ export function Header() {
     </header>
   );
 }
-export  const Message = ({ title, message }) => (
+export const Message = ({ title, message }) => (
   <div className="message">
     <h1>{title}</h1>
     <p>{message}</p>
