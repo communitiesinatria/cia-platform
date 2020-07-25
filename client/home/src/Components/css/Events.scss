@@ -29,6 +29,7 @@
             }
 
 
+
             .date-time {
 
                 font-size: .8rem;
@@ -94,6 +95,13 @@
             background: rgba(255, 255, 255, 0.856);
 
             transition: background 200ms ease;
+
+            p {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 100%;
+            }
         }
 
         &:hover {
