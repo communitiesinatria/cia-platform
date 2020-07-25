@@ -6,6 +6,8 @@ try {
 const mongoose = require('mongoose');
 const roles = require('../../roles.json')
 const x = require('../../crypt')
+const bcrypt = require('bcrypt');
+
 
 //Set up default mongoose connection
 if (!process.env.CIA_DATA_DB) {
@@ -44,8 +46,9 @@ const UserSchema = new Schema({
 
 UserSchema.pre('save', async function () {
     if (!this.name) this.name = this.username;
+
     this.password = x.encrypt(this.password);
-    console.log(this);
+    
 });
 
 const EventSchema = new Schema({
