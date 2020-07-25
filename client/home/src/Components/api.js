@@ -13,10 +13,22 @@ const api = axios.create({
 const endpoint = window.location.origin === 'http://localhost:3000' ? 'http://localhost:8000' : window.location.origin;
 
 export async function getMembers() {
-    
+
     let result;
     try {
         result = await api.get(`${endpoint}/api/team`);
+        return result.data;
+    } catch (error) {
+        console.log(error);
+        return [];
+    }
+}
+
+export async function getEvents() {
+
+    let result;
+    try {
+        result = await api.get(`${endpoint}/api/events`);
         return result.data;
     } catch (error) {
         console.log(error);
@@ -49,7 +61,7 @@ export async function login({ username, email, password }) {
 
         //result = await loadDoc(`${endpoint}/auth`, { email, username, password })
 
-        
+
         if (result.status === 400) {
             return [{ message: result.data }]
         } else if (result.status === 200) {
@@ -65,7 +77,7 @@ export async function login({ username, email, password }) {
         return [{ message: 'invalid username or password' }]
     }
 }
-export function redirectIrenic(){
+export function redirectIrenic() {
     window.location.href = (`${endpoint}/irenic/`);
 }
 /* function loadDoc(url, { username, email, password }) {
