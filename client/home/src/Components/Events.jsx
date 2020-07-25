@@ -19,7 +19,7 @@ export default function Events() {
       <Route path="/events" exact={true}>
         <div className="events">
           <div className="this-week">
-            <EventMain {...events[1]} />
+            <EventMain {...events[0]} />
           </div>
           <AllEvents events={events} />
         </div>
