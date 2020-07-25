@@ -1,10 +1,14 @@
 const router = require('express').Router()
-const { User } = require('../../controller')
+const { User, Event } = require('../../controller')
 const roles = require('../../roles.json')
 const axios = require('axios')
 
 router.get('/testing', async (req, res) => {
     res.send(JSON.stringify((await User._ls())));
+});
+
+router.get('/events', async (req, res) => {
+    res.send(JSON.stringify((await Event._ls())));
 });
 
 router.get('/team', async (req, res) => {

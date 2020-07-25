@@ -3,6 +3,7 @@ const axios = require('axios');
 const { setupCache } = require('axios-cache-adapter');
 const Joi = require('@hapi/joi');
 const x = require('../crypt');
+const bcrypt = require('bcrypt');
 
 const cache = setupCache({
     maxAge: 15 * 60 * 1000
@@ -12,6 +13,14 @@ const cache = setupCache({
 const api = axios.create({
     adapter: cache.adapter
 })
+
+const Event = {
+    model: EventModel,
+    _ls: async function (filter = {}) {
+        const results = await this.model.find(filter);
+        return results;
+    },
+}
 
 const User = {
     model: UserModel,
@@ -93,7 +102,6 @@ const User = {
                 profile_img
             }
             const newuser = new UserModel(user);
-            console.log('user added');
             return await newuser.save();
         }
         return { details: [{ message: 'some field missing' }] }
@@ -139,7 +147,7 @@ const User = {
             return [{ message: 'you must add either github or instagram username' }]
 
         const exists = await this.userexist(email, username);
-        console.log('user exists: ', exists);
+
         if (exists) return exists;
 
         try {
@@ -175,10 +183,9 @@ const Post = {
                 throw new Error('someting missing')
             }
         } catch (error) {
-            console.log('posting failed')
             throw new Error(error)
         }
     }
 }
 
-module.exports = { User, Post };
+module.exports = { User, Post, Event };
