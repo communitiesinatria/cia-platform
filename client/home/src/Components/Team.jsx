@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import Loading from './Loading';
 //styles
 import './css/Teams.css';
 
@@ -10,20 +10,6 @@ import headerImage from '../assets/team.svg';
 import { getMembers } from './api';
 
 export default function Team() {
-  return (
-    <div className="team">
-      <header>
-        <div className="bg-img">
-          <img src={headerImage} alt="" />
-        </div>
-        <h1>Our Team</h1>
-      </header>
-      <MemberGrid />
-    </div>
-  );
-}
-
-function MemberGrid() {
   const [members, setmembers] = useState([]);
   useEffect(() => {
     getMembers().then((d) => {
@@ -45,6 +31,47 @@ function MemberGrid() {
       });
     };
   }, []);
+  return (
+    <>
+      {members.length ? (
+        <div className="team">
+          <header>
+            <div className="bg-img">
+              <img src={headerImage} alt="" />
+            </div>
+            <h1>Our Team</h1>
+          </header>
+          <MemberGrid members={members} />
+        </div>
+      ) : (
+        <Loading />
+      )}
+    </>
+  );
+}
+
+function MemberGrid({ members }) {
+  /* const [members, setmembers] = useState([]);
+  useEffect(() => {
+    getMembers().then((d) => {
+      console.log(d);
+      setmembers(d);
+    });
+
+    const members = document.querySelectorAll('.member');
+
+    members.forEach((member) => {
+      member.addEventListener('mouseover', () => {
+        member.scrollIntoView();
+      });
+    });
+
+    return () => {
+      members.forEach((member) => {
+        member.removeEventListener('mouseover', () => {});
+      });
+    };
+  }, []); */
 
   return (
     <div className="members">
