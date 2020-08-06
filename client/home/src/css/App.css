@@ -389,7 +389,8 @@ footer .logo img {
 }
 
 footer .stuff {
-  max-width: 700px;
+  width: 100%;
+  max-width: 1000px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -477,5 +478,26 @@ a {
   width: 30px;
   height: 30px;
   margin-right: 14px;
+}
+
+.react-loading-page {
+  width: 100vw;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-animation: loading 2s infinite ease;
+          animation: loading 2s infinite ease;
+}
+
+.react-loading-page svg {
+  width: 200px;
+  height: 200px;
 }
 /*# sourceMappingURL=App.css.map */
