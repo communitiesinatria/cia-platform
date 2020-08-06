@@ -13,7 +13,7 @@ export default function Team() {
   const [members, setmembers] = useState([]);
   useEffect(() => {
     getMembers().then((d) => {
-      console.log(d);
+      // console.log(d);
       setmembers(d);
     });
 
@@ -31,6 +31,9 @@ export default function Team() {
       });
     };
   }, []);
+
+  console.log(members.length);
+
   return (
     <>
       {members.length ? (
@@ -51,28 +54,6 @@ export default function Team() {
 }
 
 function MemberGrid({ members }) {
-  /* const [members, setmembers] = useState([]);
-  useEffect(() => {
-    getMembers().then((d) => {
-      console.log(d);
-      setmembers(d);
-    });
-
-    const members = document.querySelectorAll('.member');
-
-    members.forEach((member) => {
-      member.addEventListener('mouseover', () => {
-        member.scrollIntoView();
-      });
-    });
-
-    return () => {
-      members.forEach((member) => {
-        member.removeEventListener('mouseover', () => {});
-      });
-    };
-  }, []); */
-
   return (
     <div className="members">
       {members.map((member, i) => (

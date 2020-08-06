@@ -27,7 +27,11 @@ function App() {
   const token = cookies.get('token');
   useEffect(() => {
     try {
-      document.querySelector('.loading-page').style.display = 'none';
+      setTimeout(() =>
+        document
+          .querySelectorAll('.loading-page')
+          .forEach((e) => (e.style.display = 'none'))
+      );
     } catch (error) {}
   }, []);
 

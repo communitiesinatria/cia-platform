@@ -293,7 +293,8 @@ footer {
     }
 
     .stuff {
-        max-width: 700px;
+        width: 100%;
+        max-width: 1000px;
         display: flex;
         padding: 10px;
         justify-content: space-around;
@@ -371,3 +372,17 @@ a {
     }
 }
 
+.react-loading-page {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: loading 2s infinite ease;
+
+    svg {
+        // padding: 20px;
+        width: 200px;
+        height: 200px;
+    }
+}
