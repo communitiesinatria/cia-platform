@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/static/css/main.16fb14e8.chunk.css",
+    "main.js": "/static/js/main.426d279f.chunk.js",
+    "main.js.map": "/static/js/main.426d279f.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.09b85ec0.js",
+    "runtime-main.js.map": "/static/js/runtime-main.09b85ec0.js.map",
+    "static/js/2.c709b945.chunk.js": "/static/js/2.c709b945.chunk.js",
+    "static/js/2.c709b945.chunk.js.map": "/static/js/2.c709b945.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.bdebc609ad37ff5faf463a3bd1218190.js": "/precache-manifest.bdebc609ad37ff5faf463a3bd1218190.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.16fb14e8.chunk.css.map": "/static/css/main.16fb14e8.chunk.css.map",
+    "static/js/2.c709b945.chunk.js.LICENSE.txt": "/static/js/2.c709b945.chunk.js.LICENSE.txt",
+    "static/media/black-logo.svg": "/static/media/black-logo.8d67271a.svg",
+    "static/media/community.svg": "/static/media/community.33a04fa0.svg",
+    "static/media/green-logo.svg": "/static/media/green-logo.25828198.svg",
+    "static/media/loginpage.svg": "/static/media/loginpage.8f6a040b.svg",
+    "static/media/philosophy.svg": "/static/media/philosophy.b9bfba30.svg",
+    "static/media/resources.svg": "/static/media/resources.ecb7d184.svg",
+    "static/media/team.svg": "/static/media/team.781ff7d2.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.09b85ec0.js",
+    "static/js/2.c709b945.chunk.js",
+    "static/css/main.16fb14e8.chunk.css",
+    "static/js/main.426d279f.chunk.js"
+  ]
+}
