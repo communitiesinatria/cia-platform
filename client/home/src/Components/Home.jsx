@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import {
   BrowserRouter as Router,
   useHistory,
+  Link,
   Route,
   Switch,
 } from 'react-router-dom';
@@ -11,11 +12,13 @@ import communitylogo from '../assets/community.svg';
 import aboutimg1 from '../assets/resources.svg';
 import philosophyimg from '../assets/philosophy.svg';
 
+import green_cia_logo from '../assets/brand/green-logo.svg';
+import black_cia_logo from '../assets/brand/black-logo.svg';
 export default function Home() {
   const history = useHistory();
   useEffect(() => {
     const nav = document.querySelector('.app>nav');
-    const h1 = document.querySelector('.app>nav>h1');
+    const h1 = document.querySelector('.app>nav>.logo>h1');
     function settext(text) {
       if (h1.textContent !== text) {
         h1.style.opacity = 0;
@@ -37,16 +40,17 @@ export default function Home() {
 
     return () => (window.onscroll = null);
   });
+
   return (
     <>
       <nav>
-        <h1>Communities in Atria</h1>
+        <div className="logo">
+          {/* <img src={black_cia_logo} alt="" /> */}
+          <h1>Communities in Atria</h1>
+        </div>
         <ul>
           <li onClick={() => history.push({ pathname: '/events' })}>Events</li>
           <li onClick={() => history.push({ pathname: '/team' })}>Team</li>
-          {/* <li onClick={() => history.push({ pathname: '/account' })}>
-            Account
-          </li> */}
         </ul>
       </nav>
       <Header />
@@ -156,31 +160,98 @@ export function Philosophy() {
 export function Footer() {
   return (
     <footer>
-      <h1>Contact</h1>
-      <p>
-        Mail us at <a href="mailto:cia@atria.edu">cia@atria.edu</a>
-      </p>
-      <p id="phone">
-        call us at <a href="tel:+62896706255135">+91 94888 44242</a>
-      </p>
-      <p>
-        DM us at{' '}
-        <a href="https://www.instagram.com/cia_together/" target="_blank">
-          @cia_together
-        </a>
-      </p>
-      <p>
-        Visit us at <br />
-        <a
-          href="https://www.google.com/maps/place/Atria+Institute+of+Technology/@13.0325489,77.5899031,17z/data=!3m1!4b1!4m5!3m4!1s0x3bae17bd97727093:0x5135aab8250c1df5!8m2!3d13.0325489!4d77.5920918?hl=en-US"
-          target="_blank"
-        >
-          ASKB Campus,
-          <br /> 1st Main Rd, Ags Colony,
-          <br /> Anandnagar, Hebbal,
-          <br /> Bengaluru, Karnataka 560024
-        </a>
-      </p>
+      <div className="stuff">
+        <div className="brand-stuff">
+          <div className="logo">
+            <img src={black_cia_logo} alt="" />
+            <h1>Communities in Atria</h1>
+          </div>
+          <p>Some desc can be here, its just this for now</p>
+        </div>
+
+        <div className="contact-stuff">
+          <div className="adress">
+            <h4>Visit us</h4>
+            <a
+              href="https://www.google.com/maps/place/Atria+Institute+of+Technology/@13.0325489,77.5899031,17z/data=!3m1!4b1!4m5!3m4!1s0x3bae17bd97727093:0x5135aab8250c1df5!8m2!3d13.0325489!4d77.5920918?hl=en-US"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              ASKB Campus,
+              <br /> 1st Main Rd, Ags Colony,
+              <br /> Anandnagar, Hebbal,
+              <br /> Bengaluru, Karnataka 560024
+            </a>
+          </div>
+          <div>
+            <h4>Mail</h4>
+            <a href="mailto:cia@atria.edu">cia@atria.edu</a>
+          </div>
+        </div>
+
+        <div className="explore-stuff">
+          <h4>Explore</h4>
+          <Link to="/events">Events</Link>
+          <Link to="/team">Team</Link>
+        </div>
+
+        <div className="social-stuff">
+          <a
+            href="https://www.instagram.com/cia_together/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <img
+              src="https://img.icons8.com/material-sharp/48/000000/instagram-new.png"
+              alt=""
+            />
+          </a>
+          <a
+            href="https://www.instagram.com/cia_together/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <img
+              src="https://img.icons8.com/material-sharp/48/000000/twitter.png"
+              alt=""
+            />
+          </a>
+        </div>
+      </div>
     </footer>
   );
 }
+
+const details = (
+  <footer>
+    <p>
+      Mail us at <a href="mailto:cia@atria.edu">cia@atria.edu</a>
+    </p>
+    <p id="phone">
+      call us at <a href="tel:+62896706255135">+91 94888 44242</a>
+    </p>
+    <p>
+      DM us at
+      <a
+        href="https://www.instagram.com/cia_together/"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        @cia_together
+      </a>
+    </p>
+    <p>
+      Visit us at <br />
+      <a
+        href="https://www.google.com/maps/place/Atria+Institute+of+Technology/@13.0325489,77.5899031,17z/data=!3m1!4b1!4m5!3m4!1s0x3bae17bd97727093:0x5135aab8250c1df5!8m2!3d13.0325489!4d77.5920918?hl=en-US"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        ASKB Campus,
+        <br /> 1st Main Rd, Ags Colony,
+        <br /> Anandnagar, Hebbal,
+        <br /> Bengaluru, Karnataka 560024
+      </a>
+    </p>
+  </footer>
+);
