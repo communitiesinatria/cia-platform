@@ -453,6 +453,10 @@ footer .social-stuff img {
   height: 30px;
 }
 
+footer .explore-stuff {
+  margin: 10px;
+}
+
 footer .explore-stuff a {
   display: block;
 }
