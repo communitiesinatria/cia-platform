@@ -24,7 +24,6 @@ export default function Team() {
         member.scrollIntoView();
       });
     });
-
     return () => {
       members.forEach((member) => {
         member.removeEventListener('mouseover', () => {});
