@@ -37,8 +37,8 @@
 }
 
 nav {
-  height: 80px;
-  padding: 20px;
+  height: auto;
+  padding: 10px 20px;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
@@ -57,9 +57,39 @@ nav {
           animation: fade 200ms forwards ease;
 }
 
-nav > h1 {
+@media (max-width: 600px) {
+  nav {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    height: auto;
+    padding-bottom: 0;
+    padding-top: 10px;
+  }
+}
+
+nav .logo > h1 {
   -webkit-transition: opacity .2s ease;
   transition: opacity .2s ease;
+}
+
+nav .logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+nav .logo img {
+  width: 30px;
+  height: 30px;
+  margin-right: 14px;
 }
 
 nav ul {
@@ -75,6 +105,16 @@ nav ul {
           align-items: center;
 }
 
+@media (max-width: 600px) {
+  nav ul {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: left;
+        -ms-flex-pack: left;
+            justify-content: left;
+  }
+}
+
 nav ul li {
   margin-left: 20px;
   padding: 15px 20px;
@@ -82,8 +122,26 @@ nav ul li {
   transition: background 200ms ease;
 }
 
+@media (max-width: 600px) {
+  nav ul li {
+    margin: 0;
+    margin-right: 10px;
+    padding-left: 0;
+    padding-top: 0;
+  }
+}
+
 nav ul li:hover {
   background: var(--accent-color);
+}
+
+@media (max-width: 600px) {
+  nav ul li:hover {
+    background: transparent;
+    color: var(--accent-color);
+    -webkit-filter: brightness(0.6);
+            filter: brightness(0.6);
+  }
 }
 
 nav ul li:hover .cursor {
@@ -149,6 +207,15 @@ header .landing-content {
   position: relative;
 }
 
+@media (max-width: 600px) {
+  header .landing-content {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
 header .landing-content img {
   width: 60%;
   margin-left: auto;
@@ -156,11 +223,24 @@ header .landing-content img {
           animation: fadein-img 300ms forwards ease;
 }
 
+@media (max-width: 600px) {
+  header .landing-content img {
+    width: 100%;
+  }
+}
+
 header .landing-content .landing-message {
   padding: 20px;
   padding-bottom: 100px;
   -webkit-animation: fade-left 200ms forwards ease;
           animation: fade-left 200ms forwards ease;
+}
+
+@media (max-width: 600px) {
+  header .landing-content .landing-message {
+    padding: 20px;
+    padding-bottom: 20px;
+  }
 }
 
 header .landing-content .landing-message h1 {
@@ -211,6 +291,13 @@ header .landing-content .landing-message p {
   padding-top: 10px;
 }
 
+@media (max-width: 600px) {
+  .About {
+    display: block;
+    position: relative;
+  }
+}
+
 .About .message {
   padding-top: 10px;
   padding-bottom: 10px;
@@ -219,6 +306,15 @@ header .landing-content .landing-message p {
 
 .About img {
   width: 50%;
+}
+
+@media (max-width: 600px) {
+  .About img {
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: -10;
+  }
 }
 
 .philosophy {
@@ -252,6 +348,15 @@ header .landing-content .landing-message p {
   height: fit-content;
 }
 
+@media (max-width: 600px) {
+  .philosophy > div {
+    display: block;
+  }
+  .philosophy > div img {
+    width: 100%;
+  }
+}
+
 .philosophy .message {
   padding-right: 20px;
   padding-bottom: 20px;
@@ -261,72 +366,116 @@ footer {
   margin-top: 10px;
   padding: 20px;
   background: var(--accent-color);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+footer .logo h1 {
+  font-size: 1rem;
+  line-height: 1rem;
+}
+
+footer .logo img {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+footer .stuff {
+  max-width: 700px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media (max-width: 600px) {
+  footer .stuff {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+}
+
+footer .stuff > div {
+  padding: 10px;
+}
+
+footer .stuff a {
+  font-size: .8rem;
+}
+
+footer .stuff h4 {
+  font-size: .9rem;
+  margin-bottom: 2px;
+}
+
+footer .brand-stuff {
+  margin: 10px;
+  width: 160px;
+}
+
+footer .brand-stuff p {
+  font-size: .8rem;
+  line-height: 1rem;
+}
+
+footer .contact-stuff > div {
+  padding: 10px;
+}
+
+footer .social-stuff {
+  margin: 10px;
+}
+
+footer .social-stuff img {
+  width: 30px;
+  height: 30px;
+}
+
+footer .explore-stuff a {
+  display: block;
+}
+
+footer .explore-stuff a:hover {
+  text-decoration: underline;
 }
 
 a {
   color: black;
 }
 
-@media (max-width: 600px) {
-  nav {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
-    height: auto;
-    padding-bottom: 0;
-    padding-top: 10px;
-  }
-  nav ul {
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: left;
-        -ms-flex-pack: left;
-            justify-content: left;
-  }
-  nav ul li {
-    margin: 0;
-    margin-right: 10px;
-    padding-left: 0;
-    padding-top: 0;
-  }
-  nav ul li:hover {
-    background: transparent;
-    color: var(--accent-color);
-    -webkit-filter: brightness(0.6);
-            filter: brightness(0.6);
-  }
-  .landing-content {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
-  .landing-content > img {
-    width: 100% !important;
-  }
-  .landing-content .landing-message {
-    padding: 20px;
-    padding-bottom: 20px !important;
-  }
-  .About {
-    display: block;
-    position: relative;
-  }
-  .About img {
-    width: 100% !important;
-    top: 0;
-    left: 0;
-    z-index: -10;
-  }
-  .philosophy > div {
-    display: block;
-  }
-  .philosophy > div img {
-    width: 100%;
-  }
+.logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.logo img {
+  width: 30px;
+  height: 30px;
+  margin-right: 14px;
 }
 /*# sourceMappingURL=App.css.map */

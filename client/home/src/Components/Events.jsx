@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Loading from './Loading';
 import { BrowserRouter as Router, useHistory, Route } from 'react-router-dom';
 
 import './css/Events.css';
@@ -17,12 +18,16 @@ export default function Events() {
   return (
     <Router>
       <Route path="/events" exact={true}>
-        <div className="events">
-          <div className="this-week">
-            <EventMain {...events[0]} />
+        {events.length ? (
+          <div className="events">
+            <div className="this-week">
+              {events.length ? <EventMain {...events[0]} /> : <></>}
+            </div>
+            <AllEvents events={events} />
           </div>
-          <AllEvents events={events} />
-        </div>
+        ) : (
+          <Loading />
+        )}
       </Route>
       <Route path="/events/view">
         <EventView />
