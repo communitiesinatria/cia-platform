@@ -28,6 +28,16 @@ function App() {
     });
   }, []);
 
+  useEffect(() => {
+    try {
+      setTimeout(() =>
+        document
+          .querySelectorAll('.loading-page')
+          .forEach((e: any) => (e.style.display = 'none'))
+      );
+    } catch (error) {}
+  }, []);
+
   if (user?.username) return <Home />;
   return <Login />;
 }

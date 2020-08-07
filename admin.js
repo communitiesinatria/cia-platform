@@ -8,6 +8,9 @@ const { setupCache } = require('axios-cache-adapter');
 const AdminBro = require('admin-bro')
 const AdminBroExpressjs = require('admin-bro-expressjs')
 const roles = require('./roles.json')
+const x = require('./crypt');
+const bcrypt = require('bcrypt');
+
 //resources or models
 const { UserModel, ProjectModel, EventModel } = require('./controller/model')
 
@@ -22,7 +25,6 @@ const api = axios.create({
     adapter: cache.adapter
 })
 
-const x = require('./crypt');
 
 const adminBro = new AdminBro({
     resources: [
@@ -43,25 +45,25 @@ const adminBro = new AdminBro({
                         
                     }, */
                     setpassword: {
-                        
+
                         isVisible: {
                             list: false, edit: !!1, filter: !1, show: !1,
                         },
                     },
                     github: {
-                        
+
                         isVisible: {
                             list: false, edit: !!1, filter: !!1,
                         },
                     },
                     instagram: {
-                        
+
                         isVisible: {
                             list: false, edit: !!1, filter: !!1,
                         },
                     },
                     profile_img: {
-                        
+
                         isVisible: {
                             list: false, edit: !!1, filter: !1,
                         },
@@ -94,7 +96,7 @@ const adminBro = new AdminBro({
     ],
     branding: {
         companyName: 'Communities in Atria',
-        logo: 'https://instagram.fblr1-4.fna.fbcdn.net/v/t51.2885-19/s150x150/90442011_199456528028751_8249355337673474048_n.jpg?_nc_ht=instagram.fblr1-4.fna.fbcdn.net&_nc_ohc=AUnGVIFSfdcAX_VdXDl&oh=0f7e441346b9d3d56d027b435e238f20&oe=5F200B40',
+        logo: 'https://instagram.fblr4-2.fna.fbcdn.net/v/t51.2885-19/s320x320/111731698_3307936972620965_2167500350055054156_n.jpg?_nc_ht=instagram.fblr4-2.fna.fbcdn.net&_nc_ohc=GgUe81xeXjkAX96N0sD&oh=fb49d03883c3db2f3c51836983118096&oe=5F58B830',
         theme: {
             colors: {
                 primary100: '#00E9AA',
@@ -112,7 +114,7 @@ async function onchange(request) {
     if (request.payload.setpassword) {
         request.payload = {
             ...request.payload,
-            password: x.encrypt(request.payload.setpassword),
+            password: await bcrypt.hash(request.payload.setpassword, 10),
             setpassword: undefined,
         }
     }
@@ -146,7 +148,7 @@ const router = AdminBroExpressjs.buildAuthenticatedRouter(adminBro, {
         const user = await UserModel.findOne({ email });
         if ((user.role === roles.ADMIN) || (user.role === roles.CORE) || (user.role === roles.GOD)) {
 
-            if (x.decrypt(user.password) === password) {
+            if (await bcrypt.compare(password, user.password)) {
                 return user
             }
         }

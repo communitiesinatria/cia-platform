@@ -17,7 +17,7 @@ export const PostsContext = createContext<PostContextProps>({
 export const PostsContextProvider: React.FC = ({ children }) => {
   const [posts, setPosts] = useState<Array<Post>>([]);
   const updatePosts = useCallback(() => {
-    getPosts().then(setPosts);
+    getPosts().then((ps) => setPosts(ps.reverse()));
   }, []);
 
   useEffect(updatePosts, [updatePosts]);

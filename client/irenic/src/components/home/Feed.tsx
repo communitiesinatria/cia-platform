@@ -4,13 +4,10 @@ import { GlobalContext } from '../GlobalContext';
 import { PostsContext, PostsContextProvider } from './PostsContext';
 import { Post as PostType } from '../ContextTypes';
 //api
-import { post, getPosts } from '../api';
+import { post } from '../api';
 const Feed: React.FC = () => {
   return (
     <div className="feed">
-      <header>
-        <h3>Home</h3>
-      </header>
       <PostsContextProvider>
         <CreatePost />
         <Posts />
