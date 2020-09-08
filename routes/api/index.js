@@ -7,6 +7,7 @@ router.get('/testing', async (req, res) => {
     res.send(JSON.stringify((await User._ls())));
 });
 
+
 router.get('/events', async (req, res) => {
     res.send(JSON.stringify((await Event._ls())));
 });

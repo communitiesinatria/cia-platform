@@ -8,7 +8,6 @@ const roles = require('../../roles.json')
 // const x = require('../../crypt')
 const bcrypt = require('bcrypt');
 
-
 //Set up default mongoose connection
 if (!process.env.CIA_DATA_DB) {
     console.log('MONGO URL NOT SPECIFIED IN .env file')
@@ -46,9 +45,7 @@ const UserSchema = new Schema({
 
 UserSchema.pre('save', async function () {
     if (!this.name) this.name = this.username;
-
     this.password = await bcrypt.hash(this.password, 10);
-
 });
 
 const EventSchema = new Schema({

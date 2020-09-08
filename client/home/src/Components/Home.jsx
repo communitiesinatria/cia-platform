@@ -1,12 +1,6 @@
 import React, { useEffect } from 'react';
 
-import {
-  BrowserRouter as Router,
-  useHistory,
-  Link,
-  Route,
-  Switch,
-} from 'react-router-dom';
+import { BrowserRouter as Router, useHistory, Link } from 'react-router-dom';
 
 import communitylogo from '../assets/community.svg';
 import aboutimg1 from '../assets/resources.svg';
@@ -221,37 +215,3 @@ export function Footer() {
     </footer>
   );
 }
-
-const details = (
-  <footer>
-    <p>
-      Mail us at <a href="mailto:cia@atria.edu">cia@atria.edu</a>
-    </p>
-    <p id="phone">
-      call us at <a href="tel:+62896706255135">+91 94888 44242</a>
-    </p>
-    <p>
-      DM us at
-      <a
-        href="https://www.instagram.com/cia_together/"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        @cia_together
-      </a>
-    </p>
-    <p>
-      Visit us at <br />
-      <a
-        href="https://www.google.com/maps/place/Atria+Institute+of+Technology/@13.0325489,77.5899031,17z/data=!3m1!4b1!4m5!3m4!1s0x3bae17bd97727093:0x5135aab8250c1df5!8m2!3d13.0325489!4d77.5920918?hl=en-US"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        ASKB Campus,
-        <br /> 1st Main Rd, Ags Colony,
-        <br /> Anandnagar, Hebbal,
-        <br /> Bengaluru, Karnataka 560024
-      </a>
-    </p>
-  </footer>
-);

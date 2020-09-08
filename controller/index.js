@@ -21,13 +21,19 @@ const Event = {
         const results = await this.model.find(filter);
         return results;
     },
+
 }
 
 const User = {
     model: UserModel,
-    _ls: async function (filter = {}) {
+    _ls: async (filter = {}) => {
         const results = await UserModel.find(filter);
         return results.map(user => user.username);
+    },
+    _lsv2: function (filter = {}) {
+        return new Promise((rej, res) => {
+            UserModel.find({}).then(doc => res(doc))
+        })
     },
     getUserData: async function (_id) {
 

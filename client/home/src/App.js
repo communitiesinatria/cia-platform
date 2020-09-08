@@ -32,7 +32,7 @@ function App() {
           .querySelectorAll('.loading-page')
           .forEach((e) => (e.style.display = 'none'))
       );
-    } catch (error) {}
+    } catch (error) { }
   }, []);
 
   return (
