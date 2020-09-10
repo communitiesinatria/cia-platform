@@ -3,6 +3,7 @@
         line-height: 2rem;
     }
 
+
     &>h1 {
         padding: 20px;
         padding-bottom: 0;
@@ -34,6 +35,10 @@
                 padding-bottom: 0;
             }
 
+            h3 {
+                filter: contrast(.1);
+                margin-bottom: 6px;
+            }
 
 
             .date-time {
@@ -163,9 +168,17 @@
     position: relative;
     min-height: 100vh;
 
+
+
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
     background: linear-gradient(to right, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.2));
+
+    .back-btn {
+        margin-left: 15px;
+    }
 
     .about {
         padding: 30px;
