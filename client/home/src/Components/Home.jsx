@@ -171,65 +171,80 @@ export function Philosophy() {
 
 export function Footer() {
   return (
-    <footer>
-      <div className="stuff">
-        <div className="brand-stuff">
-          <div className="logo">
-            <img src={black_cia_logo} alt="" />
-            <h1>Communities in Atria</h1>
+    <>
+      <footer>
+        <div className="stuff">
+          <div className="brand-stuff">
+            <div className="logo">
+              <img src={black_cia_logo} alt="" />
+              <h1>Communities in Atria</h1>
+            </div>
+            <p>Some desc can be here, its just this for now</p>
           </div>
-          <p>Some desc can be here, its just this for now</p>
-        </div>
 
-        <div className="contact-stuff">
-          <div className="adress">
-            <h4>Visit us</h4>
+          <div className="contact-stuff">
+            <div className="adress">
+              <h4>Visit us</h4>
+              <a
+                href="https://www.google.com/maps/place/Atria+Institute+of+Technology/@13.0325489,77.5899031,17z/data=!3m1!4b1!4m5!3m4!1s0x3bae17bd97727093:0x5135aab8250c1df5!8m2!3d13.0325489!4d77.5920918?hl=en-US"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                ASKB Campus,
+                <br /> 1st Main Rd, Ags Colony,
+                <br /> Anandnagar, Hebbal,
+                <br /> Bengaluru, Karnataka 560024
+              </a>
+            </div>
+            <div>
+              <h4>Mail</h4>
+              <a href="mailto:cia@atria.edu">cia@atria.edu</a>
+            </div>
+          </div>
+
+          <div className="explore-stuff">
+            <h4>Explore</h4>
+            <Link to="/events">Events</Link>
+            <Link to="/team">Team</Link>
+          </div>
+
+          <div className="social-stuff">
             <a
-              href="https://www.google.com/maps/place/Atria+Institute+of+Technology/@13.0325489,77.5899031,17z/data=!3m1!4b1!4m5!3m4!1s0x3bae17bd97727093:0x5135aab8250c1df5!8m2!3d13.0325489!4d77.5920918?hl=en-US"
-              target="_blank"
+              href="https://www.instagram.com/cia_together/"
               rel="noopener noreferrer"
+              target="_blank"
             >
-              ASKB Campus,
-              <br /> 1st Main Rd, Ags Colony,
-              <br /> Anandnagar, Hebbal,
-              <br /> Bengaluru, Karnataka 560024
+              <img
+                src="https://img.icons8.com/material-sharp/48/000000/instagram-new.png"
+                alt=""
+              />
+            </a>
+            <a
+              href="https://www.instagram.com/cia_together/"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <img
+                src="https://img.icons8.com/material-sharp/48/000000/twitter.png"
+                alt=""
+              />
             </a>
           </div>
-          <div>
-            <h4>Mail</h4>
-            <a href="mailto:cia@atria.edu">cia@atria.edu</a>
-          </div>
         </div>
-
-        <div className="explore-stuff">
-          <h4>Explore</h4>
-          <Link to="/events">Events</Link>
-          <Link to="/team">Team</Link>
-        </div>
-
-        <div className="social-stuff">
+      </footer>
+      <div className="credits">
+        <p>
+          Designed and made by{' '}
           <a
-            href="https://www.instagram.com/cia_together/"
             rel="noopener noreferrer"
             target="_blank"
+            href="https://instagram.com/xrehpicx"
           >
-            <img
-              src="https://img.icons8.com/material-sharp/48/000000/instagram-new.png"
-              alt=""
-            />
+            Raj
           </a>
-          <a
-            href="https://www.instagram.com/cia_together/"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <img
-              src="https://img.icons8.com/material-sharp/48/000000/twitter.png"
-              alt=""
-            />
-          </a>
-        </div>
+        </p>
+        <span>please help me</span>
       </div>
-    </footer>
+    </>
   );
 }
