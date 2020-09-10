@@ -7,7 +7,6 @@ import {
   useHistory,
 } from 'react-router-dom';
 
-
 import { register, login } from './api';
 
 //styles
@@ -92,7 +91,6 @@ const Register = () => {
       const retypedpasswordv = retypedpassword.current.value;
 
       if (retypedpasswordv !== passwordv) {
-        console.log(retypedpasswordv, passwordv);
         setVailditymessage([{ message: 'Passwords dont match' }]);
         return;
       }
@@ -111,7 +109,6 @@ const Register = () => {
         // alert('check ur mail and verify ur email before loging in');
         history.push('/account/login');
       }
-      console.log(result);
     })();
   };
 

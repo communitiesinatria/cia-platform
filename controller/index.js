@@ -2,7 +2,7 @@ const { UserModel, PostModel, ProjectModel, EventModel } = require('./model');
 const axios = require('axios');
 const { setupCache } = require('axios-cache-adapter');
 const Joi = require('@hapi/joi');
-const x = require('../crypt');
+// const x = require('../crypt');
 const bcrypt = require('bcrypt');
 
 const cache = setupCache({
@@ -14,19 +14,26 @@ const api = axios.create({
     adapter: cache.adapter
 })
 
+
 const Event = {
     model: EventModel,
     _ls: async function (filter = {}) {
         const results = await this.model.find(filter);
         return results;
     },
+
 }
 
 const User = {
     model: UserModel,
-    _ls: async function (filter = {}) {
+    _ls: async (filter = {}) => {
         const results = await UserModel.find(filter);
         return results.map(user => user.username);
+    },
+    _lsv2: function (filter = {}) {
+        return new Promise((rej, res) => {
+            UserModel.find({}).then(doc => res(doc))
+        })
     },
     getUserData: async function (_id) {
 
@@ -62,7 +69,7 @@ const User = {
 
         if (!user) return !1;
 
-        if (x.decrypt(user.password) === password) {
+        if (await bcrypt.compare(password, user.password)) {
             return user;
 
         } else {
