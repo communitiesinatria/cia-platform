@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Loading from './Loading';
+import { Footer } from './Home';
+
 //styles
 import './css/Teams.css';
 
@@ -44,6 +46,7 @@ export default function Team() {
             <h1>Our Team</h1>
           </header>
           <MemberGrid members={members} />
+          <Footer />
         </div>
       ) : (
         <Loading />
