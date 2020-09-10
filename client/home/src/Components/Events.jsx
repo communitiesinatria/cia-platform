@@ -11,10 +11,9 @@ import { getEvents } from './api';
 
 export default function Events() {
   const [events, setevents] = useState([]);
-  // const history = useHistory();
+
   useEffect(() => {
     getEvents().then((d) => {
-      console.log(d);
       setevents(d);
     });
   }, []);
@@ -25,7 +24,11 @@ export default function Events() {
         {events.length ? (
           <div className="events">
             <div className="this-week">
-              {events.length ? <EventMain {...events[0]} /> : <></>}
+              {events.length ? (
+                <EventMain single={events.length === 1} {...events[0]} />
+              ) : (
+                <></>
+              )}
             </div>
             <AllEvents events={events} />
             <Footer />
@@ -41,9 +44,9 @@ export default function Events() {
   );
 }
 
-function EventMain({ title, desc, register, event_img, date }) {
+function EventMain({ title, desc, register, event_img, date, single }) {
   return (
-    <div className="main-event">
+    <div className="main-event" style={{ height: single ? '100vh' : '' }}>
       <div className="event-img">
         <img src={event_img} alt="" />
       </div>
@@ -74,16 +77,17 @@ function EventMain({ title, desc, register, event_img, date }) {
 
 function AllEvents({ events }) {
   // const test = Array.from({ length: 10 });
-  return (
-    <div className="all-events">
-      {events.map((e, i) => (
-        <Event event={e} key={i} />
-      ))}
-      {/* {events.map((e, i) => (
-        <Event event={e} key={i} />
-      ))} */}
-    </div>
-  );
+  if (events.length > 1) {
+    return (
+      <div className="all-events">
+        {events.map((e, i) => (
+          <Event event={e} key={i} />
+        ))}
+      </div>
+    );
+  }
+
+  return <></>;
 }
 
 function Event({ event }) {
