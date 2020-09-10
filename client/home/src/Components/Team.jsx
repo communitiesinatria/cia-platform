@@ -78,7 +78,7 @@ function Member({
       </div>
       <div className="about">
         <h3>{name ? name : username}</h3>
-        <p>{role}</p>
+        <p>{role === 'admin' ? 'core' : 'role'}</p>
       </div>
       <div className="contact">
         {instagram ? (

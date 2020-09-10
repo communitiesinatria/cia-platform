@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-
+import { useUgh } from 'react-ugh';
 import { BrowserRouter as Router, useHistory, Link } from 'react-router-dom';
 
 import communitylogo from '../assets/community.svg';
@@ -34,6 +34,17 @@ export default function Home() {
 
     return () => (window.onscroll = null);
   });
+  const accounts = useUgh({ accounts_button: false });
+
+  useEffect(() => {
+    const enableAccounts = (e) => {
+      if (e.key === 'a' && e.ctrlKey)
+        accounts.accounts_button = !accounts.accounts_button;
+    };
+    window.addEventListener('keydown', enableAccounts);
+
+    return () => window.removeEventListener('keydown', enableAccounts);
+  }, [accounts]);
 
   return (
     <>
@@ -45,6 +56,13 @@ export default function Home() {
         <ul>
           <li onClick={() => history.push({ pathname: '/events' })}>Events</li>
           <li onClick={() => history.push({ pathname: '/team' })}>Team</li>
+          {accounts.accounts_button ? (
+            <li onClick={() => history.push({ pathname: '/account' })}>
+              Account
+            </li>
+          ) : (
+            <></>
+          )}
         </ul>
       </nav>
       <Header />
