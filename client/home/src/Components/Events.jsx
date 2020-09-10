@@ -116,30 +116,6 @@ function Event({ event }) {
     </div>
   );
 }
-function timeConverter(date) {
-  var a = new Date(date);
-  var months = [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec',
-  ];
-  const year = a.getFullYear();
-  const month = months[a.getMonth()];
-  const d = a.getDate();
-  const hour = a.getHours();
-  const min = a.getMinutes();
-  const time = d + ' ' + month + ' ' + year + ' ' + hour + ':' + min;
-  return time;
-}
 
 function EventView(props) {
   const history = useHistory();
@@ -186,4 +162,29 @@ function EventView(props) {
       </div>
     </div>
   );
+}
+
+function timeConverter(date) {
+  var a = new Date(date);
+  var months = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ];
+  const year = a.getFullYear();
+  const month = months[a.getMonth()];
+  const d = a.getDate();
+  const hour = a.getHours();
+  const min = a.getMinutes();
+  const time = d + ' ' + month + ' ' + year + ' ' + hour + ':' + min;
+  return time;
 }

@@ -11,8 +11,10 @@
     z-index: 200;
 } */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 0px;
+  height: 0px;
+  /* width: 8px;
+    height: 8px; */
   position: absolute;
 }
 
@@ -503,5 +505,33 @@ a {
 .react-loading-page svg {
   width: 200px;
   height: 200px;
+}
+
+.credits {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 6px;
+  background: #161616;
+  color: white;
+}
+
+.credits a {
+  color: white;
+}
+
+.credits span {
+  font-size: .3rem;
+  margin-bottom: 5px;
 }
 /*# sourceMappingURL=App.css.map */

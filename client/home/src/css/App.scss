@@ -12,8 +12,10 @@
 } */
 
 ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 0px;
+    height: 0px;
+    /* width: 8px;
+    height: 8px; */
     position: absolute;
 }
 
@@ -387,5 +389,25 @@ a {
         // padding: 20px;
         width: 200px;
         height: 200px;
+    }
+}
+
+.credits {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 6px;
+    background: rgb(22, 22, 22);
+    color: white;
+
+    // filter: contrast(.8) brightness(1.2);
+    a {
+        color: white;
+    }
+
+    span {
+        font-size: .3rem;
+        margin-bottom: 5px;
     }
 }

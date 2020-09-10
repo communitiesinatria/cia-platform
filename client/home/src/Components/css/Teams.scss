@@ -1,4 +1,10 @@
 .team {
+    .back-btn {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        animation: opacity-fadein 800ms forwards ease;
+    }
 
     header {
         width: 100%;

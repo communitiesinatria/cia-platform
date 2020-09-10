@@ -182,7 +182,7 @@ const TextView = ({
         inputDom.current.removeEventListener('blur', onblur);
       } catch (e) {}
     };
-  }, []);
+  }, [inputDom]);
 
   return (
     <div className="input-text">

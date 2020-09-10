@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import Loading from './Loading';
 import { Footer } from './Home';
 
+import IconButton from '@material-ui/core/IconButton';
 //styles
 import './css/Teams.css';
 
 //assets
+import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import headerImage from '../assets/team.svg';
 
 //team member photos
@@ -45,6 +47,11 @@ export default function Team() {
             </div>
             <h1>Our Team</h1>
           </header>
+          <div className="back-btn">
+            <IconButton onClick={() => (window.location.pathname = '/')}>
+              <KeyboardBackspaceIcon />
+            </IconButton>
+          </div>
           <MemberGrid members={members} />
           <Footer />
         </div>
