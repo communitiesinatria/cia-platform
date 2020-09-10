@@ -14,6 +14,7 @@ export default function Events() {
   // const history = useHistory();
   useEffect(() => {
     getEvents().then((d) => {
+      console.log(d);
       setevents(d);
     });
   }, []);
@@ -33,7 +34,7 @@ export default function Events() {
           <Loading />
         )}
       </Route>
-      <Route path="/events/view">
+      <Route path="/events/:eventid">
         <EventView />
       </Route>
     </Router>
@@ -53,6 +54,7 @@ function EventMain({ title, desc, register, event_img, date }) {
         </IconButton>
       </div>
       <div className="about">
+        <h3>most recent</h3>
         <h1>{title}</h1>
         <p>{desc}</p>
         <span className="date-time">{timeConverter(date)}</span>
@@ -96,7 +98,7 @@ function Event({ event }) {
     <div
       className="event"
       onClick={() => {
-        history.push({ pathname: 'events/view', data: event });
+        history.push({ pathname: 'events/' + event._id });
       }}
     >
       <div className="bg-img">
@@ -135,16 +137,36 @@ function timeConverter(date) {
   return time;
 }
 
-function EventView() {
+function EventView(props) {
   const history = useHistory();
+  const [event, setEvent] = useState({});
 
-  const event = history.location.data;
+  useEffect(() => {
+    const id = history.location.pathname.split('/')
+      ? history.location.pathname.split('/')[2]
+      : false;
+    if (id) {
+      getEvents().then((d) => {
+        const e = d.filter((event) => event._id === id);
+        setEvent(e[0]);
+      });
+    } else {
+      alert('no such event');
+      window.location.pathname = '/';
+    }
+  }, [history]);
 
   return (
     <div className="event-view">
       <div className="event-img">
         <img src={event.event_img} alt="" />
       </div>
+      <IconButton
+        className="back-btn"
+        onClick={() => (window.location.pathname = '/')}
+      >
+        <KeyboardBackspaceIcon />
+      </IconButton>
       <div className="about">
         <h1>{event.title}</h1>
         <p>{event.desc}</p>
