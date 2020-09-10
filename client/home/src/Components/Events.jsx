@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import Loading from './Loading';
+import { Footer } from './Home';
 import { BrowserRouter as Router, useHistory, Route } from 'react-router-dom';
+
+import IconButton from '@material-ui/core/IconButton';
+import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 
 import './css/Events.css';
 import { getEvents } from './api';
 
 export default function Events() {
   const [events, setevents] = useState([]);
-
+  // const history = useHistory();
   useEffect(() => {
     getEvents().then((d) => {
-      console.log(d);
       setevents(d);
     });
   }, []);
@@ -24,6 +27,7 @@ export default function Events() {
               {events.length ? <EventMain {...events[0]} /> : <></>}
             </div>
             <AllEvents events={events} />
+            <Footer />
           </div>
         ) : (
           <Loading />
@@ -43,6 +47,11 @@ function EventMain({ title, desc, register, event_img, date }) {
         <img src={event_img} alt="" />
       </div>
 
+      <div className="nav">
+        <IconButton onClick={() => window.history.back()}>
+          <KeyboardBackspaceIcon />
+        </IconButton>
+      </div>
       <div className="about">
         <h1>{title}</h1>
         <p>{desc}</p>
@@ -68,6 +77,9 @@ function AllEvents({ events }) {
       {events.map((e, i) => (
         <Event event={e} key={i} />
       ))}
+      {/* {events.map((e, i) => (
+        <Event event={e} key={i} />
+      ))} */}
     </div>
   );
 }
