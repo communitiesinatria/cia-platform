@@ -91,12 +91,20 @@ const adminBro = new AdminBro({
             },
 
         },
-        ProjectModel,
+        {
+            resource: ProjectModel,
+            options: {
+                properties: {
+
+                }
+            }
+        },
+
         EventModel
     ],
     branding: {
         companyName: 'Communities in Atria',
-        logo: 'https://instagram.fblr4-2.fna.fbcdn.net/v/t51.2885-19/s320x320/111731698_3307936972620965_2167500350055054156_n.jpg?_nc_ht=instagram.fblr4-2.fna.fbcdn.net&_nc_ohc=GgUe81xeXjkAX96N0sD&oh=fb49d03883c3db2f3c51836983118096&oe=5F58B830',
+        logo: 'https://scontent-maa2-2.cdninstagram.com/v/t51.2885-19/s320x320/111731698_3307936972620965_2167500350055054156_n.jpg?_nc_ht=scontent-maa2-2.cdninstagram.com&_nc_ohc=JSTcrwP0_qwAX--lazd&oh=5a4e494609093965c91f5bd6b0814313&oe=5F8439B0',
         theme: {
             colors: {
                 primary100: '#00E9AA',

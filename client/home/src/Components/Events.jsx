@@ -6,6 +6,8 @@ import { BrowserRouter as Router, useHistory, Route } from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 
+import headerImage from '../assets/team.svg';
+
 import './css/Events.css';
 import { getEvents } from './api';
 
@@ -44,11 +46,11 @@ export default function Events() {
   );
 }
 
-function EventMain({ title, desc, register, event_img, date, single }) {
+function EventMain({ title, desc, register, event_img, date, single, time }) {
   return (
     <div className="main-event" style={{ height: single ? '100vh' : '' }}>
       <div className="event-img">
-        <img src={event_img} alt="" />
+        <img src={event_img ? event_img : headerImage} alt="" />
       </div>
 
       <div className="nav">
@@ -60,7 +62,9 @@ function EventMain({ title, desc, register, event_img, date, single }) {
         <h3>most recent</h3>
         <h1>{title}</h1>
         <p>{desc}</p>
-        <span className="date-time">{timeConverter(date)}</span>
+        <span className="date-time">
+          {timeConverter(date) + (time ? ' from ' + time : '')}
+        </span>
 
         <a
           target="_blank"
@@ -93,7 +97,7 @@ function AllEvents({ events }) {
 function Event({ event }) {
   const date = timeConverter(event.date);
   event.date = date;
-  console.log(date);
+  // console.log(date);
 
   const history = useHistory();
 
@@ -106,12 +110,17 @@ function Event({ event }) {
       }}
     >
       <div className="bg-img">
-        <img src={event.event_img} alt="eventimage" />
+        <img
+          src={event.event_img ? event.event_img : headerImage}
+          alt="eventimage"
+        />
       </div>
       <div className="about">
         <h1>{event.title}</h1>
         <p>{event.desc}</p>
-        <span className="date-time">{date}</span>
+        <span className="date-time">
+          {date + (event.time ? ' from ' + event.time : '')}
+        </span>
       </div>
     </div>
   );
@@ -139,7 +148,7 @@ function EventView(props) {
   return (
     <div className="event-view">
       <div className="event-img">
-        <img src={event.event_img} alt="" />
+        <img src={event.event_img ? event.event_img : headerImage} alt="" />
       </div>
       <IconButton
         className="back-btn"
@@ -150,7 +159,9 @@ function EventView(props) {
       <div className="about">
         <h1>{event.title}</h1>
         <p>{event.desc}</p>
-        <span className="date-time">{event.date}</span>
+        <span className="date-time">
+          {timeConverter(event.date + event.time) ? ' from ' + event.time : ''}
+        </span>
 
         <div className="register-btn">
           <span>
@@ -183,8 +194,6 @@ function timeConverter(date) {
   const year = a.getFullYear();
   const month = months[a.getMonth()];
   const d = a.getDate();
-  const hour = a.getHours();
-  const min = a.getMinutes();
-  const time = d + ' ' + month + ' ' + year + ' ' + hour + ':' + min;
+  const time = d + ' ' + month + ' ' + year;
   return time;
 }
