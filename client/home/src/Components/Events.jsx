@@ -59,7 +59,7 @@ function EventMain({ title, desc, register, event_img, date, single, time }) {
         </IconButton>
       </div>
       <div className="about">
-        <h3>most recent</h3>
+        <h3>Comming up</h3>
         <h1>{title}</h1>
         <p>{desc}</p>
         <span className="date-time">
@@ -150,10 +150,7 @@ function EventView(props) {
       <div className="event-img">
         <img src={event.event_img ? event.event_img : headerImage} alt="" />
       </div>
-      <IconButton
-        className="back-btn"
-        onClick={() => (window.location.pathname = '/')}
-      >
+      <IconButton className="back-btn" onClick={() => window.history.back()}>
         <KeyboardBackspaceIcon />
       </IconButton>
       <div className="about">

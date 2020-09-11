@@ -29,7 +29,7 @@ export async function getEvents() {
     let result;
     try {
         result = await api.get(`${endpoint}/api/events`);
-        return result.data;
+        return result.data.reverse();
     } catch (error) {
         console.log(error);
         return [];
