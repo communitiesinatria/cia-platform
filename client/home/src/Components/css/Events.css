@@ -9,6 +9,8 @@
 
 .events .nav {
   margin-left: 18px;
+  -webkit-animation: fade-from-right 800ms forwards ease;
+          animation: fade-from-right 800ms forwards ease;
 }
 
 .events .main-event {

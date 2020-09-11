@@ -3,7 +3,7 @@
         width: 100%;
         display: flex;
         justify-content: center;
-        animation: opacity-fadein 800ms forwards ease;
+        animation: fade-from-right 800ms forwards ease;
     }
 
     header {
@@ -71,9 +71,7 @@
         }
 
         &:active {
-            & {
-                //padding: 20px;
-            }
+
 
             .profile-img {
 
@@ -162,6 +160,20 @@
     60% {
         opacity: 0;
         transform: translateY(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-from-right {
+
+    0%,
+    60% {
+        opacity: 0;
+        transform: translateX(10px);
     }
 
     100% {
