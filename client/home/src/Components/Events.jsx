@@ -157,7 +157,8 @@ function EventView(props) {
         <h1>{event.title}</h1>
         <p>{event.desc}</p>
         <span className="date-time">
-          {timeConverter(event.date + event.time) ? ' from ' + event.time : ''}
+          {timeConverter(event.date) +
+            (event.time ? ' from ' + event.time : '')}
         </span>
 
         <div className="register-btn">
