@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const roles = require('../../roles.json')
 // const x = require('../../crypt')
 const bcrypt = require('bcrypt');
+const { string } = require('@hapi/joi');
 
 //Set up default mongoose connection
 if (!process.env.CIA_DATA_DB) {
@@ -53,6 +54,7 @@ const EventSchema = new Schema({
     desc: { type: String, required: true },
     event_img: String,
     date: { type: Date, required: true },
+    time: { type: String, required: true },
     register: { type: String, required: true },
     other_links: [String]
 });
