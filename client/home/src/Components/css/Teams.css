@@ -6,8 +6,8 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-animation: opacity-fadein 800ms forwards ease;
-          animation: opacity-fadein 800ms forwards ease;
+  -webkit-animation: fade-from-right 800ms forwards ease;
+          animation: fade-from-right 800ms forwards ease;
 }
 
 .team header {
@@ -208,6 +208,34 @@
     opacity: 0;
     -webkit-transform: translateY(10px);
             transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@-webkit-keyframes fade-from-right {
+  0%,
+  60% {
+    opacity: 0;
+    -webkit-transform: translateX(10px);
+            transform: translateX(10px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes fade-from-right {
+  0%,
+  60% {
+    opacity: 0;
+    -webkit-transform: translateX(10px);
+            transform: translateX(10px);
   }
   100% {
     opacity: 1;
