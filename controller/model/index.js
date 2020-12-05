@@ -14,6 +14,7 @@ if (!process.env.CIA_DATA_DB) {
     console.log('MONGO URL NOT SPECIFIED IN .env file')
     process.exit();
 }
+
 const mongoDB = process.env.CIA_DATA_DB;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.set('useFindAndModify', false);
