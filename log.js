@@ -3,7 +3,8 @@ const Image = require('ascii-art-image');
 const logger = {
     serverStart: (state) => {
         const image = new Image({
-            filepath: './backlogo.jpg',
+            // filepath: './backlogo.jpg',
+            filepath: './logo.png',
             alphabet: 'bits'
         });
 
