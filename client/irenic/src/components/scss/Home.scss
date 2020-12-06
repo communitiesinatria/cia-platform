@@ -176,7 +176,7 @@
     height: 100vh;
     overflow-y: hidden;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: stretch;
 
     @media only screen and (max-width: 700px) {
@@ -290,25 +290,20 @@
 .create-post {
 
     padding: 20px;
-    border-bottom: 2px solid whitesmoke;
+    border-top: 2px solid whitesmoke;
     background: white;
     z-index: 100;
     position: sticky;
-    top: 0;
+    bottom: 0;
 
     form {
         display: flex;
         align-items: center;
+        justify-content: space-between;
         width: 100%;
     }
 
-    form>img {
-        margin-bottom: auto;
-        border-radius: 50%;
-        object-fit: cover;
-        width: 40px !important;
-        height: 40px;
-    }
+
 
     &>p {
         filter: contrast(.01);
@@ -317,41 +312,21 @@
     .compose {
         width: 100%;
         margin-left: 10px;
+        display: flex;
+        align-items: center;
 
-        textarea {
-            height: 100%;
-            width: 100%;
-            padding-top: 0.5rem;
-            outline: none;
-            border: none;
-            resize: none;
-            font-size: 1.2rem;
-            color: var(--text-color);
-        }
-
-    }
-
-    button {
-        margin-left: auto;
-        width: auto;
-        background: white;
-        padding: 8px 20px;
-        font-weight: 600;
-        border: 2px solid var(--accent-color);
-        transition: all 1s ease;
-        animation: fadefrombottom 100ms forwards ease;
-    }
-
-    @media only screen and (max-width: 600px) {
-        button {
-            width: 100%;
+        img {
+            margin-right: 10px;
+            margin-bottom: auto;
+            border-radius: 50%;
+            object-fit: cover;
+            width: 40px !important;
+            height: 40px;
         }
     }
 
-    .disabled-post {
-        filter: grayscale(.6) blur(1px);
-        cursor: not-allowed;
-    }
+
+
 
 }
 

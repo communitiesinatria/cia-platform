@@ -1,0 +1,10 @@
+.activity-box {
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid var(--accent-color);
+}
+
+.activity-box header {
+  margin-bottom: 10px;
+}
+/*# sourceMappingURL=ActivityBoxes.css.map */

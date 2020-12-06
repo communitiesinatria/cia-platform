@@ -21,7 +21,6 @@ const Event = {
         const results = await this.model.find(filter);
         return results;
     },
-
 }
 
 const User = {
@@ -71,7 +70,6 @@ const User = {
 
         if (await bcrypt.compare(password, user.password)) {
             return user;
-
         } else {
             return !1
         }
@@ -143,9 +141,9 @@ const User = {
                 .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } })
                 .required(),
         });
-        let value;
+
         try {
-            value = await schema.validateAsync({ email, username, password });
+            await schema.validateAsync({ email, username, password });
         } catch (error) {
             return error.details;
         }
