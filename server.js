@@ -28,6 +28,10 @@ app.use(bodyParser.json());
 app.use('/auth', login_route);
 app.use('/api', apiRoute);
 
+// hash
+app.use('/hashcode/', express.static(path.resolve(`${__dirname}/client/hash/`)));
+app.get('/hashcode/*', (req, res) => res.sendFile(path.resolve(`${__dirname}/client/hash/index.html`)));
+
 // IRENIC
 app.use('/irenic/', express.static(path.resolve(`${__dirname}/client/irenic/build`)));
 app.get('/irenic/*', (req, res) => res.sendFile(path.resolve(`${__dirname}/client/irenic/build/index.html`)));

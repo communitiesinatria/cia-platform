@@ -3,6 +3,14 @@ import React, { useContext, useRef, useState, useEffect } from 'react';
 import { GlobalContext } from '../GlobalContext';
 import { PostsContext, PostsContextProvider } from './PostsContext';
 import { Post as PostType } from '../ContextTypes';
+
+// assets
+import SendIcon from '@material-ui/icons/Send';
+
+// external compoentns
+import InputBase from '@material-ui/core/InputBase';
+import IconButton from '@material-ui/core/IconButton';
+
 //api
 import { post } from '../api';
 const Feed: React.FC = () => {
@@ -76,18 +84,14 @@ const CreatePost: React.FC = () => {
   const { updatePosts } = useContext(PostsContext);
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const postText = useRef('');
   const [charcount, setCharcount] = useState(0);
   const { user } = useContext(GlobalContext);
 
   const postPost = async () => {
-    if (
-      charcount >= 10 &&
-      textareaRef.current &&
-      textareaRef.current.value &&
-      user
-    ) {
+    if (charcount >= 10 && postText.current && user) {
       const newpost = {
-        message: textareaRef.current.value.trim(),
+        message: postText.current.trim(),
         created_by: {
           username: user.username,
           profile_img: user.profile_img,
@@ -97,49 +101,42 @@ const CreatePost: React.FC = () => {
       const poststatus = await post(newpost);
       updatePosts && updatePosts();
       if (poststatus) {
-        textareaRef.current.value = '';
-        onchange();
+        postText.current = '';
       }
     }
   };
 
-  const onchange = () => {
-    if (textareaRef.current) {
-      // adjust height of textarea
-      textareaRef.current.style.height = '0px';
-      textareaRef.current.style.height =
-        25 + textareaRef.current.scrollHeight + 'px';
-
-      textareaRef.current.value = textareaRef.current.value.trimStart();
-      if (textareaRef.current.value.length <= 255) {
-        setCharcount(textareaRef.current.value.length);
-      } else {
-      }
+  const onchange = (
+    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => {
+    if (e.target.value) {
+      setCharcount(e.target.value.length);
+      postText.current = e.target.value;
     }
   };
-  useEffect(onchange);
 
   return (
     <div className="create-post">
       <form>
-        <img src={user?.profile_img} alt="profile_img" />
         <div className="compose">
-          <textarea
+          <img src={user?.profile_img} alt="profile_img" />
+          {/* <textarea
             maxLength={255}
             ref={textareaRef}
             onChange={onchange}
             placeholder="what's going on?"
+          /> */}
+          <InputBase
+            multiline
+            placeholder="what's going on?"
+            onChange={onchange}
           />
         </div>
+        <IconButton onClick={postPost}>
+          <SendIcon />
+        </IconButton>
       </form>
       <p>{charcount >= 10 ? charcount : <></>}</p>
-
-      <button
-        onClick={postPost}
-        className={!(charcount >= 10) ? 'disabled-post' : ''}
-      >
-        Post
-      </button>
     </div>
   );
 };

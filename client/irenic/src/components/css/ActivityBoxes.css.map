@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,aAAa,CAAC;EAKV,OAAO,EAAE,IAAI;EACb,MAAM,EAAE,IAAI;EACZ,MAAM,EAAE,GAAG,CAAC,KAAK,CAAC,mBAAmB;CAKxC;;AAZD,AACI,aADS,CACT,MAAM,CAAC;EACH,aAAa,EAAE,IAAI;CACtB",
+    "sources": [
+        "../scss/ActivityBoxes.scss"
+    ],
+    "names": [],
+    "file": "ActivityBoxes.css"
+}

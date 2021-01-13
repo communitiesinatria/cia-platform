@@ -10,7 +10,7 @@ import {
 } from 'react-router-dom';
 
 //styles
-import '../scss/Home.css';
+import '../css/Home.css';
 
 // Components
 
