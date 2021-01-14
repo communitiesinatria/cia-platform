@@ -24,7 +24,7 @@
     "admin-bro-theme-dark": "^1.0.0",
     "ascii-art": "^2.5.0",
     "ascii-art-image": "^1.2.2",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "axios-cache-adapter": "^2.5.0",
     "bcrypt": "^5.0.0",
     "bcryptjs": "^2.4.3",
