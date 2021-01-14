@@ -12,7 +12,7 @@ const x = require('./crypt');
 const bcrypt = require('bcrypt');
 
 //resources or models
-const { UserModel, ProjectModel, EventModel } = require('./controller/model')
+const { PostModel, UserModel, ProjectModel, EventModel } = require('./controller/model')
 
 AdminBro.registerAdapter(require('admin-bro-mongoose'))
 
@@ -100,7 +100,8 @@ const adminBro = new AdminBro({
             }
         },
 
-        EventModel
+        EventModel,
+        PostModel,
     ],
     branding: {
         companyName: 'Communities in Atria',
