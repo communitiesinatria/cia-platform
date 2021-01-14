@@ -1,6 +1,6 @@
 try {
     require('dotenv').config()
-} catch{ }
+} catch { }
 
 const axios = require('axios');
 const { setupCache } = require('axios-cache-adapter');
@@ -12,7 +12,7 @@ const x = require('./crypt');
 const bcrypt = require('bcrypt');
 
 //resources or models
-const { UserModel, ProjectModel, EventModel } = require('./controller/model')
+const { PostModel, UserModel, ProjectModel, EventModel } = require('./controller/model')
 
 AdminBro.registerAdapter(require('admin-bro-mongoose'))
 
@@ -100,7 +100,8 @@ const adminBro = new AdminBro({
             }
         },
 
-        EventModel
+        EventModel,
+        PostModel,
     ],
     branding: {
         companyName: 'Communities in Atria',
@@ -154,7 +155,7 @@ async function onchange(request) {
 const router = AdminBroExpressjs.buildAuthenticatedRouter(adminBro, {
     authenticate: async (email, password) => {
         const user = await UserModel.findOne({ email });
-        if (user && (user.role === roles.ADMIN) || (user.role === roles.CORE) || (user.role === roles.GOD)) {
+        if (user && ((user.role === roles.ADMIN) || (user.role === roles.CORE) || (user.role === roles.GOD))) {
 
             if (await bcrypt.compare(password, user.password)) {
                 return user
